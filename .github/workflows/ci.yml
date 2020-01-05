@@ -1,0 +1,66 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Init submodule
+      run: |
+        git submodule update --init --recursive
+
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+
+    - name: Install dependencies
+      run: |
+        cd ./Maverick
+        python -m pip install --upgrade pip
+        pip install -r prod_req.txt
+
+    - name: Build site
+      run: |
+        # 复用图片解析缓存
+        mkdir ./Maverick/cached_imgs
+        cp ./cache/sizeinfo.json ./Maverick/cached_imgs
+
+        cd ./Maverick
+        python ./build.py -c "../conf.py"
+
+        # 保存图片缓存
+        cd ..
+        cp ./Maverick/cached_imgs/sizeinfo.json ./cache
+        date > ./cache/info
+        md5sum ./cache/sizeinfo.json >> ./cache/info
+
+    - name: Deploy to GitHub Pages
+      uses: docker://peaceiris/gh-pages:v2
+      env:
+        PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./dist
+      with:
+        emptyCommits: false
+
+    - name: Commit sizeinfo cache changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add ./cache/sizeinfo.json
+        git add ./cache/info
+        git commit -m "Update sizeinfo cache"
+    - name: Push sizeinfo cache changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: master
