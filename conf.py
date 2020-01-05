@@ -3,7 +3,7 @@
 """
 
 # For Maverick
-site_prefix = "/SiHuan-Blog/"
+site_prefix = "/"
 template = {
     "name": "Galileo",
     "type": "git",
