@@ -58,12 +58,12 @@ social_links = [
     {
         "name": "Telegram",
         "url": "https://t.me/Si_Huan",
-        # "icon": "gi gi-telegram"
+        "icon": "gi gi-telegram"
     },
     {
         "name": "GitHub",
         "url": "https://github.com/Si-Huan",
-        # "icon": "gi gi-github"
+        "icon": "gi gi-github"
     }
     # ,
     # {
