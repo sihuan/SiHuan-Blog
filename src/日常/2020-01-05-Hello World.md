@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 庆祝一下
-slug: 
+slug: 庆祝一下
 date: 2019-01-05 11:06
 status: publish
 author: SiHuan
