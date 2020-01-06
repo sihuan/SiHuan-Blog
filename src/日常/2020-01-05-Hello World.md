@@ -23,5 +23,3 @@ excerpt: Hello World!
 没有了
 
 ![cheers](./assets/bach-05.jpg)
-
-
