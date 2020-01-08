@@ -12,6 +12,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+    <loc>/archives/下雪了/</loc>
+    <lastmod>2019-01-08</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+</url>
+
+<url>
     <loc>/archives/庆祝一下/</loc>
     <lastmod>2019-01-05</lastmod>
     <changefreq>always</changefreq>
