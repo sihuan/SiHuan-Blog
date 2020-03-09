@@ -51,6 +51,11 @@ nav = [
         "name": "縁起",
         "url": "${site_prefix}enngi/",
         "target": "_self"
+    },
+    {
+        "name": "公钥",
+        "url": "${site_prefix}publickey/",
+        "target": "_self"
     }
 ]
 
