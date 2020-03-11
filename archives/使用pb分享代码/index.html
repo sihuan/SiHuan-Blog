@@ -17,7 +17,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/c041fa308e0b60362e348499400ad15b.json"
+            api: "https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/e99a05bed6d791bf5e45f0ac3d5144cb.json"
         }
     </script>
     
@@ -125,7 +125,7 @@ All data may be erased without notifications. Please do NOT post large files.</c
  uuid: 409d0a8a-5d4a-4159-bb5e-cbb43934cf57</code></pre>
 <p>其中的 <code>url: https://fars.ee/jJbw</code> 就是你的地址啦，打开就可以看到你上传的文本</p>
 <p>语法高亮！</p>
-<p>首先让我们来上次一段代码</p>
+<p>首先让我们来上传一段代码</p>
 <div class="highlight"><pre><span></span>$ curl -F <span class="s2">&quot;c=@-&quot;</span> <span class="s2">&quot;https://fars.ee/&quot;</span> &lt; main.c
 <span class="c1"># 或或者这样</span>
 <span class="c1"># cat main.c | curl -F &quot;c=@-&quot; &quot;https://fars.ee/&quot;</span>
@@ -166,7 +166,7 @@ $ <span class="nb">alias</span> <span class="nv">pb</span><span class="o">=</spa
 $ cat main.py <span class="p">|</span> pb
 </pre></div>
 <h4>使用 shell 函数</h4>
-<blockquote><p>使用函数的话，就可以完成更多的操作，比如按文件名上传多个文件，又或者接下来的把 得到的 url 复制到剪切板</p>
+<blockquote><p>使用函数的话，就可以完成更多的操作，比如按文件名上传多个文件，又或者接下来要说的把得到的 url 复制到剪切板</p>
 </blockquote>
 <p>因为要复制到剪切板，这儿依赖了 <code>xclip</code> 这个工具，要提前装好，Archlinux 的话就</p>
 <div class="highlight"><pre><span></span>$ sudo pacman -S xclip
@@ -187,6 +187,10 @@ $ cat main.py <span class="p">|</span> pb
     
     <span class="ga-tag">
         <a class="ga-highlight" href="/tag/Linux 技巧/">#Linux 技巧</a>
+    </span>
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/tag/pb/">#pb</a>
     </span>
     
 </div>
