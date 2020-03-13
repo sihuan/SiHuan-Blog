@@ -19,6 +19,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+    <loc>/archives/vps2arch/</loc>
+    <lastmod>2020-03-13</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+</url>
+
+<url>
     <loc>/archives/使用pb分享代码/</loc>
     <lastmod>2020-03-11</lastmod>
     <changefreq>always</changefreq>

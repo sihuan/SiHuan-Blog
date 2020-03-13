@@ -21,18 +21,18 @@
         }
     </script>
     
-<title>使用 pb 分享代码 - SiHuan's Blog</title>
+<title>vps2arch! - SiHuan's Blog</title>
 <meta name="author" content="SiHuan" />
-<meta name="description" content="以更优雅的方式分享你的代码或者终端输出" />
-<meta property="og:title" content="使用 pb 分享代码 - SiHuan's Blog" />
-<meta property="og:description" content="以更优雅的方式分享你的代码或者终端输出" />
+<meta name="description" content="The fastest way to convert a VPS to Arch Linux!" />
+<meta property="og:title" content="vps2arch! - SiHuan's Blog" />
+<meta property="og:description" content="The fastest way to convert a VPS to Arch Linux!" />
 <meta property="og:site_name" content="SiHuan's Blog" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/archives/使用pb分享代码/" />
+<meta property="og:url" content="/archives/vps2arch/" />
 <meta property="og:image" content="" />
-<meta property="article:published_time" content="2020-03-11T11:06:00-00.00" />
-<meta name="twitter:title" content="使用 pb 分享代码 - SiHuan's Blog" />
-<meta name="twitter:description" content="以更优雅的方式分享你的代码或者终端输出" />
+<meta property="article:published_time" content="2020-03-13T11:06:00-00.00" />
+<meta name="twitter:title" content="vps2arch! - SiHuan's Blog" />
+<meta name="twitter:description" content="The fastest way to convert a VPS to Arch Linux!" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:image" content="" />
 
@@ -72,11 +72,11 @@
 <main>    
     <section class="ga-section ga-content">
         <article class="yue">
-            <h1 class="ga-post_title">使用 pb 分享代码</h1>
+            <h1 class="ga-post_title">vps2arch!</h1>
             <span class="ga-post_meta ga-mono">
                 <span>SiHuan</span>
                 <time>
-                    2020-03-11
+                    2020-03-13
                 </time>
                 
                 in <a no-style class="category" href="/category/分享/">
@@ -86,100 +86,132 @@
                 
             </span>
             <div class="ga-content_body">
-                <blockquote><p>PrivateBin 在线匿名粘贴版？大概吧</p>
+                <blockquote><p>有些 vps 服务商是不提供 Arch 系统的，但是你仍然可以通过 vps2arch 脚本将你的系统切换到 Archlinux</p>
+<p>这个项目托管在 gitlab : <a href="https://gitlab.com/drizzt/vps2arch/">https://gitlab.com/drizzt/vps2arch/</a></p>
 </blockquote>
-<p>分享代码给其他人的时候，发送文件太麻烦，直接把代码发过去的话有没有高亮和缩进而且会刷屏！</p>
-<p>可以使用 pb 服务来解决这一个问题 ´ ▽ ` )ﾉ</p>
-<p>下面就以 ArchCN 的 <a href="https://fars.ee/">fc 老师搭建的 pb</a> 为例，康一下用法 (其实大多都会给出用法,我只是搬运工</p>
-<p>首先要注意的是 pb 给的说明：</p>
-
-<pre><code>fars.ee is a temporary deployment of pb by farseerfc
-
-pb is a lightweight pastebin (and url shortener) built using flask.
-
-All data may be erased without notifications. Please do NOT post large files.</code></pre>
-<h3>使用方式</h3>
-<h4>1.使用 web 页面上传文本</h4>
-<blockquote><p>并不是大家都会提供 web 页面的！</p>
+<h2>准备</h2>
+<h3>读项目介绍</h3>
+<blockquote><p>This script is used to convert a <em>VPS</em>, running another linux distro, to <em>Arch Linux</em>.
+ It should be <strong>only</strong> used if your <em>VPS</em> provider doesn't provide you an <em>Arch Linux</em> image.</p>
 </blockquote>
-<p>地址：<a href="https://fars.ee/f">https://fars.ee/f</a></p>
-<p><figure><img data-width="1431" data-height="803" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/d6035f9e8690a01f0a9bb9592aaa5f43.png" alt="web 页面长这样" /><figcaption>web 页面长这样</figcaption></figure></p>
-<h4>2.使用命令行</h4>
-<blockquote><p>Create a new paste from the output of <code>cmd</code>:</p>
-
-<pre><code>cmd | curl -F "c=@-" "https://fars.ee/"</code></pre>
+<h3>读项目免责</h3>
+<blockquote><p>I'm not responsible for any damage in your system and/or any violation of the agreement between you and your vps provider.
+ <strong>Use at your own risk!</strong></p>
 </blockquote>
-<p>上传一个命令的输出</p>
-<p>例如</p>
-<div class="highlight"><pre><span></span>$ ls <span class="p">|</span> curl -F <span class="s2">&quot;c=@-&quot;</span> <span class="s2">&quot;https://fars.ee/&quot;</span>
+<h3>准备系统</h3>
+<p>你需要有一个干净的系统，既然都要把系统重新安装成 Arch 了，提前重置一下系统不为过吧。</p>
+<p>推荐重置为 <code>CentOS</code> 或者 <code>Debain</code> 这个脚本在 <code>Ubuntu 18</code> 上也许有一些问题。</p>
+<h2>开干</h2>
+<p>使用 SSH 链接到你的 VPS，在开始之前你可以修改一下 root 密码，以为 vps2arch 会将新系统的密码设置为你运行脚本之前的 root 密码</p>
+<div class="highlight"><pre><span></span>passwd root
 </pre></div>
-<p>就将 <code>ls</code>命令的输出上传上去了，你会得到</p>
+<p>你需要输入两次新密码，并且输入密码没有回显</p>
+<p>接下来就是重点了，以 root 身份执行一下命令</p>
+<div class="highlight"><pre><span></span><span class="c1"># 下载 vps2arch 脚本</span>
+<span class="c1"># wget https://tinyurl.com/vps2arch 也会被重定向到以下 url</span>
+wget https://gitlab.com/drizzt/vps2arch/-/raw/master/vps2arch
+<span class="c1"># 赋予执行权限</span>
+chmod +x vps2arch
+<span class="c1"># 启动脚本！</span>
+./vps2arch
+<span class="c1"># 当你从脚本默认的源下载速度较慢的时候，可以使用 -m 参数指定源，例如</span>
+<span class="c1"># ./vps2arch -m https://mirrors.neusoft.edu.cn/archlinux/</span>
+</pre></div>
+<p>深呼吸，不出意外的话，等待几分钟你会得到这样的提示</p>
 
-<pre><code> date: 2020-03-11T06:03:05.110297+00:00
- digest: 2471f7b7a504e790a013fd092a3109a4c58c96f0
- long: ACRx97elBOeQoBP9CSoxCaTFjJbw
- short: jJbw
- size: 88
- status: created
- url: https://fars.ee/jJbw
- uuid: 409d0a8a-5d4a-4159-bb5e-cbb43934cf57</code></pre>
-<p>其中的 <code>url: https://fars.ee/jJbw</code> 就是你的地址啦，打开就可以看到你上传的文本</p>
-<p>语法高亮！</p>
-<p>首先让我们来上传一段代码</p>
-<div class="highlight"><pre><span></span>$ curl -F <span class="s2">&quot;c=@-&quot;</span> <span class="s2">&quot;https://fars.ee/&quot;</span> &lt; main.c
-<span class="c1"># 或或者这样</span>
-<span class="c1"># cat main.c | curl -F &quot;c=@-&quot; &quot;https://fars.ee/&quot;</span>
-</pre></div>
-<p>这时候我们直接访问得到的 url ( 这儿是 <a href="https://fars.ee/MXKe">https://fars.ee/MXKe</a> )，还是不会高亮的，在结尾加上语言标记就好了</p>
+<pre><code>When you are finished with your post-installation, you'll need to reboot the VM the rough way:
+        # sync ; reboot -f
 
-<pre><code>https://fars.ee/MXKe/c</code></pre>
-<p>我把它标记为了 C 语言，访问的时候就会以 C 语言的语法来高亮代码了。其实还可以在末尾追加 <code>#L-n</code> 来更醒目的提醒代码的第<code>n</code> 行。</p>
+Then you'll be able to connect to your VM using SSH and to login using your old root password (or "vps2arch" if you didn't have a root password).</code></pre>
+<p>按照提示执行 <code>sync ; reoot -f</code> 重启你的 VPS。</p>
+<p>这时候你的 SSH 链接会断掉，在 VPS 重启的这几分钟里，你需要去 <code>~/.ssh/konwn_host</code> 里删除掉刚刚运行 vps2arch 脚本的主机所在的行，因为换了新系统了你的电脑已经不再认识远程主机了，不这么做的话你在下次链接的时候会得到一个错误。稍等一会 <code>ssh root@yourip</code> 输入之前的 root 密码</p>
+<p><strong>Welcome to ArchLinux!</strong></p>
+<h2>之后的配置</h2>
+<p>现在你已经得到一个崭新的 ArchLinux 系统了，接下来是在正常使用之前的一些建议，以下建议多来源于 <a href="https://wiki.archlinux.org/index.php/Installation_guide">ArchWiki</a> .</p>
+<h3>时间设置</h3>
+<div class="highlight"><pre><span></span><span class="c1"># 使用 ntp</span>
+timedatectl set-ntp <span class="nb">true</span>
+<span class="c1"># 设置时区</span>
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+hwclock --systohc
+</pre></div>
+<h3>设置中文</h3>
+<p>这时候你的系统还是不支持中文的，输入中文将会乱码，我们需要进行一下操作。</p>
+<p>编辑 <code>/etc/locale.gen</code> 取消一下行的注释</p>
 
-<pre><code>https://fars.ee/MXKe/c#L-3</code></pre>
-<h4>3.更多的快乐！</h4>
-<p>其实 pb 服务不只可以分享文本，图片和文件都是可以的哟，但是为了避免给所有者造成负担大家一定要<strong>遵守规则，不要滥用</strong></p>
-<p>下面就给出另外几个比较好用分享 文本、图片、文件的网站</p>
-<ul>
-<li><p><a href="https://cfp.vim-cn.com/">https://cfp.vim-cn.com/</a></p>
-<blockquote><p>可以贴文本，支持语法高亮</p>
-</blockquote>
-</li>
-<li><p><a href="https://img.vim-cn.com/">https://img.vim-cn.com/</a></p>
-<blockquote><p>贴图片和文件</p>
-</blockquote>
-</li>
-<li><p><a href="https://ttm.sh/">https://ttm.sh/</a></p>
-<blockquote><p>贴文件，最大可以到 256 M</p>
-</blockquote>
-</li>
-<li><p><a href="https://transfer.sh/">https://transfer.sh/</a></p>
-<blockquote><p>一个接近临时网盘的东西，支持超大文件，可以去看官方说明</p>
-</blockquote>
-</li>
-</ul>
-<h3>更便捷一点</h3>
-<p>如果每次都要输入像 <code>curl -F "c=@-" "https://fars.ee/"</code> 这么一大串的话，有点不方便我们可以利用一个命令别名或者 shell 函数来简化操作</p>
-<h4>使用别名</h4>
-<div class="highlight"><pre><span></span><span class="c1"># 添加别名 也可以添加到 ~/.bashrc 中去</span>
-$ <span class="nb">alias</span> <span class="nv">pb</span><span class="o">=</span><span class="s1">&#39;curl -F &quot;c=@-&quot; &quot;https://fars.ee/&quot;&#39;</span> 
-<span class="c1"># 愉快的使用</span>
-$ cat main.py <span class="p">|</span> pb
+<pre><code>en_US.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8
+zh_TW.UTF-8 UTF-8</code></pre>
+<p>执行 <code>locale-gen</code></p>
+<p>创建 <code>locale.conf</code> 并编辑 <code>LANG</code> 这一 <a href="https://wiki.archlinux.org/index.php/Variable">变量</a>，比如：</p>
+
+<pre><code>LANG=en_US.UTF-8</code></pre>
+<h3>添加 ArchLinuxCN 源</h3>
+<p>编辑 <code>/etc/pacman.conf</code> ，在文件末尾添加</p>
+
+<pre><code>[archlinuxcn]
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch</code></pre>
+<p>之后执行</p>
+<div class="highlight"><pre><span></span>pacman -S archlinuxcn-keyring
 </pre></div>
-<h4>使用 shell 函数</h4>
-<blockquote><p>使用函数的话，就可以完成更多的操作，比如按文件名上传多个文件，又或者接下来要说的把得到的 url 复制到剪切板</p>
+<h3>添加用户</h3>
+<blockquote><p>一直使用 root 用户是不太安全的！我们来添加一个新的用户</p>
 </blockquote>
-<p>因为要复制到剪切板，这儿依赖了 <code>xclip</code> 这个工具，要提前装好，Archlinux 的话就</p>
-<div class="highlight"><pre><span></span>$ sudo pacman -S xclip
+<p>接下来的命令中，新的用户名以 <em>sihuan</em> 为例，执行替换</p>
+<div class="highlight"><pre><span></span>useradd -m -G wheel sihuan
 </pre></div>
-<p>然后在 <code>~/.bashrc</code> 添加</p>
-<div class="highlight"><pre><span></span>fs<span class="o">()</span> <span class="o">{</span>
-  curl -s -F <span class="s2">&quot;c=@</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span> <span class="s2">&quot;https://fars.ee/?u=1&quot;</span> <span class="p">|</span> tee /dev/tty <span class="p">|</span> perl -p -e <span class="s1">&#39;chomp if eof&#39;</span> <span class="p">|</span> xclip -selection clipboard -i
-<span class="o">}</span>
-</pre></div>
-<p>上面的函数抄袭自 <a href="https://github.com/farseerfc/dotfiles/blob/master/zsh/.bashrc">farseerfc 的 dotfiles</a></p>
-<p>这样当你 <code>cmd | fs</code>  的时候，url 就会自动复制到剪切板啦。</p>
-<blockquote><p>吹一下 kdeconnect  , 如果你用了 kdeconnect 的话剪切板就自己同步到手机了！</p>
+<blockquote><p>useradd 是 archlinux 系统添加用户的命令</p>
+<p>-m 参数代表自动创建用户的家目录，这个例子里是 <code>/home/sihuan</code></p>
+<p>-G 参数意味着用户要加入一些个的附加组，这儿即 <code>wheel</code> 组</p>
 </blockquote>
+<p>设置新用户密码</p>
+<div class="highlight"><pre><span></span>passwd sihuan
+</pre></div>
+<p>然后输入两次密码就好了</p>
+<p>设置 sudo</p>
+<p>首先安装 sudo</p>
+<div class="highlight"><pre><span></span>pacman -S sudo
+</pre></div>
+<p>编辑配置文件</p>
+<div class="highlight"><pre><span></span>visudo
+</pre></div>
+<p>找到下面一行，取消掉注释</p>
+<div class="highlight"><pre><span></span>%wheel <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL
+</pre></div>
+<h3>配置新用户的 shell</h3>
+<blockquote><p>建议大家都自己整一个 <code>dotfiles</code> ，具体可以看 fc 老师翻译的 <a href="https://farseerfc.me/using-gnu-stow-to-manage-your-dotfiles.html">这篇文章</a></p>
+</blockquote>
+<p>以下就以我自己的为例，如果有时间我会详细的解释以下我的 <code>dotfiles</code> 包含了什么</p>
+<p>切换到新的用户</p>
+
+<pre><code>su sihuan</code></pre>
+<p>输入密码</p>
+<p>接下来的操作就是在 <em>sihuan</em> 这个用户里进行的啦</p>
+<div class="highlight"><pre><span></span><span class="c1"># 安装需要的软件包</span>
+sudo pacman -S git stow zsh grml-zsh-config powerline ranger
+<span class="c1"># 克隆 dotfiles 仓库</span>
+git clone https://github.com/Si-Huan/dotfiles
+<span class="c1"># 切换 shell 到 zsh</span>
+chsh -s zsh
+<span class="c1"># 使 zsh 配置生效</span>
+<span class="nb">cd</span> dotfiles
+stow zsh
+</pre></div>
+<p>这时候远程主机上的配置就完成了！再次使用 <em>sihuan</em> 这个用户登陆，你就会得到一个很 OK 的 shell 体验。</p>
+<h2>免密登录和 SSH 主机别名</h2>
+<div class="highlight"><pre><span></span>ssh-keygen
+ssh-copy-id sihuan@hostip
+</pre></div>
+<p>Edit <code>~/.ssh/config</code> add:</p>
+
+<pre><code>Host hostname
+    HostName hostip
+    User sihuan</code></pre>
+<p>Then you can login your host with:</p>
+
+<pre><code>ssh hostname</code></pre>
+<p>And you will no longer be asked for a password.</p>
+<p><strong>EOF</strong></p>
 
             </div>
         </article>
@@ -190,7 +222,11 @@ $ cat main.py <span class="p">|</span> pb
     </span>
     
     <span class="ga-tag">
-        <a class="ga-highlight" href="/tag/pb/">#pb</a>
+        <a class="ga-highlight" href="/tag/ArchLinux/">#ArchLinux</a>
+    </span>
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/tag/vps2arch/">#vps2arch</a>
     </span>
     
 </div>
@@ -200,14 +236,14 @@ $ cat main.py <span class="p">|</span> pb
 <section id="ga-content_pager">
 
     <div class="next">
-        <a class="ga-highlight" href="/archives/vps2arch/">vps2arch!</a>
-        <p class="yue">The fastest way to convert a VPS to Arch Linux!</p>
+        <h3>没有了</h3>
+        <p class="yue">这是最新的文章</p>
     </div>
 
 
     <div class="prev">
-        <a class="ga-highlight" href="/archives/下雪了/">下雪了</a>
-        <p class="yue">昨天下了一天雪❄️</p>
+        <a class="ga-highlight" href="/archives/使用pb分享代码/">使用 pb 分享代码</a>
+        <p class="yue">以更优雅的方式分享你的代码或者终端输出</p>
     </div>
 
 </section>
