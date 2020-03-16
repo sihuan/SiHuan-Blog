@@ -1,0 +1,484 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="SiHuan,思还,Blog,博客,GitBlog" />
+    <meta name="generator" content="Maverick 1.1" />
+    <meta name="template" content="Galileo" />
+    <link rel="alternate" type="application/rss+xml" title="SiHuan's Blog &raquo; RSS 2.0" href="/feed/index.xml" />
+    <link rel="alternate" type="application/atom+xml" title="SiHuan's Blog &raquo; ATOM 1.0" href="/feed/atom/index.xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/assets/galileo-3f2347c2c0.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/assets/ExSearch/ExSearch-182e5a8868.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
+    <script>
+        var ExSearchConfig = {
+            root: "",
+            api: "https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/44b334f9e6b14e29fbf50f65a8af31d8.json"
+        }
+    </script>
+    
+<title>Linux 日常存活方案 - SiHuan's Blog</title>
+<meta name="author" content="SiHuan" />
+<meta name="description" content="日常使用 Linux 可能会用到的软件们" />
+<meta property="og:title" content="Linux 日常存活方案 - SiHuan's Blog" />
+<meta property="og:description" content="日常使用 Linux 可能会用到的软件们" />
+<meta property="og:site_name" content="SiHuan's Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/archives/linuxapp/" />
+<meta property="og:image" content="" />
+<meta property="article:published_time" content="2020-03-15T11:06:00-00.00" />
+<meta name="twitter:title" content="Linux 日常存活方案 - SiHuan's Blog" />
+<meta name="twitter:description" content="日常使用 Linux 可能会用到的软件们" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="" />
+
+
+    
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+
+    </head>
+    
+    <body>
+        
+        <div class="container">
+            <header id="ga-header">
+                <div first>
+                    <aside id="ga-logo">
+                        <a href="/" target="_self">
+                            <img src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/logo.png" alt="SiHuan's Blog">
+                        </a>
+                    </aside>
+                    <aside id="ga-brand">
+                        <h1 class="brand"><a class="no-style" href="/">SiHuan's Blog</a></h1>
+                        <p>道阻且长，吾意思还。</p>
+                    </aside>
+                </div>
+                <div second id="ga-nav">
+                    <nav class="navs">
+                        <ul><li><a class="ga-highlight" href="/" target="_self">首页</a></li><span class="separator">·</span><li><a class="ga-highlight" href="/archives/" target="_self">归档</a></li><span class="separator">·</span><li><a class="ga-highlight" href="/enngi/" target="_self">縁起</a></li><span class="separator">·</span><li><a class="ga-highlight" href="/publickey/" target="_self">公钥</a></li><span class="separator">·</span><li><a href="#" target="_self" class="search-form-input ga-highlight">搜索</a></li></ul>
+                    </nav>
+                    <nav class="social-links">
+                        <ul><li><a class="no-style" title="Telegram" href="https://t.me/Si_Huan" target="_blank"><i class="gi gi-telegram"></i>Telegram</a></li><span class="separator">·</span><li><a class="no-style" title="GitHub" href="https://github.com/Si-Huan" target="_blank"><i class="gi gi-github"></i>GitHub</a></li></ul>
+                    </nav>
+                </div>
+            </header>
+            <div class="wrapper">
+                
+<main>    
+    <section class="ga-section ga-content">
+        <article class="yue">
+            <h1 class="ga-post_title">Linux 日常存活方案</h1>
+            <span class="ga-post_meta ga-mono">
+                <span>SiHuan</span>
+                <time>
+                    2020-03-15
+                </time>
+                
+                in <a no-style class="category" href="/category/分享/">
+                    分享
+                </a>
+                
+                
+            </span>
+            <div class="ga-content_body">
+                <h2>起因</h2>
+<p>在群聊里看到有一位同学发了一张 Windows 的桌面截图，有很多软件，大致看了一下又觉得貌似在 Linux 下也差不多都有同等或更好的替代方案，加之很多人对 Linux 的偏见认为 Linux <strong>生态不好</strong>，于是萌发了写这篇文章的想法。</p>
+<h2>Windows 原图</h2>
+<p><figure><img data-width="1918" data-height="1016" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/7141071a443bffe05a2b043526d02ea2.jpg" alt="5A3CFCD3A78DABB36CB09C63661A24F5" /><figcaption>5A3CFCD3A78DABB36CB09C63661A24F5</figcaption></figure></p>
+<h2>逐个来看一下</h2>
+<blockquote><p>以下完全是我自己的个人观点，我觉得好用我就说。</p>
+<blockquote><p><strong>踩一捧一在任何地方都是不可取的。</strong> ---csslayer</p>
+</blockquote>
+</blockquote>
+<h3>桌面</h3>
+<blockquote><p>不置评价</p>
+</blockquote>
+<p>首先我们接触最多的就是桌面了， Windows 自带了桌面，在 Linux 下的可选方案着实比较多，我就列几个比较常见的吧：</p>
+<ul>
+<li>KDE Plasma</li>
+<li>GNOME</li>
+<li>Xfce</li>
+<li>Deepin</li>
+</ul>
+<blockquote><p>一个更全的的列表见 <a href="[https://wiki.archlinux.org/index.php/Desktop_environment_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87">ArchWiki</a>#%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E5%88%97%E8%A1%A8](<a href="https://wiki.archlinux.org/index.php/Desktop_environment_(简体中文)#桌面环境列表">https://wiki.archlinux.org/index.php/Desktop_environment_(简体中文)#桌面环境列表</a>))</p>
+</blockquote>
+<p>这个的确不大好评价，因为在 Windows 上桌面是基本没得选的，在 Linux 上选项有太多，各个之间差异比较大，而且每一个又能配出自己的花样。总的来说，Linux 上的更具有可定制性，你可以把桌面环境捏成自己想要模样。我现在使用的桌面环境是 <code>KDE Plasma</code> 。</p>
+<p><figure><img data-width="1920" data-height="1080" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/d6b8bbab32b505f7d81eef233d5a8cce.png" alt="image-20200315231630106" /><figcaption>image-20200315231630106</figcaption></figure></p>
+<h3>文件管理器</h3>
+<blockquote><p>不置评价</p>
+</blockquote>
+<p>可选项也有几个，我就只说我现在正在使用的了。</p>
+<p>我目前使用的的 <code>Dolphin</code>，不多说上图</p>
+<p><figure><img data-width="864" data-height="648" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/e2b1b7758cac7a392719d6dc1ab390d7.png" alt="image-20200315231815789" /><figcaption>image-20200315231815789</figcaption></figure></p>
+<p>在这儿为了让大家体验一下 Linux 桌面环境的可定制性，我决定换一套图标和窗口风格再来一张</p>
+<h3>WPS</h3>
+<blockquote><p>相同的软件，体验基本一致</p>
+</blockquote>
+<p>不得不说金山还是一个很良心的企业，兼容 MS 的办公套件并且有 Linux 版本</p>
+<p><figure><img data-width="1859" data-height="990" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/f91357030c8e4fb60385f37920b57afa.png" alt="image-20200315232655574" /><figcaption>image-20200315232655574</figcaption></figure></p>
+<p>随便打开一个表格模板</p>
+<p><figure><img data-width="1877" data-height="993" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/6b54d9e9e97cde7b0166c6fae8f11905.png" alt="image-20200315232835208" /><figcaption>image-20200315232835208</figcaption></figure></p>
+<p>基本和 Windows 版本一致。</p>
+<p>其他的办公套件</p>
+<ul>
+<li>LibreOffice</li>
+<li>OpenOffice</li>
+<li>FreeOffice</li>
+</ul>
+<p>不得不说缺少好用、兼容微软的办公套件一直是 Linux 日常使用中的一个硬伤。好在有 <code>WPS</code></p>
+<blockquote><p>PDF 和 Markdown 他不香吗 ╮(￣▽￣)╭</p>
+</blockquote>
+<h3>Typora</h3>
+<blockquote><p>相同的软件，体验基本一致</p>
+</blockquote>
+<p>这个就不多说了，一样的软件</p>
+<h2>Listen1</h2>
+<blockquote><p>相同的软件，体验如何俺不知道</p>
+</blockquote>
+<p>然而我并没有尝试这个软件，这个软件倒是提供了 AppImage 安装包和 Debain 的安装包，以及我在 ArchLinux 的 <code>AUR</code> 里查到了：</p>
+
+<pre><code>aur/listen1-desktop 2.5.1-1 (1, 0.00)
+    one for all free music in china (Build from source)    
+aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
+    One for all free music in China</code></pre>
+<p>个人感觉 appimage 不大清真的样子，从源代码构建的话还好些，不过听音乐我网易云就够啦</p>
+<h3>Wise Folder Hider Pro</h3>
+<blockquote><p>不知道是啥</p>
+</blockquote>
+<h3>互传</h3>
+<blockquote><p>不知道是啥</p>
+</blockquote>
+<p>虽然我没有用过这个软件，但是大概从软件名字可以推断出来是一个收发文件的软件，在 Linux 下有很多优秀的解决方案，足以写一片完整的文章，这个算是平手吧。</p>
+<h3>2345 看图王</h3>
+<blockquote><p>体验更优的同类应用</p>
+</blockquote>
+<p>查看图片我现在使用的是  <code>Gwenview</code> ，这是 KDE 应用的一员，体验良好，对于简单的图片查看，放缩旋转等操作足以胜任。我认为优于 <code>2345 看图王</code> 。</p>
+<h3>小药丸工具箱</h3>
+<blockquote><p>不知道是啥</p>
+</blockquote>
+<h3>网易云音乐</h3>
+<blockquote><p>相同的软件，体验略差一丢丢</p>
+</blockquote>
+<p><figure><img data-width="1051" data-height="701" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/254a720001cea6e97544c8454405438a.png" alt="image-20200315235014633" /><figcaption>image-20200315235014633</figcaption></figure></p>
+<p>说体验差一点的原因是，在 KDE 下刚装好的网易云音乐会有不能输入中文的情况，需要改动一个文件，不过这个问题在 ArchLinux 上也许就要被修复了。</p>
+<h3>有道词典</h3>
+<blockquote><p>不置评价</p>
+</blockquote>
+<p>因为我没有使用词典软件的习惯，所以就不好评价了，但是 ArchLinux 上有有道词典的软件包，具体体验如何，我就不得而知了。</p>
+<h3>微信</h3>
+<blockquote><p>有替代方案，但体验不佳</p>
+</blockquote>
+<ul>
+<li>electronic-wechat</li>
+<li>wine-wechat</li>
+</ul>
+<p>一个是网页微信的方案，一个是基于 Wine 的方案，但是总体来说不如 Windows 下用的舒服。这个 Windows 完胜。</p>
+<p>好在我不是一个重度微信用户，手机微信也没大打开过。</p>
+<h3>印象笔记</h3>
+<blockquote><p>实力相当的替代方案</p>
+</blockquote>
+<p>ArchLinux 上有 Evernote 的客户端，但是我也不用 ´_&gt;`</p>
+<p>当时 Evernote 有网页版吧，体验貌似也许不如客户端</p>
+<p>另外一个替代产品 <code>notion</code> ， 网页版体验不错，不过这种笔记软件大概迁移的时候会很麻烦，好在 <code>notion</code> 支持从 <code>Evernote</code> 导入。</p>
+<p><figure><img data-width="1920" data-height="971" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/72b7c459e5ed4a1f474ebebdfd8e297a.png" alt="image-20200316000505644" /><figcaption>image-20200316000505644</figcaption></figure></p>
+<p><figure><img data-width="1920" data-height="967" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/5dd9e8c35a5a03be785bf5f7e5f94fdb.png" alt="image-20200316000531998" /><figcaption>image-20200316000531998</figcaption></figure></p>
+<p>类似于 Evernote 的剪藏功能</p>
+<p><figure><img data-width="1920" data-height="969" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/d0b76625c9fe0349479c102f8b4b6bb6.png" alt="image-20200316000720744" /><figcaption>image-20200316000720744</figcaption></figure></p>
+<h3>福欣 pdf 阅读器</h3>
+<blockquote><p>相同的软件</p>
+</blockquote>
+<p>福欣 pdf 阅读器有 Linux 版本。我曾使用过，但是我没使用过 Windows 版本，所以就不置评价了</p>
+<p>另外，我现在阅读 pdf 的方案</p>
+<ul>
+<li>Chrome  直接用浏览器查看 pdf</li>
+<li>WPS         WPS 也能看 pdf 呢</li>
+<li>Okular    KDE 应用里的 PDF 阅读器 （值得一试</li>
+</ul>
+<h3>PS</h3>
+<blockquote><p>有替代方案，但体验不佳</p>
+</blockquote>
+<p>替代方案</p>
+<ul>
+<li>GIMP</li>
+<li>inkscape</li>
+<li>wine ps</li>
+</ul>
+<p>我不懂 PS ，但是我知道 Linux 上的确不好使</p>
+<p>GIMP 倒是也不是不能用的，这个软件同时也有 Windows 版本，可以去试一下。</p>
+<h3>Pr ?</h3>
+<blockquote><p>同 PS 吧，我不懂</p>
+</blockquote>
+<h3>LOL</h3>
+<blockquote><p>基本无解</p>
+</blockquote>
+<p>国服 LOL 在 Linux 下是无解的，这得益于腾讯的防作弊检测系统 (╥_╥)。</p>
+<p>在 Linux 下我玩过的游戏：</p>
+<ul>
+<li>Dota2</li>
+<li>CSGO</li>
+<li>300 英雄</li>
+<li>东方Project一众</li>
+</ul>
+<p>Dota2 和 CSGO 在 Linux 上是原生运行的，基本没啥差别。</p>
+<p>300 英雄是我借助  wine 运行的，性能有点问题，风扇转的比 Windows 下猛</p>
+<p>东方的话 wine 完全没有问题，稳定 60 帧， 有没有兴趣联机绯想天呀 2333</p>
+<h3>Everything</h3>
+<blockquote><p>有同类型软件，体验甚至更优</p>
+</blockquote>
+<p>不得不说 Everything 是 Windows  平台上一款比较优秀的软件，搜索非常迅速，不过在 Linux 系统下，替代的工具有很多，比如我现在正在使用的 KDE Plasma 自带的 <code>Krunner</code>。</p>
+<p><figure><img data-width="620" data-height="609" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/d4412b28c3dd07c42188321cc6024658.png" alt="image-20200316102251232" /><figcaption>image-20200316102251232</figcaption></figure></p>
+<p>支持的范围非常广，大概关掉一些功能就可以和 Everything 得到一样的体验了，哈哈</p>
+<h3>PotPlayer</h3>
+<blockquote><p>有同类产品，体验较好</p>
+</blockquote>
+<p>跳过了两个不认识的软件，以后不认识的我就跳过了(╥_╥)</p>
+<p>PotPlayer 是 Win 下很 nice 的视频播放器，本地视频和网络流都有支持，不过 Linux 下的也不差呀</p>
+<ul>
+<li>MPV</li>
+<li>VLC</li>
+</ul>
+<h3>IDM</h3>
+<blockquote><p>有同类产品，体验参差不一</p>
+</blockquote>
+<p>下载工具</p>
+<ul>
+<li>kget</li>
+<li>uget</li>
+<li>matrix</li>
+</ul>
+<p>我对下载文件这方面的需求不大，一般浏览器就可以满足我的要求，关于 <strong>百度网盘</strong> 的下载问题，我们到后边详细解释</p>
+<h3>CodeBlocks</h3>
+<blockquote><p>相同的软件，体验一致</p>
+</blockquote>
+<p>CodeBlocks 有 Linux 版本啦</p>
+<p>不过为什么不用 <code>VS Code</code> 呢。</p>
+<h3>百度网盘</h3>
+<blockquote><p>不置评价</p>
+</blockquote>
+<p>因为百度网盘在 Windows 下的体验也极其让人恶心，我就不做比较了，在 Linux 下你可以用</p>
+<ul>
+<li><p>百度网盘官方 Linux 客户端  <strong>听说不限速</strong></p>
+</li>
+<li><p>BaiduPCS-go   之前的一个神器，命令行版本，<strong>不限速</strong> ，已凉</p>
+</li>
+</ul>
+<h3>有道云笔记</h3>
+<blockquote><p>参考印象笔记</p>
+</blockquote>
+<h3>Firefox、Chrome、百分浏览器、QQ 浏览器</h3>
+<blockquote><p>相同的软件或更优的替代软件</p>
+</blockquote>
+<h3>Kindle</h3>
+<blockquote><p>没需求，不知道</p>
+</blockquote>
+<h3>哔哩哔哩直播姬</h3>
+<blockquote><p>有替代方案，体验？？？</p>
+</blockquote>
+<p>在 Linux 下可以使用 OBS 录制屏幕并推流，不过就看不到观众的弹幕了？ 没法互动了。</p>
+<p>不过这也是 BiliBili 官方给出的直播方案之一</p>
+<h3>XMain ZEN</h3>
+<blockquote><p>相同的软件、体验差不多的同类软件</p>
+</blockquote>
+<p>Linux 下有 XMain ZEN ，但是这是一个收费软件，现有以下免费的方案</p>
+<ul>
+<li><p>desktop-naotu</p>
+<blockquote><p>桌面版脑图 (百度脑图离线版，思维导图) 跨平台支持 Windows/Linux/Mac OS. (A 
+   cross-platform multilingual Mind Map Tool)</p>
+</blockquote>
+</li>
+<li><p>freemind</p>
+</li>
+</ul>
+<h3>QQ</h3>
+<blockquote><p>基本同微信，Windows 完胜</p>
+</blockquote>
+<p>Linux 下的替代方案：</p>
+<ul>
+<li><p>QQ for Linux</p>
+<blockquote><p>腾讯的官方产品，能用的程度</p>
+</blockquote>
+</li>
+<li><p>Deepin Wine QQ</p>
+</li>
+<li><p>Deepin Wine Tim</p>
+<blockquote><p>Deepin 团队制作的 Wine 版本，体验还是比较好的，但是有一些小 Bug，这是我之前使用的方案</p>
+</blockquote>
+</li>
+</ul>
+<p>因为在 Linux 下使用 QQ 的需求也不是特别大，目前使用 <code>QQ for Linux</code></p>
+<p><figure><img data-width="1118" data-height="798" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/913ea49ec599b7bfac3c4b1bb6009bc7.png" alt="image-20200316105020908" /><figcaption>image-20200316105020908</figcaption></figure></p>
+<blockquote><p>Telegram 他不香嘛？</p>
+</blockquote>
+<p><figure><img data-width="1111" data-height="934" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/7478a54cf17ecd9c591061239bd94ff2.png" alt="image-20200316105151506" /><figcaption>image-20200316105151506</figcaption></figure></p>
+<h3>钉钉、腾讯课堂</h3>
+<blockquote><p>Windows 完胜</p>
+</blockquote>
+<p>Wine 钉钉方案，能用的程度</p>
+<p>这些国产软件太草了哦，没的办法，这种也没办法找替代品呀， wine 方案其实也还好，但是它没有原生清真啊</p>
+<h3>电脑管家</h3>
+<blockquote><p>我自己。无论 Linux 还是我都不需要一个<strong>电脑管家</strong>来管理系统</p>
+</blockquote>
+<h3>腾讯网游加速器</h3>
+<blockquote><p>此处仅有一个滑稽</p>
+</blockquote>
+<h3>Sublime</h3>
+<blockquote><p>同样的软件，一致的体验</p>
+</blockquote>
+<p>这个就没有啥好说的了哎</p>
+<p>Sublime 有 Linux 版本，而且 Linux 下也有一众很优秀的编辑器</p>
+<ul>
+<li>圣战双方 vim &amp; emacs</li>
+<li>VS Code</li>
+<li>Kate</li>
+</ul>
+<p>我现在使用的是 <code>VS Code</code> 和 <code>vim</code></p>
+<h2>等等，我是不是落下了什么东西？</h2>
+<p><figure><img data-width="95" data-height="91" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/3fa629037f8ea30a11caa494455d80a9.png" alt="image-20200316110135056" /><figcaption>image-20200316110135056</figcaption></figure></p>
+<p>这货</p>
+<p>没错我是故意把他拉出来的，我就是要羞辱他</p>
+<p>我 <code>pacman</code> 玩爆它</p>
+
+<pre><code>sihuan ~ $ pacman -help     
+用法:  pacman &lt;操作&gt; [...]
+操作:
+    pacman {-h --help}
+    pacman {-V --version}
+    pacman {-D --database} &lt;选项&gt; &lt;软件包&gt;
+    pacman {-F --files}    [选项] [软件包]
+    pacman {-Q --query}    [选项] [软件包]
+    pacman {-R --remove}   [选项] &lt;软件包&gt;
+    pacman {-S --sync}     [选项] [软件包]
+    pacman {-T --deptest}  [选项] [软件包]
+    pacman {-U --upgrade}  [选项] &lt;文件&gt;
+
+使用 'pacman {-h --help}' 及某个操作以查看可用选项</code></pre>
+<p>这个优点是值得长篇大论的，<strong><em>这儿写不下</em></strong> ლ(╹◡╹ლ)</p>
+
+            </div>
+        </article>
+        <div id="ga-tags">
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/tag/Linux 技巧/">#Linux 技巧</a>
+    </span>
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/tag/ArchLinux/">#ArchLinux</a>
+    </span>
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/tag/软件/">#软件</a>
+    </span>
+    
+</div>
+    </section>
+
+    
+<section id="ga-content_pager">
+
+    <div class="next">
+        <h3>没有了</h3>
+        <p class="yue">这是最新的文章</p>
+    </div>
+
+
+    <div class="prev">
+        <a class="ga-highlight" href="/archives/vps2arch/">vps2arch!</a>
+        <p class="yue">The fastest way to convert a VPS to Arch Linux!</p>
+    </div>
+
+</section>
+
+
+    
+
+</main>
+
+                <footer class="ga-mono" id="ga-footer">
+                    <section>
+                        <span id="ga-uptime"></span>
+                        <span class="brand">SiHuan's Blog</span>
+                    </section>
+                    <section>
+                        <div class="copyright">
+                            <span class="footer-addon">
+                                
+                            </span>
+                            <nav class="social-links">
+                                <ul><li><a class="no-style" title="Telegram" href="https://t.me/Si_Huan" target="_blank"><i class="gi gi-telegram"></i>Telegram</a></li><span class="separator">·</span><li><a class="no-style" title="GitHub" href="https://github.com/Si-Huan" target="_blank"><i class="gi gi-github"></i>GitHub</a></li></ul>
+                            </nav>
+                        </div>
+                    </section>
+                    <script>
+                        var site_build_date = "2020-01-01T00:00+08:00"
+                    </script>
+                    <script src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/assets/galileo-61cf2e8279.js"></script>
+                </footer>
+            </div>
+        </div>
+    </div>
+        
+        
+        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                          <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div> 
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/assets/ExSearch/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/assets/ExSearch/ExSearch-493cb9cd89.js"></script>
+    
+    <!--katex-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/assets/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/assets/katex.min.js"></script>
+    <script>
+    mathOpts = {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\(", right: "\\)", display: false}
+        ]
+    };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/assets/auto-render.min.js" onload="renderMathInElement(document.body, mathOpts);"></script>
+
+    
+    </body>
+</html>
