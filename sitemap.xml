@@ -19,6 +19,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+    <loc>/archives/linuxgpu/</loc>
+    <lastmod>2020-03-17</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+</url>
+
+<url>
     <loc>/archives/linuxapp/</loc>
     <lastmod>2020-03-15</lastmod>
     <changefreq>always</changefreq>

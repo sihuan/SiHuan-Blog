@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>SiHuan's Blog</title><link>/</link><description>道阻且长，吾意思还。</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/logo.png</url><title>SiHuan's Blog</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Tue, 17 Mar 2020 12:55:26 +0806</lastBuildDate><pubDate>Tue, 17 Mar 2020 12:55:26 +0806</pubDate><item><title>庆祝一下</title><link>/archives/庆祝一下/</link><description>&lt;h1&gt;Hello World&lt;/h1&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>SiHuan's Blog</title><link>/</link><description>道阻且长，吾意思还。</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/logo.png</url><title>SiHuan's Blog</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Tue, 17 Mar 2020 13:52:49 +0806</lastBuildDate><pubDate>Tue, 17 Mar 2020 13:52:49 +0806</pubDate><item><title>庆祝一下</title><link>/archives/庆祝一下/</link><description>&lt;h1&gt;Hello World&lt;/h1&gt;
 &lt;p&gt;今天做好了这个静态博客和个人 Wiki 🎉&lt;/p&gt;
 &lt;p&gt;赶紧发一个 POST 庆祝一下&lt;/p&gt;
 &lt;p&gt;就这些&lt;/p&gt;
@@ -509,4 +509,84 @@ aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
 
 使用 'pacman {-h --help}' 及某个操作以查看可用选项&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;这个优点是值得长篇大论的，&lt;strong&gt;&lt;em&gt;这儿写不下&lt;/em&gt;&lt;/strong&gt; ლ(╹◡╹ლ)&lt;/p&gt;
-</description><author>sihuan@sakuya.love (SiHuan)</author><guid isPermaLink="true">/archives/linuxapp/</guid><pubDate>Sun, 15 Mar 2020 11:06:00 +0806</pubDate></item></channel></rss>
+</description><author>sihuan@sakuya.love (SiHuan)</author><guid isPermaLink="true">/archives/linuxapp/</guid><pubDate>Sun, 15 Mar 2020 11:06:00 +0806</pubDate></item><item><title>ArchLinux 下双显卡配置</title><link>/archives/linuxgpu/</link><description>&lt;h2&gt;Fuck Nvidia&lt;/h2&gt;
+&lt;p&gt;如果笔电上有一张 Nivdia 显卡，使用 Linux 的时候也许会因为驱动引起一些令人苦恼的问题。&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;如果熟读并背诵 ArchWiki 的话就不会有这些问题了  (误&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我就记录一下我的笔电在 ArchLinux 下的双显卡的配置，其实我说的这些，几乎全部来自于 ArchWiki ，但是分布在不同的几个页面，我就充当一次搬运工了。&lt;/p&gt;
+&lt;p&gt;我的显卡硬件情况：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GPU0 Intel UHD 620&lt;/li&gt;
+&lt;li&gt;GPU1 Nvidia MX150&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;先说一下黑屏的问题&lt;/h3&gt;
+&lt;p&gt;有可能是因为你漏装了 nvidia 显卡的驱动程式，可以用一下命令安装&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;进不去系统的话可以尝试 &lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Alt&lt;/code&gt;+&lt;code&gt;F2~6&lt;/code&gt;切换到 &lt;code&gt;tty&lt;/code&gt;，仍然不行的话可能就要搬来 LiveCD 了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -S nvidia
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;&lt;p&gt;&lt;strong&gt;注意！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我现在执行的命令在我的机器上有效，对于比较新的机器应该都没有问题，但是具体呢还是要参看 &lt;a href="https://wiki.archlinux.org/index.php/NVIDIA#Installation"&gt;ArchWiki NVIDIA&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;进入正题&lt;/h2&gt;
+&lt;p&gt;先说一下我的基于什么选择了接下来的双显卡方案，如果你的目的与我不同，那也许就没有参考价值了&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;尽量发挥性能&lt;/li&gt;
+&lt;li&gt;尽量省电&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;基于以上理由我选择了，&lt;strong&gt;闭源驱动&lt;/strong&gt; + &lt;strong&gt;PRIME render offload&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;安装驱动&lt;/h3&gt;
+&lt;h4&gt;Intel 显卡驱动&lt;/h4&gt;
+&lt;blockquote&gt;&lt;p&gt;具体参见 &lt;a href="https://wiki.archlinux.org/index.php/Intel_graphics"&gt;ArchWiki Intel graphics&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;安装 &lt;code&gt;mesa&lt;/code&gt; 包，为了对 32 位程序的支持，安装 &lt;code&gt;lib32-mesa&lt;/code&gt; 包 (位于 &lt;strong&gt;multilib&lt;/strong&gt; 仓库，请提前自行开启此仓库)。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -S mesa lib32-mesa
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;另外需要注意的是，如果之前安装了 &lt;code&gt;xf86-video-intel&lt;/code&gt; 包，最好卸载掉&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;比如这个包会引起我的 OBS 在录制闪屏，而且不使用此包也是官方的建议&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Often not recommended, see note below&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Some (&lt;a href="http://www.phoronix.com/scan.php?page=news_item&amp;amp;px=Ubuntu-Debian-Abandon-Intel-DDX"&gt;Debian &amp;amp; Ubuntu&lt;/a&gt;, &lt;a href="http://www.phoronix.com/scan.php?page=news_item&amp;amp;px=Fedora-Xorg-Intel-DDX-Switch"&gt;Fedora&lt;/a&gt;, &lt;a href="https://community.kde.org/Plasma/5.9_Errata#Intel_GPUs"&gt;KDE&lt;/a&gt;) recommend not installing the &lt;a href="https://www.archlinux.org/packages/?name=xf86-video-intel"&gt;xf86-video-intel&lt;/a&gt; driver, and instead falling back on the modesetting driver for Gen4 and newer GPUs (GMA 3000 from 2006 and newer). See &lt;a href="https://web.archive.org/web/20160714232204/https://www.reddit.com/r/archlinux/comments/4cojj9/it_is_probably_time_to_ditch_xf86videointel/"&gt;[1]&lt;/a&gt;, &lt;a href="http://www.phoronix.com/scan.php?page=article&amp;amp;item=intel-modesetting-2017&amp;amp;num=1"&gt;[2]&lt;/a&gt;, &lt;a href="https://wiki.archlinux.org/index.php/Xorg#Installation"&gt;Xorg#Installation&lt;/a&gt;, and &lt;a href="https://jlk.fjfi.cvut.cz/arch/manpages/man/modesetting.4"&gt;modesetting(4)&lt;/a&gt;. However, the modesetting driver can cause problems such as &lt;a href="https://bugs.chromium.org/p/chromium/issues/detail?id=370022"&gt;Chromium Issue 370022&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;卸载&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -Rsc xf86-video-intel
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;NVIDIA 显卡驱动&lt;/h4&gt;
+&lt;blockquote&gt;&lt;p&gt;具体参见 &lt;a href="https://wiki.archlinux.org/index.php/NVIDIA#Installation"&gt;ArchWiki NVIDIA&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;安装 &lt;code&gt;nvidia&lt;/code&gt; 包，为了对 32 位程序的支持，安装 &lt;code&gt;lib32-nvidia-utils&lt;/code&gt; 包 (位于 &lt;strong&gt;multilib&lt;/strong&gt; 仓库，请提前自行开启此仓库)。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -S nvidia lib32-nvidia-utils
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;配置 PRIME render offload&lt;/h4&gt;
+&lt;blockquote&gt;&lt;p&gt;具体参见 &lt;a href="https://wiki.archlinux.org/index.php/PRIME#PRIME_render_offload"&gt;ArchWiki PRIME&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;安装 &lt;code&gt;nvidia-prime&lt;/code&gt; 包来使用官方配置 (不起作用的话，你就要去 Wiki 看怎么手动配置了，不过我觉得一般都不需要手动配置啦)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -S nvidia-prime
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;reboot！&lt;/h3&gt;
+&lt;p&gt;这时候重启系统就应该起作用了，你可以通过 &lt;code&gt;prime-run&lt;/code&gt; 命令使制定程序在 NVIDIA 显卡上渲染。例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 以 n 卡渲染 vlc&lt;/span&gt;
+prime-run vlc
+&lt;span class="c1"&gt;# 以 n 卡渲染 wine 游戏&lt;/span&gt;
+prime-run wine touhou08.exe
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在此之前你可能想查看你的配置是否生效，可以使用 &lt;code&gt;glxinfo&lt;/code&gt; 这个工具，它属于 &lt;code&gt;mesa-demos&lt;/code&gt; 包，先安装&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -S mesa-demo
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;来测试一下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;glxinfo &lt;span class="p"&gt;|&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;quot;OpenGL renderer&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;输出应该类似于下面，这意味着默认情况下你使用的是 Intel 显卡&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;OpenGL renderer string: Mesa DRI Intel(R) UHD Graphics (Whiskey Lake 3x8 GT2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;prime-run glxinfo &lt;span class="p"&gt;|&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;quot;OpenGL renderer&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;你应该看到&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;OpenGL renderer string: GeForce MX150/PCIe/SSE2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这意味着你在使用 NVIDIA 显卡了 ´ ▽ ` )ﾉ&lt;/p&gt;
+&lt;h3&gt;一点总结&lt;/h3&gt;
+&lt;p&gt;我之前使用的是 &lt;a href="https://wiki.archlinux.org/index.php/Bumblebee"&gt;Bumblebee&lt;/a&gt; 方案，但是感觉不如现在的方案方便也不如这个性能好。&lt;/p&gt;
+&lt;p&gt;另外使用了 NVIDIA 的闭源驱动所以在配置双显卡的时候使用了 &lt;strong&gt;PRIME render offload&lt;/strong&gt; 而不是在 Wiki 里的上一级标题 &lt;strong&gt;PRIME GPU offloading&lt;/strong&gt; ，后者是给 NVIDIA 的开源驱动程式用的。关于具体的不同，自己去翻阅 wiki 吧，不归我管，我只是记录一下我觉得目前最好使的方案。&lt;/p&gt;
+</description><author>sihuan@sakuya.love (SiHuan)</author><guid isPermaLink="true">/archives/linuxgpu/</guid><pubDate>Tue, 17 Mar 2020 11:06:00 +0806</pubDate></item></channel></rss>

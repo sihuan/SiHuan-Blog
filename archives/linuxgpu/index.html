@@ -21,18 +21,18 @@
         }
     </script>
     
-<title>vps2arch! - SiHuan's Blog</title>
+<title>ArchLinux 下双显卡配置 - SiHuan's Blog</title>
 <meta name="author" content="SiHuan" />
-<meta name="description" content="The fastest way to convert a VPS to Arch Linux!" />
-<meta property="og:title" content="vps2arch! - SiHuan's Blog" />
-<meta property="og:description" content="The fastest way to convert a VPS to Arch Linux!" />
+<meta name="description" content="我目前使用的双显卡方案" />
+<meta property="og:title" content="ArchLinux 下双显卡配置 - SiHuan's Blog" />
+<meta property="og:description" content="我目前使用的双显卡方案" />
 <meta property="og:site_name" content="SiHuan's Blog" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/archives/vps2arch/" />
+<meta property="og:url" content="/archives/linuxgpu/" />
 <meta property="og:image" content="" />
-<meta property="article:published_time" content="2020-03-13T11:06:00-00.00" />
-<meta name="twitter:title" content="vps2arch! - SiHuan's Blog" />
-<meta name="twitter:description" content="The fastest way to convert a VPS to Arch Linux!" />
+<meta property="article:published_time" content="2020-03-17T11:06:00-00.00" />
+<meta name="twitter:title" content="ArchLinux 下双显卡配置 - SiHuan's Blog" />
+<meta name="twitter:description" content="我目前使用的双显卡方案" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:image" content="" />
 
@@ -72,11 +72,11 @@
 <main>    
     <section class="ga-section ga-content">
         <article class="yue">
-            <h1 class="ga-post_title">vps2arch!</h1>
+            <h1 class="ga-post_title">ArchLinux 下双显卡配置</h1>
             <span class="ga-post_meta ga-mono">
                 <span>SiHuan</span>
                 <time>
-                    2020-03-13
+                    2020-03-17
                 </time>
                 
                 in <a no-style class="category" href="/category/分享/">
@@ -86,147 +86,101 @@
                 
             </span>
             <div class="ga-content_body">
-                <blockquote><p>有些 vps 服务商是不提供 Arch 系统的，但是你仍然可以通过 vps2arch 脚本将你的系统切换到 Archlinux</p>
-<p>这个项目托管在 gitlab : <a href="https://gitlab.com/drizzt/vps2arch/">https://gitlab.com/drizzt/vps2arch/</a></p>
+                <h2>Fuck Nvidia</h2>
+<p>如果笔电上有一张 Nivdia 显卡，使用 Linux 的时候也许会因为驱动引起一些令人苦恼的问题。</p>
+<blockquote><p>如果熟读并背诵 ArchWiki 的话就不会有这些问题了  (误</p>
 </blockquote>
-<h2>准备</h2>
-<h3>读项目介绍</h3>
-<blockquote><p>This script is used to convert a <em>VPS</em>, running another linux distro, to <em>Arch Linux</em>.
- It should be <strong>only</strong> used if your <em>VPS</em> provider doesn't provide you an <em>Arch Linux</em> image.</p>
+<p>我就记录一下我的笔电在 ArchLinux 下的双显卡的配置，其实我说的这些，几乎全部来自于 ArchWiki ，但是分布在不同的几个页面，我就充当一次搬运工了。</p>
+<p>我的显卡硬件情况：</p>
+<ul>
+<li>GPU0 Intel UHD 620</li>
+<li>GPU1 Nvidia MX150</li>
+</ul>
+<h3>先说一下黑屏的问题</h3>
+<p>有可能是因为你漏装了 nvidia 显卡的驱动程式，可以用一下命令安装</p>
+<blockquote><p>进不去系统的话可以尝试 <code>Ctrl</code>+<code>Alt</code>+<code>F2~6</code>切换到 <code>tty</code>，仍然不行的话可能就要搬来 LiveCD 了</p>
 </blockquote>
-<h3>读项目免责</h3>
-<blockquote><p>I'm not responsible for any damage in your system and/or any violation of the agreement between you and your vps provider.
- <strong>Use at your own risk!</strong></p>
+<div class="highlight"><pre><span></span>pacman -S nvidia
+</pre></div>
+<blockquote><p><strong>注意！</strong></p>
+<p>我现在执行的命令在我的机器上有效，对于比较新的机器应该都没有问题，但是具体呢还是要参看 <a href="https://wiki.archlinux.org/index.php/NVIDIA#Installation">ArchWiki NVIDIA</a></p>
 </blockquote>
-<h3>准备系统</h3>
-<p>你需要有一个干净的系统，既然都要把系统重新安装成 Arch 了，提前重置一下系统不为过吧。</p>
-<p>推荐重置为 <code>CentOS</code> 或者 <code>Debain</code> 这个脚本在 <code>Ubuntu 18</code> 上也许有一些问题。</p>
-<h2>开干</h2>
-<p>使用 SSH 链接到你的 VPS，在开始之前你可以修改一下 root 密码，以为 vps2arch 会将新系统的密码设置为你运行脚本之前的 root 密码</p>
-<div class="highlight"><pre><span></span>passwd root
-</pre></div>
-<p>你需要输入两次新密码，并且输入密码没有回显</p>
-<p>接下来就是重点了，以 root 身份执行一下命令</p>
-<div class="highlight"><pre><span></span><span class="c1"># 下载 vps2arch 脚本</span>
-<span class="c1"># wget https://tinyurl.com/vps2arch 也会被重定向到以下 url</span>
-wget https://gitlab.com/drizzt/vps2arch/-/raw/master/vps2arch
-<span class="c1"># 赋予执行权限</span>
-chmod +x vps2arch
-<span class="c1"># 启动脚本！</span>
-./vps2arch
-<span class="c1"># 当你从脚本默认的源下载速度较慢的时候，可以使用 -m 参数指定源，例如</span>
-<span class="c1"># ./vps2arch -m https://mirrors.neusoft.edu.cn/archlinux/</span>
-</pre></div>
-<p>深呼吸，不出意外的话，等待几分钟你会得到这样的提示</p>
-
-<pre><code>When you are finished with your post-installation, you'll need to reboot the VM the rough way:
-        # sync ; reboot -f
-
-Then you'll be able to connect to your VM using SSH and to login using your old root password (or "vps2arch" if you didn't have a root password).</code></pre>
-<p>按照提示执行 <code>sync ; reoot -f</code> 重启你的 VPS。</p>
-<p>这时候你的 SSH 链接会断掉，在 VPS 重启的这几分钟里，你需要去 <code>~/.ssh/konwn_host</code> 里删除掉刚刚运行 vps2arch 脚本的主机所在的行，因为换了新系统了你的电脑已经不再认识远程主机了，不这么做的话你在下次链接的时候会得到一个错误。稍等一会 <code>ssh root@yourip</code> 输入之前的 root 密码</p>
-<p><strong>Welcome to ArchLinux!</strong></p>
-<h2>之后的配置</h2>
-<p>现在你已经得到一个崭新的 ArchLinux 系统了，接下来是在正常使用之前的一些建议，以下建议多来源于 <a href="https://wiki.archlinux.org/index.php/Installation_guide">ArchWiki</a> .</p>
-<h3>时间设置</h3>
-<div class="highlight"><pre><span></span><span class="c1"># 使用 ntp</span>
-timedatectl set-ntp <span class="nb">true</span>
-<span class="c1"># 设置时区</span>
-ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-hwclock --systohc
-</pre></div>
-<h3>设置中文</h3>
-<p>这时候你的系统还是不支持中文的，输入中文将会乱码，我们需要进行一下操作。</p>
-<p>编辑 <code>/etc/locale.gen</code> 取消一下行的注释</p>
-
-<pre><code>en_US.UTF-8 UTF-8
-zh_CN.UTF-8 UTF-8
-zh_TW.UTF-8 UTF-8</code></pre>
-<p>执行 <code>locale-gen</code></p>
-<p>创建 <code>locale.conf</code> 并编辑 <code>LANG</code> 这一 <a href="https://wiki.archlinux.org/index.php/Variable">变量</a>，比如：</p>
-
-<pre><code>LANG=en_US.UTF-8</code></pre>
-<h3>添加 ArchLinuxCN 源</h3>
-<p>编辑 <code>/etc/pacman.conf</code> ，在文件末尾添加</p>
-
-<pre><code>[archlinuxcn]
-Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch</code></pre>
-<p>之后执行</p>
-<div class="highlight"><pre><span></span>pacman -S archlinuxcn-keyring
-</pre></div>
-<h3>添加用户</h3>
-<blockquote><p>一直使用 root 用户是不太安全的！我们来添加一个新的用户</p>
+<h2>进入正题</h2>
+<p>先说一下我的基于什么选择了接下来的双显卡方案，如果你的目的与我不同，那也许就没有参考价值了</p>
+<ul>
+<li>尽量发挥性能</li>
+<li>尽量省电</li>
+</ul>
+<p>基于以上理由我选择了，<strong>闭源驱动</strong> + <strong>PRIME render offload</strong></p>
+<h3>安装驱动</h3>
+<h4>Intel 显卡驱动</h4>
+<blockquote><p>具体参见 <a href="https://wiki.archlinux.org/index.php/Intel_graphics">ArchWiki Intel graphics</a></p>
 </blockquote>
-<p>接下来的命令中，新的用户名以 <em>sihuan</em> 为例，执行替换</p>
-<div class="highlight"><pre><span></span>useradd -m -G wheel sihuan
+<p>安装 <code>mesa</code> 包，为了对 32 位程序的支持，安装 <code>lib32-mesa</code> 包 (位于 <strong>multilib</strong> 仓库，请提前自行开启此仓库)。</p>
+<div class="highlight"><pre><span></span>pacman -S mesa lib32-mesa
 </pre></div>
-<blockquote><p>useradd 是 archlinux 系统添加用户的命令</p>
-<p>-m 参数代表自动创建用户的家目录，这个例子里是 <code>/home/sihuan</code></p>
-<p>-G 参数意味着用户要加入一些个的附加组，这儿即 <code>wheel</code> 组</p>
+<p>另外需要注意的是，如果之前安装了 <code>xf86-video-intel</code> 包，最好卸载掉</p>
+<blockquote><p>比如这个包会引起我的 OBS 在录制闪屏，而且不使用此包也是官方的建议</p>
+<blockquote><p>Often not recommended, see note below</p>
+<p><strong>Note:</strong> Some (<a href="http://www.phoronix.com/scan.php?page=news_item&amp;px=Ubuntu-Debian-Abandon-Intel-DDX">Debian &amp; Ubuntu</a>, <a href="http://www.phoronix.com/scan.php?page=news_item&amp;px=Fedora-Xorg-Intel-DDX-Switch">Fedora</a>, <a href="https://community.kde.org/Plasma/5.9_Errata#Intel_GPUs">KDE</a>) recommend not installing the <a href="https://www.archlinux.org/packages/?name=xf86-video-intel">xf86-video-intel</a> driver, and instead falling back on the modesetting driver for Gen4 and newer GPUs (GMA 3000 from 2006 and newer). See <a href="https://web.archive.org/web/20160714232204/https://www.reddit.com/r/archlinux/comments/4cojj9/it_is_probably_time_to_ditch_xf86videointel/">[1]</a>, <a href="http://www.phoronix.com/scan.php?page=article&amp;item=intel-modesetting-2017&amp;num=1">[2]</a>, <a href="https://wiki.archlinux.org/index.php/Xorg#Installation">Xorg#Installation</a>, and <a href="https://jlk.fjfi.cvut.cz/arch/manpages/man/modesetting.4">modesetting(4)</a>. However, the modesetting driver can cause problems such as <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=370022">Chromium Issue 370022</a>.</p>
 </blockquote>
-<p>设置新用户密码</p>
-<div class="highlight"><pre><span></span>passwd sihuan
-</pre></div>
-<p>然后输入两次密码就好了</p>
-<p>设置 sudo</p>
-<p>首先安装 sudo</p>
-<div class="highlight"><pre><span></span>pacman -S sudo
-</pre></div>
-<p>编辑配置文件</p>
-<div class="highlight"><pre><span></span>visudo
-</pre></div>
-<p>找到下面一行，取消掉注释</p>
-<div class="highlight"><pre><span></span>%wheel <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL
-</pre></div>
-<h3>配置新用户的 shell</h3>
-<blockquote><p>建议大家都自己整一个 <code>dotfiles</code> ，具体可以看 fc 老师翻译的 <a href="https://farseerfc.me/using-gnu-stow-to-manage-your-dotfiles.html">这篇文章</a></p>
 </blockquote>
-<p>以下就以我自己的为例，如果有时间我会详细的解释以下我的 <code>dotfiles</code> 包含了什么</p>
-<p>切换到新的用户</p>
-
-<pre><code>su sihuan</code></pre>
-<p>输入密码</p>
-<p>接下来的操作就是在 <em>sihuan</em> 这个用户里进行的啦</p>
-<div class="highlight"><pre><span></span><span class="c1"># 安装需要的软件包</span>
-sudo pacman -S git stow zsh grml-zsh-config powerline ranger
-<span class="c1"># 克隆 dotfiles 仓库</span>
-git clone https://github.com/Si-Huan/dotfiles
-<span class="c1"># 切换 shell 到 zsh</span>
-chsh -s zsh
-<span class="c1"># 使 zsh 配置生效</span>
-<span class="nb">cd</span> dotfiles
-stow zsh
+<p>卸载</p>
+<div class="highlight"><pre><span></span>pacman -Rsc xf86-video-intel
 </pre></div>
-<p>这时候远程主机上的配置就完成了！再次使用 <em>sihuan</em> 这个用户登陆，你就会得到一个很 OK 的 shell 体验。</p>
-<h2>免密登录和 SSH 主机别名</h2>
-<div class="highlight"><pre><span></span>ssh-keygen
-ssh-copy-id sihuan@hostip
+<h4>NVIDIA 显卡驱动</h4>
+<blockquote><p>具体参见 <a href="https://wiki.archlinux.org/index.php/NVIDIA#Installation">ArchWiki NVIDIA</a></p>
+</blockquote>
+<p>安装 <code>nvidia</code> 包，为了对 32 位程序的支持，安装 <code>lib32-nvidia-utils</code> 包 (位于 <strong>multilib</strong> 仓库，请提前自行开启此仓库)。</p>
+<div class="highlight"><pre><span></span>pacman -S nvidia lib32-nvidia-utils
 </pre></div>
-<p>Edit <code>~/.ssh/config</code> add:</p>
+<h4>配置 PRIME render offload</h4>
+<blockquote><p>具体参见 <a href="https://wiki.archlinux.org/index.php/PRIME#PRIME_render_offload">ArchWiki PRIME</a></p>
+</blockquote>
+<p>安装 <code>nvidia-prime</code> 包来使用官方配置 (不起作用的话，你就要去 Wiki 看怎么手动配置了，不过我觉得一般都不需要手动配置啦)</p>
+<div class="highlight"><pre><span></span>pacman -S nvidia-prime
+</pre></div>
+<h3>reboot！</h3>
+<p>这时候重启系统就应该起作用了，你可以通过 <code>prime-run</code> 命令使制定程序在 NVIDIA 显卡上渲染。例如：</p>
+<div class="highlight"><pre><span></span><span class="c1"># 以 n 卡渲染 vlc</span>
+prime-run vlc
+<span class="c1"># 以 n 卡渲染 wine 游戏</span>
+prime-run wine touhou08.exe
+</pre></div>
+<p>在此之前你可能想查看你的配置是否生效，可以使用 <code>glxinfo</code> 这个工具，它属于 <code>mesa-demos</code> 包，先安装</p>
+<div class="highlight"><pre><span></span>pacman -S mesa-demo
+</pre></div>
+<p>来测试一下</p>
+<div class="highlight"><pre><span></span>glxinfo <span class="p">|</span> grep <span class="s2">&quot;OpenGL renderer&quot;</span>
+</pre></div>
+<p>输出应该类似于下面，这意味着默认情况下你使用的是 Intel 显卡</p>
 
-<pre><code>Host hostname
-    HostName hostip
-    User sihuan</code></pre>
-<p>Then you can login your host with:</p>
+<pre><code>OpenGL renderer string: Mesa DRI Intel(R) UHD Graphics (Whiskey Lake 3x8 GT2)</code></pre>
+<p>然后</p>
+<div class="highlight"><pre><span></span>prime-run glxinfo <span class="p">|</span> grep <span class="s2">&quot;OpenGL renderer&quot;</span>
+</pre></div>
+<p>你应该看到</p>
 
-<pre><code>ssh hostname</code></pre>
-<p>And you will no longer be asked for a password.</p>
-<p><strong>EOF</strong></p>
+<pre><code>OpenGL renderer string: GeForce MX150/PCIe/SSE2</code></pre>
+<p>这意味着你在使用 NVIDIA 显卡了 ´ ▽ ` )ﾉ</p>
+<h3>一点总结</h3>
+<p>我之前使用的是 <a href="https://wiki.archlinux.org/index.php/Bumblebee">Bumblebee</a> 方案，但是感觉不如现在的方案方便也不如这个性能好。</p>
+<p>另外使用了 NVIDIA 的闭源驱动所以在配置双显卡的时候使用了 <strong>PRIME render offload</strong> 而不是在 Wiki 里的上一级标题 <strong>PRIME GPU offloading</strong> ，后者是给 NVIDIA 的开源驱动程式用的。关于具体的不同，自己去翻阅 wiki 吧，不归我管，我只是记录一下我觉得目前最好使的方案。</p>
 
             </div>
         </article>
         <div id="ga-tags">
     
     <span class="ga-tag">
-        <a class="ga-highlight" href="/tag/Linux 技巧/">#Linux 技巧</a>
-    </span>
-    
-    <span class="ga-tag">
         <a class="ga-highlight" href="/tag/ArchLinux/">#ArchLinux</a>
     </span>
     
     <span class="ga-tag">
-        <a class="ga-highlight" href="/tag/vps2arch/">#vps2arch</a>
+        <a class="ga-highlight" href="/tag/双显卡/">#双显卡</a>
+    </span>
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/tag/nVidia/">#nVidia</a>
     </span>
     
 </div>
@@ -236,14 +190,14 @@ ssh-copy-id sihuan@hostip
 <section id="ga-content_pager">
 
     <div class="next">
-        <a class="ga-highlight" href="/archives/linuxapp/">Linux 日常存活方案</a>
-        <p class="yue">日常使用 Linux 可能会用到的软件们</p>
+        <h3>没有了</h3>
+        <p class="yue">这是最新的文章</p>
     </div>
 
 
     <div class="prev">
-        <a class="ga-highlight" href="/archives/使用pb分享代码/">使用 pb 分享代码</a>
-        <p class="yue">以更优雅的方式分享你的代码或者终端输出</p>
+        <a class="ga-highlight" href="/archives/linuxapp/">Linux 日常存活方案</a>
+        <p class="yue">日常使用 Linux 可能会用到的软件们</p>
     </div>
 
 </section>
