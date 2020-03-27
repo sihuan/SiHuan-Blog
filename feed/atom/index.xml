@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><id>/</id><title>SiHuan's Blog</title><updated>2020-03-17T14:13:01.574263+08:06</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email></author><link href="/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator><logo>https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/logo.png</logo><subtitle>道阻且长，吾意思还。</subtitle><entry><id>/archives/庆祝一下/</id><title>庆祝一下</title><updated>2020-03-17T14:13:01.574549+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h1&gt;Hello World&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><id>/</id><title>SiHuan's Blog</title><updated>2020-03-27T09:11:56.881440+08:06</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email></author><link href="/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator><logo>https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/logo.png</logo><subtitle>道阻且长，吾意思还。</subtitle><entry><id>/archives/庆祝一下/</id><title>庆祝一下</title><updated>2020-03-27T09:11:56.881843+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h1&gt;Hello World&lt;/h1&gt;
 &lt;p&gt;今天做好了这个静态博客和个人 Wiki 🎉&lt;/p&gt;
 &lt;p&gt;赶紧发一个 POST 庆祝一下&lt;/p&gt;
 &lt;p&gt;就这些&lt;/p&gt;
 &lt;p&gt;没有了&lt;/p&gt;
 &lt;p&gt;&lt;figure&gt;&lt;img data-width="700" data-height="700" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/9c5bb2dd760f9ad56c80d246c91daf38.jpg" alt="cheers" /&gt;&lt;figcaption&gt;cheers&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
-</content><link href="/archives/庆祝一下/" rel="alternate"/><published>2020-01-05T11:06:00+08:06</published></entry><entry><id>/archives/下雪了/</id><title>下雪了</title><updated>2020-03-17T14:13:01.574520+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;p&gt;昨天下了一天雪❄️
+</content><link href="/archives/庆祝一下/" rel="alternate"/><published>2020-01-05T11:06:00+08:06</published></entry><entry><id>/archives/下雪了/</id><title>下雪了</title><updated>2020-03-27T09:11:56.881809+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;p&gt;昨天下了一天雪❄️
 今天早上出去转了一圈拍了一些照片
 真的冷啊&lt;/p&gt;
 &lt;p&gt;&lt;figure&gt;&lt;img data-width="5504" data-height="3096" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/1818cd9b0d9c421ccc4aea20010b1025.jpg" alt="房前的菜地" /&gt;&lt;figcaption&gt;房前的菜地&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;&lt;figure&gt;&lt;img data-width="5504" data-height="3096" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/36b904d5b154c14754f333e71d8b10cb.jpg" alt="田地和雾" /&gt;&lt;figcaption&gt;田地和雾&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;&lt;figure&gt;&lt;img data-width="5504" data-height="3096" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/25a97fb29127a21a4f2b2f7786e7ca07.jpg" alt="白了屋顶" /&gt;&lt;figcaption&gt;白了屋顶&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
-</content><link href="/archives/下雪了/" rel="alternate"/><published>2020-01-08T09:06:00+08:06</published></entry><entry><id>/archives/使用pb分享代码/</id><title>使用 pb 分享代码</title><updated>2020-03-17T14:13:01.574488+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;PrivateBin 在线匿名粘贴版？大概吧&lt;/p&gt;
+</content><link href="/archives/下雪了/" rel="alternate"/><published>2020-01-08T09:06:00+08:06</published></entry><entry><id>/archives/使用pb分享代码/</id><title>使用 pb 分享代码</title><updated>2020-03-27T09:11:56.881771+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;PrivateBin 在线匿名粘贴版？大概吧&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;分享代码给其他人的时候，发送文件太麻烦，直接把代码发过去的话有没有高亮和缩进而且会刷屏！&lt;/p&gt;
 &lt;p&gt;可以使用 pb 服务来解决这一个问题 ´ ▽ ` )ﾉ&lt;/p&gt;
@@ -105,7 +105,7 @@ $ cat main.py &lt;span class="p"&gt;|&lt;/span&gt; pb
 &lt;p&gt;这样当你 &lt;code&gt;cmd | fs&lt;/code&gt;  的时候，url 就会自动复制到剪切板啦。&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;吹一下 kdeconnect  , 如果你用了 kdeconnect 的话剪切板就自己同步到手机了！&lt;/p&gt;
 &lt;/blockquote&gt;
-</content><link href="/archives/使用pb分享代码/" rel="alternate"/><published>2020-03-11T11:06:00+08:06</published></entry><entry><id>/archives/vps2arch/</id><title>vps2arch!</title><updated>2020-03-17T14:13:01.574456+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;有些 vps 服务商是不提供 Arch 系统的，但是你仍然可以通过 vps2arch 脚本将你的系统切换到 Archlinux&lt;/p&gt;
+</content><link href="/archives/使用pb分享代码/" rel="alternate"/><published>2020-03-11T11:06:00+08:06</published></entry><entry><id>/archives/vps2arch/</id><title>vps2arch!</title><updated>2020-03-27T09:11:56.881734+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;有些 vps 服务商是不提供 Arch 系统的，但是你仍然可以通过 vps2arch 脚本将你的系统切换到 Archlinux&lt;/p&gt;
 &lt;p&gt;这个项目托管在 gitlab : &lt;a href="https://gitlab.com/drizzt/vps2arch/"&gt;https://gitlab.com/drizzt/vps2arch/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;准备&lt;/h2&gt;
@@ -231,13 +231,13 @@ ssh-copy-id sihuan@hostip
 &lt;pre&gt;&lt;code&gt;ssh hostname&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;And you will no longer be asked for a password.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;EOF&lt;/strong&gt;&lt;/p&gt;
-</content><link href="/archives/vps2arch/" rel="alternate"/><published>2020-03-13T11:06:00+08:06</published></entry><entry><id>/archives/linuxapp/</id><title>Linux 日常存活方案</title><updated>2020-03-17T14:13:01.574421+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;起因&lt;/h2&gt;
+</content><link href="/archives/vps2arch/" rel="alternate"/><published>2020-03-13T11:06:00+08:06</published></entry><entry><id>/archives/linuxapp/</id><title>Linux 日常存活方案</title><updated>2020-03-27T09:11:56.881620+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;起因&lt;/h2&gt;
 &lt;p&gt;在群聊里看到有一位同学发了一张 Windows 的桌面截图，有很多软件，大致看了一下又觉得貌似在 Linux 下也差不多都有同等或更好的替代方案，加之很多人对 Linux 的偏见认为 Linux &lt;strong&gt;生态不好&lt;/strong&gt;，于是萌发了写这篇文章的想法。&lt;/p&gt;
 &lt;h2&gt;Windows 原图&lt;/h2&gt;
 &lt;p&gt;&lt;figure&gt;&lt;img data-width="1918" data-height="1016" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/7141071a443bffe05a2b043526d02ea2.jpg" alt="精髓在于妹子，所以大家换张壁纸就可以不用往下看了 (误" /&gt;&lt;figcaption&gt;精髓在于妹子，所以大家换张壁纸就可以不用往下看了 (误&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h2&gt;逐个来看一下&lt;/h2&gt;
 &lt;blockquote&gt;&lt;p&gt;以下完全是我自己的个人观点，我觉得好用我就说。&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;&lt;strong&gt;踩一捧一在任何地方都是不可取的。&lt;/strong&gt; --cssslayer&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;&lt;strong&gt;踩一捧一在任何地方都是不可取的。&lt;/strong&gt; --CS Slayer&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;桌面&lt;/h3&gt;
@@ -509,7 +509,7 @@ aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
 
 使用 'pacman {-h --help}' 及某个操作以查看可用选项&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;这个优点是值得长篇大论的，&lt;strong&gt;&lt;em&gt;这儿写不下&lt;/em&gt;&lt;/strong&gt; ლ(╹◡╹ლ)&lt;/p&gt;
-</content><link href="/archives/linuxapp/" rel="alternate"/><published>2020-03-15T11:06:00+08:06</published></entry><entry><id>/archives/linuxgpu/</id><title>ArchLinux 下双显卡配置</title><updated>2020-03-17T14:13:01.574357+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;Fuck Nvidia&lt;/h2&gt;
+</content><link href="/archives/linuxapp/" rel="alternate"/><published>2020-03-15T11:06:00+08:06</published></entry><entry><id>/archives/linuxgpu/</id><title>ArchLinux 下双显卡配置</title><updated>2020-03-27T09:11:56.881549+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;Fuck Nvidia&lt;/h2&gt;
 &lt;p&gt;如果笔电上有一张 Nivdia 显卡，使用 Linux 的时候也许会因为驱动引起一些令人苦恼的问题。&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;如果熟读并背诵 ArchWiki 的话就不会有这些问题了  (误&lt;/p&gt;
 &lt;/blockquote&gt;
