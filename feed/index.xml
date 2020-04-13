@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>SiHuan's Blog</title><link>/</link><description>道阻且长，吾意思还。</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/logo.png</url><title>SiHuan's Blog</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Fri, 27 Mar 2020 09:11:56 +0806</lastBuildDate><pubDate>Fri, 27 Mar 2020 09:11:56 +0806</pubDate><item><title>庆祝一下</title><link>/archives/庆祝一下/</link><description>&lt;h1&gt;Hello World&lt;/h1&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>SiHuan's Blog</title><link>/</link><description>道阻且长，吾意思还。</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/logo.png</url><title>SiHuan's Blog</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Mon, 13 Apr 2020 09:54:11 +0806</lastBuildDate><pubDate>Mon, 13 Apr 2020 09:54:11 +0806</pubDate><item><title>庆祝一下</title><link>/archives/庆祝一下/</link><description>&lt;h1&gt;Hello World&lt;/h1&gt;
 &lt;p&gt;今天做好了这个静态博客和个人 Wiki 🎉&lt;/p&gt;
 &lt;p&gt;赶紧发一个 POST 庆祝一下&lt;/p&gt;
 &lt;p&gt;就这些&lt;/p&gt;
@@ -557,7 +557,7 @@ aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
 &lt;p&gt;安装 &lt;code&gt;nvidia&lt;/code&gt; 包，为了对 32 位程序的支持，安装 &lt;code&gt;lib32-nvidia-utils&lt;/code&gt; 包 (位于 &lt;strong&gt;multilib&lt;/strong&gt; 仓库，请提前自行开启此仓库)。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -S nvidia lib32-nvidia-utils
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;配置 PRIME render offload&lt;/h4&gt;
+&lt;h3&gt;配置 PRIME render offload&lt;/h3&gt;
 &lt;blockquote&gt;&lt;p&gt;具体参见 &lt;a href="https://wiki.archlinux.org/index.php/PRIME#PRIME_render_offload"&gt;ArchWiki PRIME&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;安装 &lt;code&gt;nvidia-prime&lt;/code&gt; 包来使用官方配置 (不起作用的话，你就要去 Wiki 看怎么手动配置了，不过我觉得一般都不需要手动配置啦)&lt;/p&gt;
@@ -586,7 +586,7 @@ prime-run wine touhou08.exe
 
 &lt;pre&gt;&lt;code&gt;OpenGL renderer string: GeForce MX150/PCIe/SSE2&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;这意味着你在使用 NVIDIA 显卡了 ´ ▽ ` )ﾉ&lt;/p&gt;
-&lt;h3&gt;一点总结&lt;/h3&gt;
+&lt;h2&gt;一点总结&lt;/h2&gt;
 &lt;p&gt;我之前使用的是 &lt;a href="https://wiki.archlinux.org/index.php/Bumblebee"&gt;Bumblebee&lt;/a&gt; 方案，但是感觉不如现在的方案方便也不如这个性能好。&lt;/p&gt;
 &lt;p&gt;另外使用了 NVIDIA 的闭源驱动所以在配置双显卡的时候使用了 &lt;strong&gt;PRIME render offload&lt;/strong&gt; 而不是在 Wiki 里的上一级标题 &lt;strong&gt;PRIME GPU offloading&lt;/strong&gt; ，后者是给 NVIDIA 的开源驱动程式用的。关于具体的不同，自己去翻阅 wiki 吧，不归我管，我只是记录一下我觉得目前最好使的方案。&lt;/p&gt;
 </description><author>sihuan@sakuya.love (SiHuan)</author><guid isPermaLink="true">/archives/linuxgpu/</guid><pubDate>Tue, 17 Mar 2020 11:06:00 +0806</pubDate></item></channel></rss>

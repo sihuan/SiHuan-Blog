@@ -134,7 +134,7 @@
 <p>安装 <code>nvidia</code> 包，为了对 32 位程序的支持，安装 <code>lib32-nvidia-utils</code> 包 (位于 <strong>multilib</strong> 仓库，请提前自行开启此仓库)。</p>
 <div class="highlight"><pre><span></span>pacman -S nvidia lib32-nvidia-utils
 </pre></div>
-<h4>配置 PRIME render offload</h4>
+<h3>配置 PRIME render offload</h3>
 <blockquote><p>具体参见 <a href="https://wiki.archlinux.org/index.php/PRIME#PRIME_render_offload">ArchWiki PRIME</a></p>
 </blockquote>
 <p>安装 <code>nvidia-prime</code> 包来使用官方配置 (不起作用的话，你就要去 Wiki 看怎么手动配置了，不过我觉得一般都不需要手动配置啦)</p>
@@ -163,7 +163,7 @@ prime-run wine touhou08.exe
 
 <pre><code>OpenGL renderer string: GeForce MX150/PCIe/SSE2</code></pre>
 <p>这意味着你在使用 NVIDIA 显卡了 ´ ▽ ` )ﾉ</p>
-<h3>一点总结</h3>
+<h2>一点总结</h2>
 <p>我之前使用的是 <a href="https://wiki.archlinux.org/index.php/Bumblebee">Bumblebee</a> 方案，但是感觉不如现在的方案方便也不如这个性能好。</p>
 <p>另外使用了 NVIDIA 的闭源驱动所以在配置双显卡的时候使用了 <strong>PRIME render offload</strong> 而不是在 Wiki 里的上一级标题 <strong>PRIME GPU offloading</strong> ，后者是给 NVIDIA 的开源驱动程式用的。关于具体的不同，自己去翻阅 wiki 吧，不归我管，我只是记录一下我觉得目前最好使的方案。</p>
 
