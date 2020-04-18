@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>SiHuan's Blog</title><link>/</link><description>道阻且长，吾意思还。</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/logo.png</url><title>SiHuan's Blog</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Mon, 13 Apr 2020 09:55:23 +0806</lastBuildDate><pubDate>Mon, 13 Apr 2020 09:55:23 +0806</pubDate><item><title>庆祝一下</title><link>/archives/庆祝一下/</link><description>&lt;h1&gt;Hello World&lt;/h1&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>SiHuan's Blog</title><link>/</link><description>道阻且长，吾意思还。</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.png</url><title>SiHuan's Blog</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Sat, 18 Apr 2020 06:38:52 +0806</lastBuildDate><pubDate>Sat, 18 Apr 2020 06:38:52 +0806</pubDate><item><title>庆祝一下</title><link>/archives/庆祝一下/</link><description>&lt;h1&gt;Hello World&lt;/h1&gt;
 &lt;p&gt;今天做好了这个静态博客和个人 Wiki 🎉&lt;/p&gt;
 &lt;p&gt;赶紧发一个 POST 庆祝一下&lt;/p&gt;
 &lt;p&gt;就这些&lt;/p&gt;
 &lt;p&gt;没有了&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="700" data-height="700" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/9c5bb2dd760f9ad56c80d246c91daf38.jpg" alt="cheers" /&gt;&lt;figcaption&gt;cheers&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="700" data-height="700" src="/archives/assets/9c5bb2dd760f9ad56c80d246c91daf38.jpg" alt="cheers" /&gt;&lt;figcaption&gt;cheers&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 </description><author>sihuan@sakuya.love (SiHuan)</author><guid isPermaLink="true">/archives/庆祝一下/</guid><pubDate>Sun, 05 Jan 2020 11:06:00 +0806</pubDate></item><item><title>下雪了</title><link>/archives/下雪了/</link><description>&lt;p&gt;昨天下了一天雪❄️
 今天早上出去转了一圈拍了一些照片
 真的冷啊&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="5504" data-height="3096" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/1818cd9b0d9c421ccc4aea20010b1025.jpg" alt="房前的菜地" /&gt;&lt;figcaption&gt;房前的菜地&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="5504" data-height="3096" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/36b904d5b154c14754f333e71d8b10cb.jpg" alt="田地和雾" /&gt;&lt;figcaption&gt;田地和雾&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="5504" data-height="3096" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/25a97fb29127a21a4f2b2f7786e7ca07.jpg" alt="白了屋顶" /&gt;&lt;figcaption&gt;白了屋顶&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="5504" data-height="3096" src="/archives/assets/1818cd9b0d9c421ccc4aea20010b1025.jpg" alt="房前的菜地" /&gt;&lt;figcaption&gt;房前的菜地&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="5504" data-height="3096" src="/archives/assets/36b904d5b154c14754f333e71d8b10cb.jpg" alt="田地和雾" /&gt;&lt;figcaption&gt;田地和雾&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="5504" data-height="3096" src="/archives/assets/25a97fb29127a21a4f2b2f7786e7ca07.jpg" alt="白了屋顶" /&gt;&lt;figcaption&gt;白了屋顶&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 </description><author>sihuan@sakuya.love (SiHuan)</author><guid isPermaLink="true">/archives/下雪了/</guid><pubDate>Wed, 08 Jan 2020 09:06:00 +0806</pubDate></item><item><title>使用 pb 分享代码</title><link>/archives/使用pb分享代码/</link><description>&lt;blockquote&gt;&lt;p&gt;PrivateBin 在线匿名粘贴版？大概吧&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;分享代码给其他人的时候，发送文件太麻烦，直接把代码发过去的话有没有高亮和缩进而且会刷屏！&lt;/p&gt;
@@ -28,7 +28,7 @@ All data may be erased without notifications. Please do NOT post large files.&lt
 &lt;blockquote&gt;&lt;p&gt;并不是大家都会提供 web 页面的！&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;地址：&lt;a href="https://fars.ee/f"&gt;https://fars.ee/f&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="1431" data-height="803" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/d6035f9e8690a01f0a9bb9592aaa5f43.png" alt="web 页面长这样" /&gt;&lt;figcaption&gt;web 页面长这样&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="1431" data-height="803" src="/archives/assets/d6035f9e8690a01f0a9bb9592aaa5f43.png" alt="web 页面长这样" /&gt;&lt;figcaption&gt;web 页面长这样&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h4&gt;2.使用命令行&lt;/h4&gt;
 &lt;blockquote&gt;&lt;p&gt;Create a new paste from the output of &lt;code&gt;cmd&lt;/code&gt;:&lt;/p&gt;
 
@@ -162,7 +162,7 @@ hwclock --systohc
 zh_CN.UTF-8 UTF-8
 zh_TW.UTF-8 UTF-8&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;执行 &lt;code&gt;locale-gen&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;创建 &lt;code&gt;locale.conf&lt;/code&gt; 并编辑 &lt;code&gt;LANG&lt;/code&gt; 这一 &lt;a href="https://wiki.archlinux.org/index.php/Variable"&gt;变量&lt;/a&gt;，比如：&lt;/p&gt;
+&lt;p&gt;创建 &lt;code&gt;/etc/locale.conf&lt;/code&gt; 并编辑 &lt;code&gt;LANG&lt;/code&gt; 这一 &lt;a href="https://wiki.archlinux.org/index.php/Variable"&gt;变量&lt;/a&gt;，比如：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;LANG=en_US.UTF-8&lt;/code&gt;&lt;/pre&gt;
 &lt;h3&gt;添加 ArchLinuxCN 源&lt;/h3&gt;
@@ -208,7 +208,7 @@ pacman -S archlinuxcn-keyring
 &lt;p&gt;输入密码&lt;/p&gt;
 &lt;p&gt;接下来的操作就是在 &lt;em&gt;sihuan&lt;/em&gt; 这个用户里进行的啦&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 安装需要的软件包&lt;/span&gt;
-sudo pacman -S git stow zsh grml-zsh-config powerline ranger
+sudo pacman -S git stow zsh grml-zsh-config powerline ranger exa zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search
 &lt;span class="c1"&gt;# 克隆 dotfiles 仓库&lt;/span&gt;
 git clone https://github.com/Si-Huan/dotfiles
 &lt;span class="c1"&gt;# 切换 shell 到 zsh&lt;/span&gt;
@@ -235,7 +235,7 @@ ssh-copy-id sihuan@hostip
 </description><author>sihuan@sakuya.love (SiHuan)</author><guid isPermaLink="true">/archives/vps2arch/</guid><pubDate>Fri, 13 Mar 2020 11:06:00 +0806</pubDate></item><item><title>Linux 日常存活方案</title><link>/archives/linuxapp/</link><description>&lt;h2&gt;起因&lt;/h2&gt;
 &lt;p&gt;在群聊里看到有一位同学发了一张 Windows 的桌面截图，有很多软件，大致看了一下又觉得貌似在 Linux 下也差不多都有同等或更好的替代方案，加之很多人对 Linux 的偏见认为 Linux &lt;strong&gt;生态不好&lt;/strong&gt;，于是萌发了写这篇文章的想法。&lt;/p&gt;
 &lt;h2&gt;Windows 原图&lt;/h2&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="1918" data-height="1016" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/7141071a443bffe05a2b043526d02ea2.jpg" alt="精髓在于妹子，所以大家换张壁纸就可以不用往下看了 (误" /&gt;&lt;figcaption&gt;精髓在于妹子，所以大家换张壁纸就可以不用往下看了 (误&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="1918" data-height="1016" src="/archives/assets/7141071a443bffe05a2b043526d02ea2.jpg" alt="精髓在于妹子，所以大家换张壁纸就可以不用往下看了 (误" /&gt;&lt;figcaption&gt;精髓在于妹子，所以大家换张壁纸就可以不用往下看了 (误&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h2&gt;逐个来看一下&lt;/h2&gt;
 &lt;blockquote&gt;&lt;p&gt;以下完全是我自己的个人观点，我觉得好用我就说。&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;&lt;strong&gt;踩一捧一在任何地方都是不可取的。&lt;/strong&gt; --CS Slayer&lt;/p&gt;
@@ -254,22 +254,22 @@ ssh-copy-id sihuan@hostip
 &lt;blockquote&gt;&lt;p&gt;一个更全的的列表见 &lt;a href="https://wiki.archlinux.org/index.php/Desktop_environment#List_of_desktop_environments"&gt;ArchWiki&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;这个的确不大好评价，因为在 Windows 上桌面是基本没得选的，在 Linux 上选项有太多，各个之间差异比较大，而且每一个又能配出自己的花样。总的来说，Linux 上的更具有可定制性，你可以把桌面环境捏成自己想要模样。我现在使用的桌面环境是 &lt;code&gt;KDE Plasma&lt;/code&gt; 。&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="1920" data-height="1080" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/d6b8bbab32b505f7d81eef233d5a8cce.png" alt="我的桌面" /&gt;&lt;figcaption&gt;我的桌面&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="1920" data-height="1080" src="/archives/assets/d6b8bbab32b505f7d81eef233d5a8cce.png" alt="我的桌面" /&gt;&lt;figcaption&gt;我的桌面&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3&gt;文件管理器&lt;/h3&gt;
 &lt;blockquote&gt;&lt;p&gt;不置评价&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;可选项也有几个，我就只说我现在正在使用的了。&lt;/p&gt;
 &lt;p&gt;我目前使用的的 &lt;code&gt;Dolphin&lt;/code&gt;，不多说上图&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="864" data-height="648" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/e2b1b7758cac7a392719d6dc1ab390d7.png" alt="使用 Numix-Circle 图标的 Dolphin" /&gt;&lt;figcaption&gt;使用 Numix-Circle 图标的 Dolphin&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="864" data-height="648" src="/archives/assets/e2b1b7758cac7a392719d6dc1ab390d7.png" alt="使用 Numix-Circle 图标的 Dolphin" /&gt;&lt;figcaption&gt;使用 Numix-Circle 图标的 Dolphin&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;在这儿为了让大家体验一下 Linux 桌面环境的可定制性，我决定换一套图标和窗口风格再来一张&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="853" data-height="630" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/3854c3e1ef9c135017027b11b34e68c7.png" alt="换一下图标和主题" /&gt;&lt;figcaption&gt;换一下图标和主题&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="853" data-height="630" src="/archives/assets/3854c3e1ef9c135017027b11b34e68c7.png" alt="换一下图标和主题" /&gt;&lt;figcaption&gt;换一下图标和主题&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3&gt;WPS&lt;/h3&gt;
 &lt;blockquote&gt;&lt;p&gt;相同的软件，体验基本一致&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;不得不说金山还是一个很良心的企业，兼容 MS 的办公套件并且有 Linux 版本&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="1859" data-height="990" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/f91357030c8e4fb60385f37920b57afa.png" alt="WPS" /&gt;&lt;figcaption&gt;WPS&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="1859" data-height="990" src="/archives/assets/f91357030c8e4fb60385f37920b57afa.png" alt="WPS" /&gt;&lt;figcaption&gt;WPS&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;随便打开一个表格模板&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="1877" data-height="993" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/6b54d9e9e97cde7b0166c6fae8f11905.png" alt="WPS 表格" /&gt;&lt;figcaption&gt;WPS 表格&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="1877" data-height="993" src="/archives/assets/6b54d9e9e97cde7b0166c6fae8f11905.png" alt="WPS 表格" /&gt;&lt;figcaption&gt;WPS 表格&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;基本和 Windows 版本一致。&lt;/p&gt;
 &lt;p&gt;其他的办公套件&lt;/p&gt;
 &lt;ul&gt;
@@ -284,7 +284,7 @@ ssh-copy-id sihuan@hostip
 &lt;blockquote&gt;&lt;p&gt;相同的软件，体验基本一致&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;这个就不多说了，一样的软件&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="1132" data-height="947" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/565ba68921dccfb5f2c418e8975e8489.png" alt="正在编辑此文章的 Typora" /&gt;&lt;figcaption&gt;正在编辑此文章的 Typora&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="1132" data-height="947" src="/archives/assets/565ba68921dccfb5f2c418e8975e8489.png" alt="正在编辑此文章的 Typora" /&gt;&lt;figcaption&gt;正在编辑此文章的 Typora&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h2&gt;Listen1&lt;/h2&gt;
 &lt;blockquote&gt;&lt;p&gt;相同的软件，体验如何俺不知道&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -312,7 +312,7 @@ aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
 &lt;h3&gt;网易云音乐&lt;/h3&gt;
 &lt;blockquote&gt;&lt;p&gt;相同的软件，体验略差一丢丢&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="1051" data-height="701" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/254a720001cea6e97544c8454405438a.png" alt="网易云音乐" /&gt;&lt;figcaption&gt;网易云音乐&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="1051" data-height="701" src="/archives/assets/254a720001cea6e97544c8454405438a.png" alt="网易云音乐" /&gt;&lt;figcaption&gt;网易云音乐&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;说体验差一点的原因是，在 KDE 下刚装好的网易云音乐会有不能输入中文的情况，需要改动一个文件，不过这个问题在 ArchLinux 上也许就要被修复了。&lt;/p&gt;
 &lt;h3&gt;有道词典&lt;/h3&gt;
 &lt;blockquote&gt;&lt;p&gt;不置评价&lt;/p&gt;
@@ -333,10 +333,10 @@ aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
 &lt;p&gt;ArchLinux 上有 Evernote 的客户端，但是我也不用 ´_&amp;gt;`&lt;/p&gt;
 &lt;p&gt;当时 Evernote 有网页版吧，体验貌似也许不如客户端&lt;/p&gt;
 &lt;p&gt;另外一个替代产品 &lt;code&gt;notion&lt;/code&gt; ， 网页版体验不错，不过这种笔记软件大概迁移的时候会很麻烦，好在 &lt;code&gt;notion&lt;/code&gt; 支持从 &lt;code&gt;Evernote&lt;/code&gt; 导入。&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="1920" data-height="971" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/72b7c459e5ed4a1f474ebebdfd8e297a.png" alt="notion" /&gt;&lt;figcaption&gt;notion&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="1920" data-height="967" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/5dd9e8c35a5a03be785bf5f7e5f94fdb.png" alt="notion" /&gt;&lt;figcaption&gt;notion&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="1920" data-height="971" src="/archives/assets/72b7c459e5ed4a1f474ebebdfd8e297a.png" alt="notion" /&gt;&lt;figcaption&gt;notion&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="1920" data-height="967" src="/archives/assets/5dd9e8c35a5a03be785bf5f7e5f94fdb.png" alt="notion" /&gt;&lt;figcaption&gt;notion&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;类似于 Evernote 的剪藏功能&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="1920" data-height="969" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/d0b76625c9fe0349479c102f8b4b6bb6.png" alt="收集网页待读" /&gt;&lt;figcaption&gt;收集网页待读&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="1920" data-height="969" src="/archives/assets/d0b76625c9fe0349479c102f8b4b6bb6.png" alt="收集网页待读" /&gt;&lt;figcaption&gt;收集网页待读&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3&gt;福欣 pdf 阅读器&lt;/h3&gt;
 &lt;blockquote&gt;&lt;p&gt;相同的软件&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -375,12 +375,12 @@ aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
 &lt;p&gt;Dota2 和 CSGO 在 Linux 上是原生运行的，基本没啥差别。&lt;/p&gt;
 &lt;p&gt;300 英雄是我借助  wine 运行的，性能有点问题，风扇转的比 Windows 下猛&lt;/p&gt;
 &lt;p&gt;东方的话 wine 完全没有问题，稳定 60 帧， 有没有兴趣联机绯想天呀 2333&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="659" data-height="499" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/8eb554681558226101772e8c4b2b465e.png" alt="最喜欢咲夜了" /&gt;&lt;figcaption&gt;最喜欢咲夜了&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="659" data-height="499" src="/archives/assets/8eb554681558226101772e8c4b2b465e.png" alt="最喜欢咲夜了" /&gt;&lt;figcaption&gt;最喜欢咲夜了&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3&gt;Everything&lt;/h3&gt;
 &lt;blockquote&gt;&lt;p&gt;有同类型软件，体验甚至更优&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;不得不说 Everything 是 Windows  平台上一款比较优秀的软件，搜索非常迅速，不过在 Linux 系统下，替代的工具有很多，比如我现在正在使用的 KDE Plasma 自带的 &lt;code&gt;KRunner&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="620" data-height="609" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/d4412b28c3dd07c42188321cc6024658.png" alt="KRunner" /&gt;&lt;figcaption&gt;KRunner&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="620" data-height="609" src="/archives/assets/d4412b28c3dd07c42188321cc6024658.png" alt="KRunner" /&gt;&lt;figcaption&gt;KRunner&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;支持的范围非常广，大概关掉一些功能就可以和 Everything 得到一样的体验了，哈哈&lt;/p&gt;
 &lt;h3&gt;PotPlayer&lt;/h3&gt;
 &lt;blockquote&gt;&lt;p&gt;有同类产品，体验较好&lt;/p&gt;
@@ -417,7 +417,7 @@ aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
 &lt;li&gt;百度网盘官方 Linux 客户端  而且&lt;strong&gt;不限速&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;BaiduPCS-go   之前的一个神器，命令行版本，&lt;strong&gt;不限速&lt;/strong&gt; ，已凉&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="991" data-height="692" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/19b7111422f7e2140519ef32353b014f.png" alt="已经很对得起我的带宽了" /&gt;&lt;figcaption&gt;已经很对得起我的带宽了&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="991" data-height="692" src="/archives/assets/19b7111422f7e2140519ef32353b014f.png" alt="已经很对得起我的带宽了" /&gt;&lt;figcaption&gt;已经很对得起我的带宽了&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3&gt;有道云笔记&lt;/h3&gt;
 &lt;blockquote&gt;&lt;p&gt;参考印象笔记&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -433,7 +433,7 @@ aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
 &lt;/blockquote&gt;
 &lt;p&gt;在 Linux 下可以使用 OBS 推流，不过就看不到观众的弹幕了。只好再打开一个网页看自己直播 (&lt;/p&gt;
 &lt;p&gt;这是我目前使用的方法&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="1917" data-height="1075" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/30619ce31e337e5b88cac2c213ef09e8.png" alt="OBS 直播" /&gt;&lt;figcaption&gt;OBS 直播&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="1917" data-height="1075" src="/archives/assets/30619ce31e337e5b88cac2c213ef09e8.png" alt="OBS 直播" /&gt;&lt;figcaption&gt;OBS 直播&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3&gt;XMain ZEN&lt;/h3&gt;
 &lt;blockquote&gt;&lt;p&gt;相同的软件、体验差不多的同类软件&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -464,10 +464,10 @@ aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;因为在 Linux 下使用 QQ 的需求也不是特别大，目前使用 &lt;code&gt;QQ for Linux&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="1118" data-height="798" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/913ea49ec599b7bfac3c4b1bb6009bc7.png" alt="QQ for Linux" /&gt;&lt;figcaption&gt;QQ for Linux&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="1118" data-height="798" src="/archives/assets/913ea49ec599b7bfac3c4b1bb6009bc7.png" alt="QQ for Linux" /&gt;&lt;figcaption&gt;QQ for Linux&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;Telegram 他不香嘛？&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="1111" data-height="934" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/7478a54cf17ecd9c591061239bd94ff2.png" alt="Telegram" /&gt;&lt;figcaption&gt;Telegram&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="1111" data-height="934" src="/archives/assets/7478a54cf17ecd9c591061239bd94ff2.png" alt="Telegram" /&gt;&lt;figcaption&gt;Telegram&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3&gt;钉钉、腾讯课堂&lt;/h3&gt;
 &lt;blockquote&gt;&lt;p&gt;Windows 完胜&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -491,7 +491,7 @@ aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
 &lt;/ul&gt;
 &lt;p&gt;我现在使用的是 &lt;code&gt;VS Code&lt;/code&gt; 和 &lt;code&gt;vim&lt;/code&gt;&lt;/p&gt;
 &lt;h2&gt;等等，我是不是落下了什么东西？&lt;/h2&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="95" data-height="91" src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/archives/assets/3fa629037f8ea30a11caa494455d80a9.png" alt="这货" /&gt;&lt;figcaption&gt;这货&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="95" data-height="91" src="/archives/assets/3fa629037f8ea30a11caa494455d80a9.png" alt="这货" /&gt;&lt;figcaption&gt;这货&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;没错我是故意把它拉出来的，我就是要羞辱它&lt;/p&gt;
 &lt;p&gt;我 &lt;code&gt;pacman&lt;/code&gt; 把它按地上锤&lt;/p&gt;
 

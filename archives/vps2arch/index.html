@@ -11,13 +11,13 @@
     <meta name="template" content="Galileo" />
     <link rel="alternate" type="application/rss+xml" title="SiHuan's Blog &raquo; RSS 2.0" href="/feed/index.xml" />
     <link rel="alternate" type="application/atom+xml" title="SiHuan's Blog &raquo; ATOM 1.0" href="/feed/atom/index.xml" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/assets/galileo-3f2347c2c0.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/assets/ExSearch/ExSearch-182e5a8868.css">
+    <link rel="stylesheet" href="/assets/galileo-3f2347c2c0.css">
+    <link rel="stylesheet" href="/assets/ExSearch/ExSearch-182e5a8868.css">
     <link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/09cd0b8b31739b53b0946f1afad307db.json"
+            api: "/93e0e9612cf3b99c7c09d7c285e15468.json"
         }
     </script>
     
@@ -50,7 +50,7 @@
                 <div first>
                     <aside id="ga-logo">
                         <a href="/" target="_self">
-                            <img src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/logo.png" alt="SiHuan's Blog">
+                            <img src="/logo.png" alt="SiHuan's Blog">
                         </a>
                     </aside>
                     <aside id="ga-brand">
@@ -143,7 +143,7 @@ hwclock --systohc
 zh_CN.UTF-8 UTF-8
 zh_TW.UTF-8 UTF-8</code></pre>
 <p>执行 <code>locale-gen</code></p>
-<p>创建 <code>locale.conf</code> 并编辑 <code>LANG</code> 这一 <a href="https://wiki.archlinux.org/index.php/Variable">变量</a>，比如：</p>
+<p>创建 <code>/etc/locale.conf</code> 并编辑 <code>LANG</code> 这一 <a href="https://wiki.archlinux.org/index.php/Variable">变量</a>，比如：</p>
 
 <pre><code>LANG=en_US.UTF-8</code></pre>
 <h3>添加 ArchLinuxCN 源</h3>
@@ -189,7 +189,7 @@ pacman -S archlinuxcn-keyring
 <p>输入密码</p>
 <p>接下来的操作就是在 <em>sihuan</em> 这个用户里进行的啦</p>
 <div class="highlight"><pre><span></span><span class="c1"># 安装需要的软件包</span>
-sudo pacman -S git stow zsh grml-zsh-config powerline ranger
+sudo pacman -S git stow zsh grml-zsh-config powerline ranger exa zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search
 <span class="c1"># 克隆 dotfiles 仓库</span>
 git clone https://github.com/Si-Huan/dotfiles
 <span class="c1"># 切换 shell 到 zsh</span>
@@ -272,7 +272,7 @@ ssh-copy-id sihuan@hostip
                     <script>
                         var site_build_date = "2020-01-01T00:00+08:00"
                     </script>
-                    <script src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/assets/galileo-61cf2e8279.js"></script>
+                    <script src="/assets/galileo-61cf2e8279.js"></script>
                 </footer>
             </div>
         </div>
@@ -316,12 +316,12 @@ ssh-copy-id sihuan@hostip
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/assets/ExSearch/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/assets/ExSearch/ExSearch-493cb9cd89.js"></script>
+    <script src="/assets/ExSearch/jquery.min.js"></script>
+    <script src="/assets/ExSearch/ExSearch-493cb9cd89.js"></script>
     
     <!--katex-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/assets/katex.min.css">
-    <script defer src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/assets/katex.min.js"></script>
+    <link rel="stylesheet" href="/assets/katex.min.css">
+    <script defer src="/assets/katex.min.js"></script>
     <script>
     mathOpts = {
         delimiters: [
@@ -332,7 +332,7 @@ ssh-copy-id sihuan@hostip
         ]
     };
     </script>
-    <script defer src="https://cdn.jsdelivr.net/gh/Si-Huan/SiHuan-Blog@gh-pages/assets/auto-render.min.js" onload="renderMathInElement(document.body, mathOpts);"></script>
+    <script defer src="/assets/auto-render.min.js" onload="renderMathInElement(document.body, mathOpts);"></script>
 
     
     </body>
