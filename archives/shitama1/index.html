@@ -21,19 +21,20 @@
         }
     </script>
     
-<title>标签: Linux 技巧 - SiHuan's Blog</title>
+<title>Shitama 代码分析 - SiHuan's Blog</title>
 <meta name="author" content="SiHuan" />
-<meta name="description" content="道阻且长，吾意思还。" />
-<meta property="og:title" content="标签: Linux 技巧 - SiHuan's Blog" />
-<meta property="og:description" content="道阻且长，吾意思还。" />
+<meta name="description" content="真就强行分析呗。" />
+<meta property="og:title" content="Shitama 代码分析 - SiHuan's Blog" />
+<meta property="og:description" content="真就强行分析呗。" />
 <meta property="og:site_name" content="SiHuan's Blog" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/tag/Linux 技巧/" />
-<meta property="og:image" content="SiHuan's Blog" />
-<meta name="twitter:title" content="标签: Linux 技巧 - SiHuan's Blog" />
-<meta name="twitter:description" content="道阻且长，吾意思还。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/archives/shitama1/" />
+<meta property="og:image" content="" />
+<meta property="article:published_time" content="2020-03-13T11:06:00-00.00" />
+<meta name="twitter:title" content="Shitama 代码分析 - SiHuan's Blog" />
+<meta name="twitter:description" content="真就强行分析呗。" />
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:image" content="/logo.png" />
+<meta name="twitter:image" content="" />
 
 
     
@@ -69,41 +70,96 @@
             <div class="wrapper">
                 
 <main>    
-    
+    <section class="ga-section ga-content">
+        <article class="yue">
+            <h1 class="ga-post_title">Shitama 代码分析</h1>
+            <span class="ga-post_meta ga-mono">
+                <span>SiHuan</span>
+                <time>
+                    2020-03-13
+                </time>
+                
+                in <a no-style class="category" href="/category/编程/">
+                    编程
+                </a>
+                
+                
+            </span>
+            <div class="ga-content_body">
+                <h1>Shitama 的历史</h1>
+<blockquote><p>「Shitama」是一个类毛玉服务，可以为「东方非想天则」提供简单的端口转发功能，让身处内网的玩家能够建立主机并进行对战。</p>
+</blockquote>
+<p>根据 Shitama 的 commit 的记录原作者应该是 <a href="https://github.com/evshiron">evshiron</a> ，不过现在 evshiron 的 github 上已经找不到 shitama 的相关源码，可以找到的是 <a href="https://github.com/u-u-z/shitama">Remi_IO 的一份 fork</a>，现在 <a href="https://github.com/Si-Huan/shitama">Si-Huan/shitama</a> 便是 fork 自 Remi_IO 的 fork .</p>
+<h1>非想天则联机机制与 Shitama 实现的功能</h1>
+<p>接下来，因为懒，我会将 Shitama 写为 shitama.</p>
+<blockquote><p>在此约定: 下文中 <u>主机方</u> 根据不同语境，指 <u>在联机对战中建立主机的那个人</u>、<u>在联机对战中建立主机的那个游戏客户端</u> 或者 <u>在联机对战中建立主机一方的电脑</u>。<u>客机方</u> 指什么大家自己类推一下吧（</p>
+</blockquote>
+<p>先简略说一下非想天则的联机机制，主机方指定本地端口建立房间，客机方输入主机方 ip:port  进行连接。</p>
+<p>那么现在的问题是：</p>
+<blockquote><p>如今，网络地址转换（Network Address Translation，NAT）设备如光猫、路由器等日益普及，许多联网设备失去了被从公网访问的能力。尽管某些情况下可以通过调整配置解决，例如对所有途径的NAT设备进行端口映射如配置虚拟服务器、DMZ主机，在多数情况下人们并没有调整配置的权限，如小区宽带，运营商NAT，网吧路由器，甚至拿不到超级帐号的光猫等等。<a href="https://github.com/Si-Huan/shitama/blob/master/docs/zh_CN/Watching.md">Watching.md</a></p>
+</blockquote>
+<p>shitama 实现的功能是：</p>
+<blockquote><p>类毛玉正是为了解决这个问题而出现的。有别于虚拟局域网如Hamachi、QQ对战平台、浩方对战平台、游侠对战平台，类毛玉通过将非想天则主机的端口转发到公网服务器上，使其它用户可以通过公网服务器的端口连接到处于内网的主机，从而进行对战。<a href="https://github.com/Si-Huan/shitama/blob/master/docs/zh_CN/Watching.md">Watching.md</a></p>
+</blockquote>
+<h1>shitama 构成与一次联机的工作过程图示</h1>
+<p>shitama 的分为四部分:</p>
+<ul>
+<li>clinet</li>
+<li>holder</li>
+<li>shard</li>
+<li>client-ui-qt</li>
+</ul>
+<p>其中第四部分是 client 的一个壳，与 client 本体通过 http 通信。使用 Qt/C++ 编写，其余部分使用 go 编写，因为本菜鸡全然不了解 Qt/C++ ，故 client-ui-qt 不在本文讨论范围。</p>
+<p>在此呢，我先放几张图，大致展示一下在 shitama 帮助下一次联机的过程</p>
+<ol>
+<li>client 向 holder 发起中转请求，请求中指定了 shardAddr 与 transport，即 shard 地址和使用的传输协议（目前只有 UDP 可选）。</li>
+<li>holder 收到请求后向被指定的 shard 发起中转请求</li>
+<li>shard 收到请求后会准备两个端口，此处几位 HostPort 和 GuestPort。并向 holder 返回这两个端口号</li>
+<li>holder 收到 shard 发来的端口后向 client 返回这两个端口号</li>
+<li>client 得知 shard 已经准备好两个端口后，会建立和 shard:HostPort 的链接，并把 shard:GuestPort 展示给使用者，这时候 client 的使用者就可以通过 im 把 shard:GuestPort 发送给客机方。</li>
+<li>客机方在游戏客户端填入 shard:GuestPort 进行联机对战</li>
+</ol>
+<p>不难发现其中相对复杂的部分是 shard HostPort 与 GuestPort 之间发生了什么，以及主机方游戏客户端（一般来说为主机方的 10800 端口）与 client 发生了什么。</p>
+<p>其实简略来说的话就是，shard GuestPort  和 客机方建立通信，HostPort 和 client 的某个端口（记作 Port1）通信，clinet 的另一个端口（记作 Port2）和主机方游戏客户端通信，主机方客户端发送数据给 Port2， Port2 收到数据会使用 Port1 发出去，也就是发给 HostPort，HostPort 收到数据会通过 GuestPort 发出去也就是发给客机方游戏客户端。因为涉及到观战的问题，主机方 client 的实际情况要比我说的复杂一些。</p>
+<p>。。。去做饭 明天画图继续</p>
 
-<section id="ga-archive_list" class="ga-section" data-title="#Linux 技巧">
-    <ul>
-        
-        <li>
-            <h1><a target="_self" class="ga-highlight" href="/archives/linuxapp/">Linux 日常存活方案</a></h1>
-            <time class="ga-mono" datetime="2020-03-15T11:06:00-00.00">
-                2020-03-15
-            </time>
-        </li>
-        
-        <li>
-            <h1><a target="_self" class="ga-highlight" href="/archives/vps2arch/">vps2arch!</a></h1>
-            <time class="ga-mono" datetime="2020-03-13T11:06:00-00.00">
-                2020-03-13
-            </time>
-        </li>
-        
-        <li>
-            <h1><a target="_self" class="ga-highlight" href="/archives/使用pb分享代码/">使用 pb 分享代码</a></h1>
-            <time class="ga-mono" datetime="2020-03-11T11:06:00-00.00">
-                2020-03-11
-            </time>
-        </li>
-        
-    </ul>
+            </div>
+        </article>
+        <div id="ga-tags">
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/tag/go/">#go</a>
+    </span>
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/tag/shitama/">#shitama</a>
+    </span>
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/tag/非想天则/">#非想天则</a>
+    </span>
+    
+</div>
+    </section>
+
+    
+<section id="ga-content_pager">
+
+    <div class="next">
+        <a class="ga-highlight" href="/archives/linuxapp/">Linux 日常存活方案</a>
+        <p class="yue">日常使用 Linux 可能会用到的软件们</p>
+    </div>
+
+
+    <div class="prev">
+        <a class="ga-highlight" href="/archives/vps2arch/">vps2arch!</a>
+        <p class="yue">The fastest way to convert a VPS to Arch Linux!</p>
+    </div>
+
 </section>
 
-<section class="ga-section ga-mono" id="ga-pager">
-    
-    <span>Page 1 of 1</span>
-    
-</section>
 
+    
 
 </main>
 

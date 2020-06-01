@@ -33,6 +33,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+    <loc>/archives/shitama1/</loc>
+    <lastmod>2020-03-13</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+</url>
+
+<url>
     <loc>/archives/vps2arch/</loc>
     <lastmod>2020-03-13</lastmod>
     <changefreq>always</changefreq>
