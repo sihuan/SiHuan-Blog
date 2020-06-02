@@ -17,7 +17,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "/d12741dae28e507a4a2f9da16a4dc814.json"
+            api: "/23ede53f64c8962a28f887c1d6b1654e.json"
         }
     </script>
     
@@ -112,16 +112,30 @@
 <p>其中第四部分是 client 的一个壳，与 client 本体通过 http 通信。使用 Qt/C++ 编写，其余部分使用 go 编写，因为本菜鸡全然不了解 Qt/C++ ，故 client-ui-qt 不在本文讨论范围。</p>
 <p>在此呢，我先放几张图，大致展示一下在 shitama 帮助下一次联机的过程</p>
 <ol>
-<li>client 向 holder 发起中转请求，请求中指定了 shardAddr 与 transport，即 shard 地址和使用的传输协议（目前只有 UDP 可选）。</li>
-<li>holder 收到请求后向被指定的 shard 发起中转请求</li>
-<li>shard 收到请求后会准备两个端口，此处几位 HostPort 和 GuestPort。并向 holder 返回这两个端口号</li>
-<li>holder 收到 shard 发来的端口后向 client 返回这两个端口号</li>
-<li>client 得知 shard 已经准备好两个端口后，会建立和 shard:HostPort 的链接，并把 shard:GuestPort 展示给使用者，这时候 client 的使用者就可以通过 im 把 shard:GuestPort 发送给客机方。</li>
-<li>客机方在游戏客户端填入 shard:GuestPort 进行联机对战</li>
+<li><p>client 向 holder 发起中转请求，请求中指定了 shardAddr 与 transport，即 shard 地址和使用的传输协议（目前只有 UDP 可选）。</p>
+</li>
+<li><p>holder 收到请求后向被指定的 shard 发起中转请求</p>
+</li>
 </ol>
+<p><figure><img data-width="912" data-height="660" src="/archives/assets/425f820ca9895723772d477ebc81545b.png" alt="申请中转" /><figcaption>申请中转</figcaption></figure></p>
+<ol>
+<li><p>shard 收到请求后会准备两个端口，此处几位 HostPort 和 GuestPort。并向 holder 返回这两个端口号</p>
+</li>
+<li><p>holder 收到 shard 发来的端口后向 client 返回这两个端口号</p>
+</li>
+</ol>
+<p><figure><img data-width="912" data-height="660" src="/archives/assets/81d12fb47f947784978b8c710bb7951e.png" alt="shard 返回端口号" /><figcaption>shard 返回端口号</figcaption></figure></p>
+<ol>
+<li><p>client 得知 shard 已经准备好两个端口后，会建立和 shard:HostPort 的链接，并把 shard:GuestPort 展示给使用者，这时候 client 的使用者就可以通过 im 把 shard:GuestPort 发送给客机方。</p>
+</li>
+<li><p>客机方在游戏客户端填入 shard:GuestPort 进行联机对战</p>
+</li>
+</ol>
+<p><figure><img data-width="1195" data-height="660" src="/archives/assets/c8b91a3391ee5b4f04d4eac1e7ef7ff4.png" alt="链接建立" /><figcaption>链接建立</figcaption></figure></p>
 <p>不难发现其中相对复杂的部分是 shard HostPort 与 GuestPort 之间发生了什么，以及主机方游戏客户端（一般来说为主机方的 10800 端口）与 client 发生了什么。</p>
 <p>其实简略来说的话就是，shard GuestPort  和 客机方建立通信，HostPort 和 client 的某个端口（记作 Port1）通信，clinet 的另一个端口（记作 Port2）和主机方游戏客户端通信，主机方客户端发送数据给 Port2， Port2 收到数据会使用 Port1 发出去，也就是发给 HostPort，HostPort 收到数据会通过 GuestPort 发出去也就是发给客机方游戏客户端。因为涉及到观战的问题，主机方 client 的实际情况要比我说的复杂一些。</p>
-<p>。。。去做饭 明天画图继续</p>
+<p><figure><img data-width="1346" data-height="372" src="/archives/assets/a45ce6fb1094844897e18bd373f45524.png" alt="how_shitama_work4" /><figcaption>how_shitama_work4</figcaption></figure></p>
+<p>图中虚线的意味： shard1 中由 HostPort 指向 GuestPort 的虚线意味着 HostPort 并不会向 GuestPort 发送数据，而是每当 HostPort 收到来自 Port1 的数据就会使用 GuestPort 发送出去。也就是说 HostPort 只与 Port1 通信。</p>
 
             </div>
         </article>
