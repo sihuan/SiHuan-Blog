@@ -19,6 +19,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+    <loc>/archives/utsutsu1/</loc>
+    <lastmod>2020-07-24</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+</url>
+
+<url>
     <loc>/archives/shitama1/</loc>
     <lastmod>2020-06-01</lastmod>
     <changefreq>always</changefreq>
