@@ -17,7 +17,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "/30cec857d90d9978d54596f8e47468f0.json"
+            api: "/48e7a86d8e4fdb3bd27dd1a4359db8b7.json"
         }
     </script>
     
@@ -137,7 +137,7 @@ hwclock --systohc
 </pre></div>
 <h3>设置中文</h3>
 <p>这时候你的系统还是不支持中文的，输入中文将会乱码，我们需要进行一下操作。</p>
-<p>编辑 <code>/etc/locale.gen</code> 取消一下行的注释</p>
+<p>编辑 <code>/etc/locale.gen</code> 取消一下行的注释（你可能需要一个编辑器，如 <code>vim</code>，请自行安装）</p>
 
 <pre><code>en_US.UTF-8 UTF-8
 zh_CN.UTF-8 UTF-8
@@ -173,8 +173,9 @@ pacman -S archlinuxcn-keyring
 <p>首先安装 sudo</p>
 <div class="highlight"><pre><span></span>pacman -S sudo
 </pre></div>
-<p>编辑配置文件</p>
-<div class="highlight"><pre><span></span>visudo
+<p>编辑配置文件，我认为你已经安装了 <code>vim</code></p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">EDITOR</span><span class="o">=</span>vim
+visudo
 </pre></div>
 <p>找到下面一行，取消掉注释</p>
 <div class="highlight"><pre><span></span>%wheel <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL
@@ -183,9 +184,10 @@ pacman -S archlinuxcn-keyring
 <blockquote><p>建议大家都自己整一个 <code>dotfiles</code> ，具体可以看 fc 老师翻译的 <a href="https://farseerfc.me/using-gnu-stow-to-manage-your-dotfiles.html">这篇文章</a></p>
 </blockquote>
 <p>以下就以我自己的为例，如果有时间我会详细的解释以下我的 <code>dotfiles</code> 包含了什么</p>
-<p>切换到新的用户</p>
+<p>切换到新的用户，并来到自己的家目录</p>
 
-<pre><code>su sihuan</code></pre>
+<pre><code>su sihuan
+cd</code></pre>
 <p>输入密码</p>
 <p>接下来的操作就是在 <em>sihuan</em> 这个用户里进行的啦</p>
 <div class="highlight"><pre><span></span><span class="c1"># 安装需要的软件包</span>
@@ -193,7 +195,9 @@ sudo pacman -S git stow zsh grml-zsh-config powerline ranger exa zsh-autosuggest
 <span class="c1"># 克隆 dotfiles 仓库</span>
 git clone https://github.com/Si-Huan/dotfiles
 <span class="c1"># 切换 shell 到 zsh</span>
-chsh -s zsh
+chsh -s /bin/zsh
+<span class="c1"># 删除已有的 ~/.bashrc</span>
+rm ~/.bashrc
 <span class="c1"># 使 zsh 配置生效</span>
 <span class="nb">cd</span> dotfiles
 stow zsh

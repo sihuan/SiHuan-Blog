@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>SiHuan's Blog</title><link>/</link><description>道阻且长，吾意思还。</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.png</url><title>SiHuan's Blog</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Sun, 02 Aug 2020 15:32:43 +0806</lastBuildDate><pubDate>Sun, 02 Aug 2020 15:32:43 +0806</pubDate><item><title>庆祝一下</title><link>/archives/庆祝一下/</link><description>&lt;h1&gt;Hello World&lt;/h1&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>SiHuan's Blog</title><link>/</link><description>道阻且长，吾意思还。</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.png</url><title>SiHuan's Blog</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Sun, 16 Aug 2020 02:36:26 +0806</lastBuildDate><pubDate>Sun, 16 Aug 2020 02:36:26 +0806</pubDate><item><title>庆祝一下</title><link>/archives/庆祝一下/</link><description>&lt;h1&gt;Hello World&lt;/h1&gt;
 &lt;p&gt;今天做好了这个静态博客和个人 Wiki 🎉&lt;/p&gt;
 &lt;p&gt;赶紧发一个 POST 庆祝一下&lt;/p&gt;
 &lt;p&gt;就这些&lt;/p&gt;
@@ -156,7 +156,7 @@ hwclock --systohc
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;设置中文&lt;/h3&gt;
 &lt;p&gt;这时候你的系统还是不支持中文的，输入中文将会乱码，我们需要进行一下操作。&lt;/p&gt;
-&lt;p&gt;编辑 &lt;code&gt;/etc/locale.gen&lt;/code&gt; 取消一下行的注释&lt;/p&gt;
+&lt;p&gt;编辑 &lt;code&gt;/etc/locale.gen&lt;/code&gt; 取消一下行的注释（你可能需要一个编辑器，如 &lt;code&gt;vim&lt;/code&gt;，请自行安装）&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;en_US.UTF-8 UTF-8
 zh_CN.UTF-8 UTF-8
@@ -192,8 +192,9 @@ pacman -S archlinuxcn-keyring
 &lt;p&gt;首先安装 sudo&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -S sudo
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;编辑配置文件&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;visudo
+&lt;p&gt;编辑配置文件，我认为你已经安装了 &lt;code&gt;vim&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;EDITOR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;vim
+visudo
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;找到下面一行，取消掉注释&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;%wheel &lt;span class="nv"&gt;ALL&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;ALL&lt;span class="o"&gt;)&lt;/span&gt; ALL
@@ -202,9 +203,10 @@ pacman -S archlinuxcn-keyring
 &lt;blockquote&gt;&lt;p&gt;建议大家都自己整一个 &lt;code&gt;dotfiles&lt;/code&gt; ，具体可以看 fc 老师翻译的 &lt;a href="https://farseerfc.me/using-gnu-stow-to-manage-your-dotfiles.html"&gt;这篇文章&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;以下就以我自己的为例，如果有时间我会详细的解释以下我的 &lt;code&gt;dotfiles&lt;/code&gt; 包含了什么&lt;/p&gt;
-&lt;p&gt;切换到新的用户&lt;/p&gt;
+&lt;p&gt;切换到新的用户，并来到自己的家目录&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;su sihuan&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;su sihuan
+cd&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;输入密码&lt;/p&gt;
 &lt;p&gt;接下来的操作就是在 &lt;em&gt;sihuan&lt;/em&gt; 这个用户里进行的啦&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 安装需要的软件包&lt;/span&gt;
@@ -212,7 +214,9 @@ sudo pacman -S git stow zsh grml-zsh-config powerline ranger exa zsh-autosuggest
 &lt;span class="c1"&gt;# 克隆 dotfiles 仓库&lt;/span&gt;
 git clone https://github.com/Si-Huan/dotfiles
 &lt;span class="c1"&gt;# 切换 shell 到 zsh&lt;/span&gt;
-chsh -s zsh
+chsh -s /bin/zsh
+&lt;span class="c1"&gt;# 删除已有的 ~/.bashrc&lt;/span&gt;
+rm ~/.bashrc
 &lt;span class="c1"&gt;# 使 zsh 配置生效&lt;/span&gt;
 &lt;span class="nb"&gt;cd&lt;/span&gt; dotfiles
 stow zsh
