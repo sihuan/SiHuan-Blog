@@ -15,8 +15,8 @@ excerpt: 开心!
 
 # 今天又干了不少事情呢
 
-欢迎来看看， SiHuan's onedrive index 🎉 
+欢迎来看看， [SiHuan's onedrive index](https://storage.sakuya.love) 🎉 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcyMzUzMDY4MF19
+eyJoaXN0b3J5IjpbLTg1MDc2NjkyNV19
 -->
