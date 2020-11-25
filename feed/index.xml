@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>SiHuan's Blog</title><link>/</link><description>道阻且长，吾意思还。</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.png</url><title>SiHuan's Blog</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Wed, 25 Nov 2020 17:13:34 +0806</lastBuildDate><pubDate>Wed, 25 Nov 2020 17:13:34 +0806</pubDate><item><title>下雪了</title><link>/archives/下雪了/</link><description>&lt;p&gt;昨天下了一天雪❄️
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>SiHuan's Blog</title><link>/</link><description>道阻且长，吾意思还。</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.png</url><title>SiHuan's Blog</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Wed, 25 Nov 2020 17:13:55 +0806</lastBuildDate><pubDate>Wed, 25 Nov 2020 17:13:55 +0806</pubDate><item><title>下雪了</title><link>/archives/下雪了/</link><description>&lt;p&gt;昨天下了一天雪❄️
 今天早上出去转了一圈拍了一些照片
 真的冷啊&lt;/p&gt;
 &lt;p&gt;&lt;figure&gt;&lt;img data-width="5504" data-height="3096" src="/archives/assets/1818cd9b0d9c421ccc4aea20010b1025.jpg" alt="房前的菜地" /&gt;&lt;figcaption&gt;房前的菜地&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
@@ -965,7 +965,7 @@ sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; redis.service --now
 &lt;blockquote&gt;&lt;p&gt;啊这 终于写完了， 又水了一篇 23333&lt;/p&gt;
 &lt;/blockquote&gt;
 </description><author>sihuan@sakuya.love (SiHuan)</author><guid isPermaLink="true">/archives/xzz/</guid><pubDate>Sun, 02 Aug 2020 11:06:00 +0806</pubDate></item><item><title>今天收获了两个网盘诶</title><link>/archives/two-drive/</link><description>&lt;h1&gt;今天又干了不少事情呢&lt;/h1&gt;
-&lt;p&gt;欢迎来看看， SiHuan's onedrive index 🎉&lt;/p&gt;
+&lt;p&gt;欢迎来看看， &lt;a href="https://storage.sakuya.love"&gt;SiHuan's onedrive index&lt;/a&gt; 🎉&lt;/p&gt;
 &lt;!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcyMzUzMDY4MF19
+eyJoaXN0b3J5IjpbLTg1MDc2NjkyNV19
 --&gt;</description><author>sihuan@sakuya.love (SiHuan)</author><guid isPermaLink="true">/archives/two-drive/</guid><pubDate>Thu, 26 Nov 2020 11:06:00 +0806</pubDate></item></channel></rss>
