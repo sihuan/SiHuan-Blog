@@ -31,6 +31,11 @@ key_words = ['SiHuan', '思还', 'Blog', '博客', 'GitBlog']
 language = 'zh-CN'
 external_links = [
     {
+        "name": "SiHuan's OneDrive",
+        "url": "http://storage.sakuya.love",
+        "brief": "This is SiHuan's OneDrive public directory listing."
+    },
+    {
         "name": "SiHuan-Wiki",
         "url": "http://wiki.sakuya.love",
         "brief": "我的知识积累。"
