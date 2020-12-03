@@ -17,7 +17,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "/e17f12ed7dda468bcb15ec04902fbff9.json"
+            api: "/74ab7f7e9a3eab8ec2b7596875084717.json"
         }
     </script>
     
@@ -102,11 +102,11 @@
 <p>你需要有一个干净的系统，既然都要把系统重新安装成 Arch 了，提前重置一下系统不为过吧。</p>
 <p>推荐重置为 <code>CentOS</code> 或者 <code>Debain</code> 这个脚本在 <code>Ubuntu 18</code> 上也许有一些问题。</p>
 <h2>开干</h2>
-<p>使用 SSH 链接到你的 VPS，在开始之前你可以修改一下 root 密码，以为 vps2arch 会将新系统的密码设置为你运行脚本之前的 root 密码</p>
+<p>使用 SSH 链接到你的 VPS，在开始之前你可以修改一下 root 密码，因为 vps2arch 会将新系统的密码设置为你运行脚本之前的 root 密码</p>
 <div class="highlight"><pre><span></span>passwd root
 </pre></div>
 <p>你需要输入两次新密码，并且输入密码没有回显</p>
-<p>接下来就是重点了，以 root 身份执行一下命令</p>
+<p>接下来就是重点了，以 root 身份执行以下命令</p>
 <div class="highlight"><pre><span></span><span class="c1"># 下载 vps2arch 脚本</span>
 <span class="c1"># wget https://tinyurl.com/vps2arch 也会被重定向到以下 url</span>
 wget https://gitlab.com/drizzt/vps2arch/-/raw/master/vps2arch
@@ -139,13 +139,13 @@ hwclock --systohc
 <p>这时候你的系统还是不支持中文的，输入中文将会乱码，我们需要进行一下操作。</p>
 <p>编辑 <code>/etc/locale.gen</code> 取消一下行的注释（你可能需要一个编辑器，如 <code>vim</code>，请自行安装）</p>
 
-<pre><code>en_US.UTF-8 UTF-8
+<pre><code>en_GB.UTF-8 UTF-8
 zh_CN.UTF-8 UTF-8
 zh_TW.UTF-8 UTF-8</code></pre>
 <p>执行 <code>locale-gen</code></p>
 <p>创建 <code>/etc/locale.conf</code> 并编辑 <code>LANG</code> 这一 <a href="https://wiki.archlinux.org/index.php/Variable">变量</a>，比如：</p>
 
-<pre><code>LANG=en_US.UTF-8</code></pre>
+<pre><code>LANG=en_GB.UTF-8</code></pre>
 <h3>添加 ArchLinuxCN 源</h3>
 <p>编辑 <code>/etc/pacman.conf</code> ，在文件末尾添加</p>
 
@@ -158,7 +158,7 @@ pacman -S archlinuxcn-keyring
 <h3>添加用户</h3>
 <blockquote><p>一直使用 root 用户是不太安全的！我们来添加一个新的用户</p>
 </blockquote>
-<p>接下来的命令中，新的用户名以 <em>sihuan</em> 为例，执行替换</p>
+<p>接下来的命令中，新的用户名以 <em>sihuan</em> 为例，自行替换</p>
 <div class="highlight"><pre><span></span>useradd -m -G wheel sihuan
 </pre></div>
 <blockquote><p>useradd 是 archlinux 系统添加用户的命令</p>

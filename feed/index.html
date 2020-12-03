@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>SiHuan's Blog</title><link>/</link><description>道阻且长，吾意思还。</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.png</url><title>SiHuan's Blog</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Thu, 26 Nov 2020 07:49:43 +0806</lastBuildDate><pubDate>Thu, 26 Nov 2020 07:49:43 +0806</pubDate><item><title>下雪了</title><link>/archives/下雪了/</link><description>&lt;p&gt;昨天下了一天雪❄️
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>SiHuan's Blog</title><link>/</link><description>道阻且长，吾意思还。</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.png</url><title>SiHuan's Blog</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Thu, 03 Dec 2020 08:13:34 +0806</lastBuildDate><pubDate>Thu, 03 Dec 2020 08:13:34 +0806</pubDate><item><title>下雪了</title><link>/archives/下雪了/</link><description>&lt;p&gt;昨天下了一天雪❄️
 今天早上出去转了一圈拍了一些照片
 真的冷啊&lt;/p&gt;
 &lt;p&gt;&lt;figure&gt;&lt;img data-width="5504" data-height="3096" src="/archives/assets/1818cd9b0d9c421ccc4aea20010b1025.jpg" alt="房前的菜地" /&gt;&lt;figcaption&gt;房前的菜地&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
@@ -115,11 +115,11 @@ $ cat main.py &lt;span class="p"&gt;|&lt;/span&gt; pb
 &lt;p&gt;你需要有一个干净的系统，既然都要把系统重新安装成 Arch 了，提前重置一下系统不为过吧。&lt;/p&gt;
 &lt;p&gt;推荐重置为 &lt;code&gt;CentOS&lt;/code&gt; 或者 &lt;code&gt;Debain&lt;/code&gt; 这个脚本在 &lt;code&gt;Ubuntu 18&lt;/code&gt; 上也许有一些问题。&lt;/p&gt;
 &lt;h2&gt;开干&lt;/h2&gt;
-&lt;p&gt;使用 SSH 链接到你的 VPS，在开始之前你可以修改一下 root 密码，以为 vps2arch 会将新系统的密码设置为你运行脚本之前的 root 密码&lt;/p&gt;
+&lt;p&gt;使用 SSH 链接到你的 VPS，在开始之前你可以修改一下 root 密码，因为 vps2arch 会将新系统的密码设置为你运行脚本之前的 root 密码&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;passwd root
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;你需要输入两次新密码，并且输入密码没有回显&lt;/p&gt;
-&lt;p&gt;接下来就是重点了，以 root 身份执行一下命令&lt;/p&gt;
+&lt;p&gt;接下来就是重点了，以 root 身份执行以下命令&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 下载 vps2arch 脚本&lt;/span&gt;
 &lt;span class="c1"&gt;# wget https://tinyurl.com/vps2arch 也会被重定向到以下 url&lt;/span&gt;
 wget https://gitlab.com/drizzt/vps2arch/-/raw/master/vps2arch
@@ -152,13 +152,13 @@ hwclock --systohc
 &lt;p&gt;这时候你的系统还是不支持中文的，输入中文将会乱码，我们需要进行一下操作。&lt;/p&gt;
 &lt;p&gt;编辑 &lt;code&gt;/etc/locale.gen&lt;/code&gt; 取消一下行的注释（你可能需要一个编辑器，如 &lt;code&gt;vim&lt;/code&gt;，请自行安装）&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;en_US.UTF-8 UTF-8
+&lt;pre&gt;&lt;code&gt;en_GB.UTF-8 UTF-8
 zh_CN.UTF-8 UTF-8
 zh_TW.UTF-8 UTF-8&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;执行 &lt;code&gt;locale-gen&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;创建 &lt;code&gt;/etc/locale.conf&lt;/code&gt; 并编辑 &lt;code&gt;LANG&lt;/code&gt; 这一 &lt;a href="https://wiki.archlinux.org/index.php/Variable"&gt;变量&lt;/a&gt;，比如：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;LANG=en_US.UTF-8&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;LANG=en_GB.UTF-8&lt;/code&gt;&lt;/pre&gt;
 &lt;h3&gt;添加 ArchLinuxCN 源&lt;/h3&gt;
 &lt;p&gt;编辑 &lt;code&gt;/etc/pacman.conf&lt;/code&gt; ，在文件末尾添加&lt;/p&gt;
 
@@ -171,7 +171,7 @@ pacman -S archlinuxcn-keyring
 &lt;h3&gt;添加用户&lt;/h3&gt;
 &lt;blockquote&gt;&lt;p&gt;一直使用 root 用户是不太安全的！我们来添加一个新的用户&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;接下来的命令中，新的用户名以 &lt;em&gt;sihuan&lt;/em&gt; 为例，执行替换&lt;/p&gt;
+&lt;p&gt;接下来的命令中，新的用户名以 &lt;em&gt;sihuan&lt;/em&gt; 为例，自行替换&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;useradd -m -G wheel sihuan
 &lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;&lt;p&gt;useradd 是 archlinux 系统添加用户的命令&lt;/p&gt;
