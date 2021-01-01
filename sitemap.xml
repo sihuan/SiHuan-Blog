@@ -19,6 +19,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+    <loc>/archives/linuxorwinjoke/</loc>
+    <lastmod>2021-01-01</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+</url>
+
+<url>
     <loc>/archives/two-drive/</loc>
     <lastmod>2020-11-26</lastmod>
     <changefreq>always</changefreq>
