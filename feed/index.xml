@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>SiHuan's Blog</title><link>/</link><description>道阻且长，吾意思还。</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.png</url><title>SiHuan's Blog</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Tue, 02 Mar 2021 08:44:01 +0806</lastBuildDate><pubDate>Tue, 02 Mar 2021 08:44:01 +0806</pubDate><item><title>使用 pb 分享代码</title><link>/archives/使用pb分享代码/</link><description>&lt;blockquote&gt;&lt;p&gt;PrivateBin 在线匿名粘贴版？大概吧&lt;/p&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>SiHuan's Blog</title><link>/</link><description>道阻且长，吾意思还。</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>/logo.png</url><title>SiHuan's Blog</title><link>/</link></image><language>zh-CN</language><lastBuildDate>Mon, 07 Jun 2021 04:07:37 +0806</lastBuildDate><pubDate>Mon, 07 Jun 2021 04:07:37 +0806</pubDate><item><title>使用 pb 分享代码</title><link>/archives/使用pb分享代码/</link><description>&lt;blockquote&gt;&lt;p&gt;PrivateBin 在线匿名粘贴版？大概吧&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;分享代码给其他人的时候，发送文件太麻烦，直接把代码发过去的话有没有高亮和缩进而且会刷屏！&lt;/p&gt;
 &lt;p&gt;可以使用 pb 服务来解决这一个问题 ´ ▽ ` )ﾉ&lt;/p&gt;
@@ -198,7 +198,7 @@ cd&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;输入密码&lt;/p&gt;
 &lt;p&gt;接下来的操作就是在 &lt;em&gt;sihuan&lt;/em&gt; 这个用户里进行的啦&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 安装需要的软件包&lt;/span&gt;
-sudo pacman -S git stow zsh grml-zsh-config powerline ranger exa zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search
+sudo pacman -S git stow zsh zsh-theme-powerlevel10k powerline-fonts awesome-terminal-fonts paru powerline ranger exa zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search
 &lt;span class="c1"&gt;# 克隆 dotfiles 仓库&lt;/span&gt;
 git clone https://github.com/Si-Huan/dotfiles
 &lt;span class="c1"&gt;# 切换 shell 到 zsh&lt;/span&gt;

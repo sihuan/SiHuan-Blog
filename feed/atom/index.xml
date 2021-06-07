@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><id>/</id><title>SiHuan's Blog</title><updated>2021-03-02T08:44:01.903432+08:06</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email></author><link href="/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator><logo>/logo.png</logo><subtitle>道阻且长，吾意思还。</subtitle><entry><id>/archives/使用pb分享代码/</id><title>使用 pb 分享代码</title><updated>2021-03-02T08:44:01.903776+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;PrivateBin 在线匿名粘贴版？大概吧&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><id>/</id><title>SiHuan's Blog</title><updated>2021-06-07T04:07:37.334159+08:06</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email></author><link href="/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator><logo>/logo.png</logo><subtitle>道阻且长，吾意思还。</subtitle><entry><id>/archives/使用pb分享代码/</id><title>使用 pb 分享代码</title><updated>2021-06-07T04:07:37.334710+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;PrivateBin 在线匿名粘贴版？大概吧&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;分享代码给其他人的时候，发送文件太麻烦，直接把代码发过去的话有没有高亮和缩进而且会刷屏！&lt;/p&gt;
 &lt;p&gt;可以使用 pb 服务来解决这一个问题 ´ ▽ ` )ﾉ&lt;/p&gt;
@@ -93,7 +93,7 @@ $ cat main.py &lt;span class="p"&gt;|&lt;/span&gt; pb
 &lt;p&gt;这样当你 &lt;code&gt;cmd | fs&lt;/code&gt;  的时候，url 就会自动复制到剪切板啦。&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;吹一下 kdeconnect  , 如果你用了 kdeconnect 的话剪切板就自己同步到手机了！&lt;/p&gt;
 &lt;/blockquote&gt;
-</content><link href="/archives/使用pb分享代码/" rel="alternate"/><published>2020-03-11T11:06:00+08:06</published></entry><entry><id>/archives/vps2arch/</id><title>vps2arch!</title><updated>2021-03-02T08:44:01.903751+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;有些 vps 服务商是不提供 Arch 系统的，但是你仍然可以通过 vps2arch 脚本将你的系统切换到 Archlinux&lt;/p&gt;
+</content><link href="/archives/使用pb分享代码/" rel="alternate"/><published>2020-03-11T11:06:00+08:06</published></entry><entry><id>/archives/vps2arch/</id><title>vps2arch!</title><updated>2021-06-07T04:07:37.334676+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;有些 vps 服务商是不提供 Arch 系统的，但是你仍然可以通过 vps2arch 脚本将你的系统切换到 Archlinux&lt;/p&gt;
 &lt;p&gt;这个项目托管在 gitlab : &lt;a href="https://gitlab.com/drizzt/vps2arch/"&gt;https://gitlab.com/drizzt/vps2arch/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;准备&lt;/h2&gt;
@@ -198,7 +198,7 @@ cd&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;输入密码&lt;/p&gt;
 &lt;p&gt;接下来的操作就是在 &lt;em&gt;sihuan&lt;/em&gt; 这个用户里进行的啦&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 安装需要的软件包&lt;/span&gt;
-sudo pacman -S git stow zsh grml-zsh-config powerline ranger exa zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search
+sudo pacman -S git stow zsh zsh-theme-powerlevel10k powerline-fonts awesome-terminal-fonts paru powerline ranger exa zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search
 &lt;span class="c1"&gt;# 克隆 dotfiles 仓库&lt;/span&gt;
 git clone https://github.com/Si-Huan/dotfiles
 &lt;span class="c1"&gt;# 切换 shell 到 zsh&lt;/span&gt;
@@ -224,7 +224,7 @@ ssh-copy-id sihuan@hostip
 &lt;pre&gt;&lt;code&gt;ssh hostname&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;And you will no longer be asked for a password.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;EOF&lt;/strong&gt;&lt;/p&gt;
-</content><link href="/archives/vps2arch/" rel="alternate"/><published>2020-03-13T11:06:00+08:06</published></entry><entry><id>/archives/linuxapp/</id><title>Linux 日常存活方案</title><updated>2021-03-02T08:44:01.903726+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;起因&lt;/h2&gt;
+</content><link href="/archives/vps2arch/" rel="alternate"/><published>2020-03-13T11:06:00+08:06</published></entry><entry><id>/archives/linuxapp/</id><title>Linux 日常存活方案</title><updated>2021-06-07T04:07:37.334641+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;起因&lt;/h2&gt;
 &lt;p&gt;在群聊里看到有一位同学发了一张 Windows 的桌面截图，有很多软件，大致看了一下又觉得貌似在 Linux 下也差不多都有同等或更好的替代方案，加之很多人对 Linux 的偏见认为 Linux &lt;strong&gt;生态不好&lt;/strong&gt;，于是萌发了写这篇文章的想法。&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;2020/12/03 update!&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -522,7 +522,7 @@ aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
 
 使用 'pacman {-h --help}' 及某个操作以查看可用选项&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;这个优点是值得长篇大论的，&lt;strong&gt;&lt;em&gt;这儿写不下&lt;/em&gt;&lt;/strong&gt; ლ(╹◡╹ლ)&lt;/p&gt;
-</content><link href="/archives/linuxapp/" rel="alternate"/><published>2020-03-15T11:06:00+08:06</published></entry><entry><id>/archives/linuxgpu/</id><title>ArchLinux 下双显卡配置</title><updated>2021-03-02T08:44:01.903702+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;Fuck Nvidia&lt;/h2&gt;
+</content><link href="/archives/linuxapp/" rel="alternate"/><published>2020-03-15T11:06:00+08:06</published></entry><entry><id>/archives/linuxgpu/</id><title>ArchLinux 下双显卡配置</title><updated>2021-06-07T04:07:37.334590+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;Fuck Nvidia&lt;/h2&gt;
 &lt;p&gt;如果笔电上有一张 Nivdia 显卡，使用 Linux 的时候也许会因为驱动引起一些令人苦恼的问题。&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;如果熟读并背诵 ArchWiki 的话就不会有这些问题了  (误&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -602,7 +602,7 @@ prime-run wine touhou08.exe
 &lt;h2&gt;一点总结&lt;/h2&gt;
 &lt;p&gt;我之前使用的是 &lt;a href="https://wiki.archlinux.org/index.php/Bumblebee"&gt;Bumblebee&lt;/a&gt; 方案，但是感觉不如现在的方案方便也不如这个性能好。&lt;/p&gt;
 &lt;p&gt;另外使用了 NVIDIA 的闭源驱动所以在配置双显卡的时候使用了 &lt;strong&gt;PRIME render offload&lt;/strong&gt; 而不是在 Wiki 里的上一级标题 &lt;strong&gt;PRIME GPU offloading&lt;/strong&gt; ，后者是给 NVIDIA 的开源驱动程式用的。关于具体的不同，自己去翻阅 wiki 吧，不归我管，我只是记录一下我觉得目前最好使的方案。&lt;/p&gt;
-</content><link href="/archives/linuxgpu/" rel="alternate"/><published>2020-03-17T11:06:00+08:06</published></entry><entry><id>/archives/shitama1/</id><title>Shitama 代码分析「概况」</title><updated>2021-03-02T08:44:01.903676+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;别看了全是胡扯，我之前理解错有问题，没认真读代码&lt;/p&gt;
+</content><link href="/archives/linuxgpu/" rel="alternate"/><published>2020-03-17T11:06:00+08:06</published></entry><entry><id>/archives/shitama1/</id><title>Shitama 代码分析「概况」</title><updated>2021-06-07T04:07:37.334505+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;别看了全是胡扯，我之前理解错有问题，没认真读代码&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1&gt;Shitama 的历史&lt;/h1&gt;
 &lt;blockquote&gt;&lt;p&gt;「Shitama」是一个类毛玉服务，可以为「东方非想天则」提供简单的端口转发功能，让身处内网的玩家能够建立主机并进行对战。&lt;/p&gt;
@@ -655,7 +655,7 @@ prime-run wine touhou08.exe
 &lt;p&gt;&lt;figure&gt;&lt;img data-width="1346" data-height="372" src="/archives/assets/a45ce6fb1094844897e18bd373f45524.png" alt="how_shitama_work4" /&gt;&lt;figcaption&gt;how_shitama_work4&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;图中虚线的意味： shard1 中由 HostPort 指向 GuestPort 的虚线意味着 HostPort 并不会向 GuestPort 发送数据，而是每当 HostPort 收到来自 Port1 的数据就会使用 GuestPort 发送出去。也就是说 HostPort 只与 Port1 通信。&lt;/p&gt;
 &lt;p&gt;接下来的几篇博文会比较&lt;del&gt;正经&lt;/del&gt;的分析 shitama 的代码。&lt;/p&gt;
-</content><link href="/archives/shitama1/" rel="alternate"/><published>2020-06-01T11:06:00+08:06</published></entry><entry><id>/archives/shitama2/</id><title>Shitama 代码分析「holder 启动」</title><updated>2021-03-02T08:44:01.903650+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;别看了，全是胡扯，我之前没认真读代码&lt;/p&gt;
+</content><link href="/archives/shitama1/" rel="alternate"/><published>2020-06-01T11:06:00+08:06</published></entry><entry><id>/archives/shitama2/</id><title>Shitama 代码分析「holder 启动」</title><updated>2021-06-07T04:07:37.334473+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;别看了，全是胡扯，我之前没认真读代码&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1&gt;这是开头&lt;/h1&gt;
 &lt;p&gt;因为按逻辑上，shitama 的运行顺序应该是 「holder 启动」、「shard 启动」、「client 启动」和 「链接建立」。我也就先按照这个来分析。&lt;/p&gt;
@@ -726,7 +726,7 @@ prime-run wine touhou08.exe
 
 &lt;pre&gt;&lt;code&gt;
 &lt;/code&gt;&lt;/pre&gt;
-</content><link href="/archives/shitama2/" rel="alternate"/><published>2020-06-07T11:06:00+08:06</published></entry><entry><id>/archives/utsutsu1/</id><title>Utsutsu 用法</title><updated>2021-03-02T08:44:01.903624+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h1&gt;夢と現&lt;/h1&gt;
+</content><link href="/archives/shitama2/" rel="alternate"/><published>2020-06-07T11:06:00+08:06</published></entry><entry><id>/archives/utsutsu1/</id><title>Utsutsu 用法</title><updated>2021-06-07T04:07:37.334423+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h1&gt;夢と現&lt;/h1&gt;
 &lt;blockquote&gt;&lt;p&gt;一个打则工具，与 shitama 原理上略有不同，也许会对某些网络有奇效。&lt;/p&gt;
 &lt;p&gt;现在还是仅仅能用的阶段，没有图形界面，只有一个服务器可以选择（也就是，没得选）&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -764,7 +764,7 @@ prime-run wine touhou08.exe
 &lt;li&gt;等等等 不想写了 太多&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;遇到问题之后现在较好的解决方案是重启 utsutsu （&lt;/p&gt;
-</content><link href="/archives/utsutsu1/" rel="alternate"/><published>2020-07-24T11:06:00+08:06</published></entry><entry><id>/archives/xzz/</id><title>部署一个自己的人工智障机器人</title><updated>2021-03-02T08:44:01.903597+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;2020/08/02 由于一些原因，将我的 QQ 机器人从 &lt;em&gt;酷Q&lt;/em&gt; 迁移到 开源的 &lt;em&gt;MiraiGo&lt;/em&gt;&lt;/p&gt;
+</content><link href="/archives/utsutsu1/" rel="alternate"/><published>2020-07-24T11:06:00+08:06</published></entry><entry><id>/archives/xzz/</id><title>部署一个自己的人工智障机器人</title><updated>2021-06-07T04:07:37.334370+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;2020/08/02 由于一些原因，将我的 QQ 机器人从 &lt;em&gt;酷Q&lt;/em&gt; 迁移到 开源的 &lt;em&gt;MiraiGo&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;顺便写下了此文档&lt;/p&gt;
 &lt;p&gt;此文用到的项目&lt;/p&gt;
 &lt;ul&gt;
@@ -978,11 +978,11 @@ sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; redis.service --now
 &lt;p&gt;&lt;a href="https://github.com/Si-Huan/XZZ"&gt;https://github.com/Si-Huan/XZZ&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;啊这 终于写完了， 又水了一篇 23333&lt;/p&gt;
 &lt;/blockquote&gt;
-</content><link href="/archives/xzz/" rel="alternate"/><published>2020-08-02T11:06:00+08:06</published></entry><entry><id>/archives/two-drive/</id><title>今天收获了两个网盘诶</title><updated>2021-03-02T08:44:01.903566+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h1&gt;今天又干了不少事情呢&lt;/h1&gt;
+</content><link href="/archives/xzz/" rel="alternate"/><published>2020-08-02T11:06:00+08:06</published></entry><entry><id>/archives/two-drive/</id><title>今天收获了两个网盘诶</title><updated>2021-06-07T04:07:37.334328+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h1&gt;今天又干了不少事情呢&lt;/h1&gt;
 &lt;p&gt;欢迎来看看， &lt;a href="https://storage.sakuya.love"&gt;SiHuan's onedrive index&lt;/a&gt; 🎉&lt;/p&gt;
 &lt;!--stackedit_data:
 eyJoaXN0b3J5IjpbLTg1MDc2NjkyNV19
---&gt;</content><link href="/archives/two-drive/" rel="alternate"/><published>2020-11-26T11:06:00+08:06</published></entry><entry><id>/archives/linuxorwinjoke/</id><title>今日份笑话</title><updated>2021-03-02T08:44:01.903511+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;笑话&lt;/h2&gt;
+--&gt;</content><link href="/archives/two-drive/" rel="alternate"/><published>2020-11-26T11:06:00+08:06</published></entry><entry><id>/archives/linuxorwinjoke/</id><title>今日份笑话</title><updated>2021-06-07T04:07:37.334252+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;笑话&lt;/h2&gt;
 &lt;p&gt;今天在看到一些东西，以下原文&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;《一则讽刺笑话》&lt;/strong&gt;
 &lt;strong&gt;世人说，要有罐头，便有了罐头。&lt;/strong&gt;
