@@ -17,7 +17,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "/5dac3077e1447aca861b775b19db7cac.json"
+            api: "/fb6dddf7e20a3311708f36bbad33c777.json"
         }
     </script>
     
@@ -100,7 +100,7 @@
 <p>有可能是因为你漏装了 nvidia 显卡的驱动程式，可以用一下命令安装</p>
 <blockquote><p>进不去系统的话可以尝试 <code>Ctrl</code>+<code>Alt</code>+<code>F2~6</code>切换到 <code>tty</code>，仍然不行的话可能就要搬来 LiveCD 了</p>
 </blockquote>
-<div class="highlight"><pre><span></span>pacman -S nvidia
+<div class="highlight"><pre><span></span>pacman<span class="w"> </span>-S<span class="w"> </span>nvidia
 </pre></div>
 <blockquote><p><strong>注意！</strong></p>
 <p>我现在执行的命令在我的机器上有效，对于比较新的机器应该都没有问题，但是具体呢还是要参看 <a href="https://wiki.archlinux.org/index.php/NVIDIA#Installation">ArchWiki NVIDIA</a></p>
@@ -117,7 +117,7 @@
 <blockquote><p>具体参见 <a href="https://wiki.archlinux.org/index.php/Intel_graphics">ArchWiki Intel graphics</a></p>
 </blockquote>
 <p>安装 <code>mesa</code> 包，为了对 32 位程序的支持，安装 <code>lib32-mesa</code> 包 (位于 <strong>multilib</strong> 仓库，请提前自行开启此仓库)。</p>
-<div class="highlight"><pre><span></span>pacman -S mesa lib32-mesa
+<div class="highlight"><pre><span></span>pacman<span class="w"> </span>-S<span class="w"> </span>mesa<span class="w"> </span>lib32-mesa
 </pre></div>
 <p>另外需要注意的是，如果之前安装了 <code>xf86-video-intel</code> 包，最好卸载掉</p>
 <blockquote><p>比如这个包会引起我的 OBS 在录制闪屏，而且不使用此包也是官方的建议</p>
@@ -126,38 +126,38 @@
 </blockquote>
 </blockquote>
 <p>卸载</p>
-<div class="highlight"><pre><span></span>pacman -Rsc xf86-video-intel
+<div class="highlight"><pre><span></span>pacman<span class="w"> </span>-Rsc<span class="w"> </span>xf86-video-intel
 </pre></div>
 <h4>NVIDIA 显卡驱动</h4>
 <blockquote><p>具体参见 <a href="https://wiki.archlinux.org/index.php/NVIDIA#Installation">ArchWiki NVIDIA</a></p>
 </blockquote>
 <p>安装 <code>nvidia</code> 包，为了对 32 位程序的支持，安装 <code>lib32-nvidia-utils</code> 包 (位于 <strong>multilib</strong> 仓库，请提前自行开启此仓库)。</p>
-<div class="highlight"><pre><span></span>pacman -S nvidia lib32-nvidia-utils
+<div class="highlight"><pre><span></span>pacman<span class="w"> </span>-S<span class="w"> </span>nvidia<span class="w"> </span>lib32-nvidia-utils
 </pre></div>
 <h3>配置 PRIME render offload</h3>
 <blockquote><p>具体参见 <a href="https://wiki.archlinux.org/index.php/PRIME#PRIME_render_offload">ArchWiki PRIME</a></p>
 </blockquote>
 <p>安装 <code>nvidia-prime</code> 包来使用官方配置 (不起作用的话，你就要去 Wiki 看怎么手动配置了，不过我觉得一般都不需要手动配置啦)</p>
-<div class="highlight"><pre><span></span>pacman -S nvidia-prime
+<div class="highlight"><pre><span></span>pacman<span class="w"> </span>-S<span class="w"> </span>nvidia-prime
 </pre></div>
 <h3>reboot！</h3>
 <p>这时候重启系统就应该起作用了，你可以通过 <code>prime-run</code> 命令使指定程序在 NVIDIA 显卡上渲染。例如：</p>
 <div class="highlight"><pre><span></span><span class="c1"># 以 n 卡渲染 vlc</span>
-prime-run vlc
+prime-run<span class="w"> </span>vlc
 <span class="c1"># 以 n 卡渲染 wine 游戏</span>
-prime-run wine touhou08.exe
+prime-run<span class="w"> </span>wine<span class="w"> </span>touhou08.exe
 </pre></div>
 <p>在此之前你可能想查看你的配置是否生效，可以使用 <code>glxinfo</code> 这个工具，它属于 <code>mesa-demos</code> 包，先安装</p>
-<div class="highlight"><pre><span></span>pacman -S mesa-demo
+<div class="highlight"><pre><span></span>pacman<span class="w"> </span>-S<span class="w"> </span>mesa-demo
 </pre></div>
 <p>来测试一下</p>
-<div class="highlight"><pre><span></span>glxinfo <span class="p">|</span> grep <span class="s2">&quot;OpenGL renderer&quot;</span>
+<div class="highlight"><pre><span></span>glxinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;OpenGL renderer&quot;</span>
 </pre></div>
 <p>输出应该类似于下面，这意味着默认情况下你使用的是 Intel 显卡</p>
 
 <pre><code>OpenGL renderer string: Mesa DRI Intel(R) UHD Graphics (Whiskey Lake 3x8 GT2)</code></pre>
 <p>然后</p>
-<div class="highlight"><pre><span></span>prime-run glxinfo <span class="p">|</span> grep <span class="s2">&quot;OpenGL renderer&quot;</span>
+<div class="highlight"><pre><span></span>prime-run<span class="w"> </span>glxinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;OpenGL renderer&quot;</span>
 </pre></div>
 <p>你应该看到</p>
 

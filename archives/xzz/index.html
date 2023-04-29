@@ -17,7 +17,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "/5dac3077e1447aca861b775b19db7cac.json"
+            api: "/fb6dddf7e20a3311708f36bbad33c777.json"
         }
     </script>
     
@@ -100,18 +100,18 @@
 <blockquote><p>因为机器人的逻辑部分，也就西 XZZ 是 Python 写的，所以需要 Python 环境</p>
 </blockquote>
 <p>在 ArchLinux 中，安装 python</p>
-<div class="highlight"><pre><span></span>sudo pacman -S python
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>python
 </pre></div>
 <p>克隆 XZZ</p>
-<div class="highlight"><pre><span></span>git clone https://github.com/Si-Huan/XZZ.git
+<div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Si-Huan/XZZ.git
 </pre></div>
 <h3>编译或下载 go-cqhttp</h3>
 <h4>编译</h4>
 <p>克隆仓库</p>
-<div class="highlight"><pre><span></span>git clone https://github.com/Mrs4s/go-cqhttp.git
+<div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Mrs4s/go-cqhttp.git
 </pre></div>
 <p>编译</p>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> go-cqhttp <span class="o">&amp;&amp;</span> go build
+<div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>go-cqhttp<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>go<span class="w"> </span>build
 </pre></div>
 <blockquote><p>tips: 自备 go 环境</p>
 </blockquote>
@@ -121,8 +121,8 @@
 <blockquote><p>可选但推荐，不然可能有一些服务无法使用</p>
 </blockquote>
 <p>在 ArchLinux 下</p>
-<div class="highlight"><pre><span></span>sudo pacman -S redis
-sudo systemctl <span class="nb">enable</span> redis.service --now
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>redis
+sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>redis.service<span class="w"> </span>--now
 </pre></div>
 <blockquote><p>tips: 请保持 redis 服务运行在 XZZ 同服务器 6379 端口</p>
 </blockquote>
@@ -170,31 +170,31 @@ sudo systemctl <span class="nb">enable</span> redis.service --now
     └── zzcore.py</code></pre>
 <p>我们去编辑 <code>./bot/config.json</code></p>
 <div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;uin&quot;</span><span class="p">:</span> <span class="mi">1010101010</span><span class="p">,</span>
-    <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;mima&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;enable_db&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;relogin&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nt">&quot;relogin_delay&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="nt">&quot;http_config&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">5700</span><span class="p">,</span>
-        <span class="nt">&quot;post_urls&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;127.0.0.1:5580&quot;</span><span class="p">:</span><span class="s2">&quot;XZZ&quot;</span><span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;ws_config&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">6700</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;ws_reverse_servers&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;reverse_url&quot;</span><span class="p">:</span> <span class="s2">&quot;ws://you_websocket_universal.server&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;reverse_api_url&quot;</span><span class="p">:</span> <span class="s2">&quot;ws://you_websocket_api.server&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;reverse_event_url&quot;</span><span class="p">:</span> <span class="s2">&quot;ws://you_websocket_event.server&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;reverse_reconnect_interval&quot;</span><span class="p">:</span> <span class="mi">3000</span>
-    <span class="p">}],</span>
-    <span class="nt">&quot;debug&quot;</span><span class="p">:</span> <span class="kc">false</span>
+<span class="w">    </span><span class="nt">&quot;uin&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010101010</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mima&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;enable_db&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;token&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;relogin&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;relogin_delay&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;http_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5700</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;post_urls&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;127.0.0.1:5580&quot;</span><span class="p">:</span><span class="s2">&quot;XZZ&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;ws_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6700</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;ws_reverse_servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;reverse_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ws://you_websocket_universal.server&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;reverse_api_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ws://you_websocket_api.server&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;reverse_event_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ws://you_websocket_event.server&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;reverse_reconnect_interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="nt">&quot;debug&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="p">}</span>
 </pre></div>
 <p>需要编辑的字段如下</p>
@@ -246,13 +246,13 @@ sudo systemctl <span class="nb">enable</span> redis.service --now
 <h3>配置 XZZ</h3>
 <p>移步至 <code>xzz</code> 文件夹下</p>
 <p>创建虚拟环境</p>
-<div class="highlight"><pre><span></span>python -m venv env
+<div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>env
 </pre></div>
 <p>激活虚拟环境</p>
-<div class="highlight"><pre><span></span><span class="nb">source</span> ./env/bin/activate
+<div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>./env/bin/activate
 </pre></div>
 <p>安装依赖</p>
-<div class="highlight"><pre><span></span>pip install -r req.txt
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>req.txt
 </pre></div>
 <p>配置 XZZ</p>
 <p>复制一份 <code>sample_config.py</code> 到 <code>config.py</code>，并编辑</p>
@@ -290,7 +290,7 @@ sudo systemctl <span class="nb">enable</span> redis.service --now
 </li>
 </ul>
 <p>配置完毕之后，启动 XZZ</p>
-<div class="highlight"><pre><span></span>python main.py
+<div class="highlight"><pre><span></span>python<span class="w"> </span>main.py
 </pre></div>
 <p>和上文 对 go-cqhttp 的处理一样，挂在后台就好了</p>
 <h3>测试！</h3>

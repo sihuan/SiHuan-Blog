@@ -17,7 +17,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "/5dac3077e1447aca861b775b19db7cac.json"
+            api: "/fb6dddf7e20a3311708f36bbad33c777.json"
         }
     </script>
     
@@ -103,15 +103,15 @@
 <p>推荐重置为 <code>CentOS</code> 或者 <code>Debain</code> 这个脚本在 <code>Ubuntu 18</code> 上也许有一些问题。</p>
 <h2>开干</h2>
 <p>使用 SSH 链接到你的 VPS，在开始之前你可以修改一下 root 密码，因为 vps2arch 会将新系统的密码设置为你运行脚本之前的 root 密码</p>
-<div class="highlight"><pre><span></span>passwd root
+<div class="highlight"><pre><span></span>passwd<span class="w"> </span>root
 </pre></div>
 <p>你需要输入两次新密码，并且输入密码没有回显</p>
 <p>接下来就是重点了，以 root 身份执行以下命令</p>
 <div class="highlight"><pre><span></span><span class="c1"># 下载 vps2arch 脚本</span>
 <span class="c1"># wget https://tinyurl.com/vps2arch 也会被重定向到以下 url</span>
-wget https://gitlab.com/drizzt/vps2arch/-/raw/master/vps2arch
+wget<span class="w"> </span>https://gitlab.com/drizzt/vps2arch/-/raw/master/vps2arch
 <span class="c1"># 赋予执行权限</span>
-chmod +x vps2arch
+chmod<span class="w"> </span>+x<span class="w"> </span>vps2arch
 <span class="c1"># 启动脚本！</span>
 ./vps2arch
 <span class="c1"># 当你从脚本默认的源下载速度较慢的时候，可以使用 -m 参数指定源，例如</span>
@@ -130,10 +130,10 @@ Then you'll be able to connect to your VM using SSH and to login using your old 
 <p>现在你已经得到一个崭新的 ArchLinux 系统了，接下来是在正常使用之前的一些建议，以下建议多来源于 <a href="https://wiki.archlinux.org/index.php/Installation_guide">ArchWiki</a> .</p>
 <h3>时间设置</h3>
 <div class="highlight"><pre><span></span><span class="c1"># 使用 ntp</span>
-timedatectl set-ntp <span class="nb">true</span>
+timedatectl<span class="w"> </span>set-ntp<span class="w"> </span><span class="nb">true</span>
 <span class="c1"># 设置时区</span>
-ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-hwclock --systohc
+ln<span class="w"> </span>-sf<span class="w"> </span>/usr/share/zoneinfo/Asia/Shanghai<span class="w"> </span>/etc/localtime
+hwclock<span class="w"> </span>--systohc
 </pre></div>
 <h3>设置中文</h3>
 <p>这时候你的系统还是不支持中文的，输入中文将会乱码，我们需要进行一下操作。</p>
@@ -152,33 +152,33 @@ zh_TW.UTF-8 UTF-8</code></pre>
 <pre><code>[archlinuxcn]
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch</code></pre>
 <p>之后执行</p>
-<div class="highlight"><pre><span></span>pacman -Syy
-pacman -S archlinuxcn-keyring
+<div class="highlight"><pre><span></span>pacman<span class="w"> </span>-Syy
+pacman<span class="w"> </span>-S<span class="w"> </span>archlinuxcn-keyring
 </pre></div>
 <h3>添加用户</h3>
 <blockquote><p>一直使用 root 用户是不太安全的！我们来添加一个新的用户</p>
 </blockquote>
 <p>接下来的命令中，新的用户名以 <em>sihuan</em> 为例，自行替换</p>
-<div class="highlight"><pre><span></span>useradd -m -G wheel sihuan
+<div class="highlight"><pre><span></span>useradd<span class="w"> </span>-m<span class="w"> </span>-G<span class="w"> </span>wheel<span class="w"> </span>sihuan
 </pre></div>
 <blockquote><p>useradd 是 archlinux 系统添加用户的命令</p>
 <p>-m 参数代表自动创建用户的家目录，这个例子里是 <code>/home/sihuan</code></p>
 <p>-G 参数意味着用户要加入一些个的附加组，这儿即 <code>wheel</code> 组</p>
 </blockquote>
 <p>设置新用户密码</p>
-<div class="highlight"><pre><span></span>passwd sihuan
+<div class="highlight"><pre><span></span>passwd<span class="w"> </span>sihuan
 </pre></div>
 <p>然后输入两次密码就好了</p>
 <p>设置 sudo</p>
 <p>首先安装 sudo</p>
-<div class="highlight"><pre><span></span>pacman -S sudo
+<div class="highlight"><pre><span></span>pacman<span class="w"> </span>-S<span class="w"> </span>sudo
 </pre></div>
 <p>编辑配置文件，我认为你已经安装了 <code>vim</code></p>
-<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">EDITOR</span><span class="o">=</span>vim
+<div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">EDITOR</span><span class="o">=</span>vim
 visudo
 </pre></div>
 <p>找到下面一行，取消掉注释</p>
-<div class="highlight"><pre><span></span>%wheel <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL
+<div class="highlight"><pre><span></span>%wheel<span class="w"> </span><span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span><span class="w"> </span>ALL
 </pre></div>
 <h3>配置新用户的 shell</h3>
 <blockquote><p>建议大家都自己整一个 <code>dotfiles</code> ，具体可以看 fc 老师翻译的 <a href="https://farseerfc.me/using-gnu-stow-to-manage-your-dotfiles.html">这篇文章</a></p>
@@ -191,21 +191,21 @@ cd</code></pre>
 <p>输入密码</p>
 <p>接下来的操作就是在 <em>sihuan</em> 这个用户里进行的啦</p>
 <div class="highlight"><pre><span></span><span class="c1"># 安装需要的软件包</span>
-sudo pacman -S git stow zsh zsh-theme-powerlevel10k powerline-fonts awesome-terminal-fonts paru powerline ranger exa zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search
+sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>git<span class="w"> </span>stow<span class="w"> </span>zsh<span class="w"> </span>zsh-theme-powerlevel10k<span class="w"> </span>powerline-fonts<span class="w"> </span>awesome-terminal-fonts<span class="w"> </span>paru<span class="w"> </span>powerline<span class="w"> </span>ranger<span class="w"> </span>exa<span class="w"> </span>zsh-autosuggestions<span class="w"> </span>zsh-syntax-highlighting<span class="w"> </span>zsh-history-substring-search
 <span class="c1"># 克隆 dotfiles 仓库</span>
-git clone https://github.com/Si-Huan/dotfiles
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Si-Huan/dotfiles
 <span class="c1"># 切换 shell 到 zsh</span>
-chsh -s /bin/zsh
+chsh<span class="w"> </span>-s<span class="w"> </span>/bin/zsh
 <span class="c1"># 删除已有的 ~/.bashrc</span>
-rm ~/.bashrc
+rm<span class="w"> </span>~/.bashrc
 <span class="c1"># 使 zsh 配置生效</span>
-<span class="nb">cd</span> dotfiles
-stow zsh
+<span class="nb">cd</span><span class="w"> </span>dotfiles
+stow<span class="w"> </span>zsh
 </pre></div>
 <p>这时候远程主机上的配置就完成了！再次使用 <em>sihuan</em> 这个用户登陆，你就会得到一个很 OK 的 shell 体验。</p>
 <h2>免密登录和 SSH 主机别名</h2>
 <div class="highlight"><pre><span></span>ssh-keygen
-ssh-copy-id sihuan@hostip
+ssh-copy-id<span class="w"> </span>sihuan@hostip
 </pre></div>
 <p>Edit <code>~/.ssh/config</code> add:</p>
 

@@ -1,0 +1,319 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="SiHuan,思还,Blog,博客,GitBlog" />
+    <meta name="generator" content="Maverick 1.1" />
+    <meta name="template" content="Galileo" />
+    <link rel="alternate" type="application/rss+xml" title="SiHuan's Blog &raquo; RSS 2.0" href="/feed/index.xml" />
+    <link rel="alternate" type="application/atom+xml" title="SiHuan's Blog &raquo; ATOM 1.0" href="/feed/atom/index.xml" />
+    <link rel="stylesheet" href="/assets/galileo-3f2347c2c0.css">
+    <link rel="stylesheet" href="/assets/ExSearch/ExSearch-182e5a8868.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
+    <script>
+        var ExSearchConfig = {
+            root: "",
+            api: "/fb6dddf7e20a3311708f36bbad33c777.json"
+        }
+    </script>
+    
+<title>使用 Docker 安装 ROS - SiHuan's Blog</title>
+<meta name="author" content="SiHuaN" />
+<meta name="description" content="在 ArchLinux 上使用 docker 安装 ROS" />
+<meta property="og:title" content="使用 Docker 安装 ROS - SiHuan's Blog" />
+<meta property="og:description" content="在 ArchLinux 上使用 docker 安装 ROS" />
+<meta property="og:site_name" content="SiHuan's Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/archives/ros-install-docker/" />
+<meta property="og:image" content="" />
+<meta property="article:published_time" content="2023-04-20T11:06:00-00.00" />
+<meta name="twitter:title" content="使用 Docker 安装 ROS - SiHuan's Blog" />
+<meta name="twitter:description" content="在 ArchLinux 上使用 docker 安装 ROS" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="" />
+
+
+    
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+
+    </head>
+    
+    <body>
+        
+        <div class="container">
+            <header id="ga-header">
+                <div first>
+                    <aside id="ga-logo">
+                        <a href="/" target="_self">
+                            <img src="/logo.png" alt="SiHuan's Blog">
+                        </a>
+                    </aside>
+                    <aside id="ga-brand">
+                        <h1 class="brand"><a class="no-style" href="/">SiHuan's Blog</a></h1>
+                        <p>道阻且长，吾意思还。</p>
+                    </aside>
+                </div>
+                <div second id="ga-nav">
+                    <nav class="navs">
+                        <ul><li><a class="ga-highlight" href="/" target="_self">首页</a></li><span class="separator">·</span><li><a class="ga-highlight" href="/archives/" target="_self">归档</a></li><span class="separator">·</span><li><a class="ga-highlight" href="/enngi/" target="_self">縁起</a></li><span class="separator">·</span><li><a class="ga-highlight" href="/publickey/" target="_self">公钥</a></li><span class="separator">·</span><li><a href="#" target="_self" class="search-form-input ga-highlight">搜索</a></li></ul>
+                    </nav>
+                    <nav class="social-links">
+                        <ul><li><a class="no-style" title="Telegram" href="https://t.me/Si_Huan" target="_blank"><i class="gi gi-telegram"></i>Telegram</a></li><span class="separator">·</span><li><a class="no-style" title="GitHub" href="https://github.com/Si-Huan" target="_blank"><i class="gi gi-github"></i>GitHub</a></li></ul>
+                    </nav>
+                </div>
+            </header>
+            <div class="wrapper">
+                
+<main>    
+    <section class="ga-section ga-content">
+        <article class="yue">
+            <h1 class="ga-post_title">使用 Docker 安装 ROS</h1>
+            <span class="ga-post_meta ga-mono">
+                <span>SiHuaN</span>
+                <time>
+                    2023-04-20
+                </time>
+                
+                in <a no-style class="category" href="/category/ros/">
+                    ros
+                </a>
+                
+                
+            </span>
+            <div class="ga-content_body">
+                <blockquote><p>本文使用的操作系统是 <code>ArchLinux</code>，用户名是 <code>sihuan</code>，使用的 ROS 版本是 ROS1  <code>kinetic</code>.</p>
+<p>采用 docker 来安装 ROS 配置环境，此方法方便切换 ROS 版本，安装起来也比较方便</p>
+</blockquote>
+<ol>
+<li><p>安装 docker，启动 docker 服务，并把当前用户加入到 <code>docker</code> 用户组</p>
+<div class="highlight"><pre><span></span>pacman<span class="w"> </span>-S<span class="w"> </span>docker
+systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>docker.service
+gpasswd<span class="w"> </span>-a<span class="w"> </span>sihuan<span class="w"> </span>docker
+</pre></div>
+<blockquote><p>Tips: 需要重新登录以使用户组更改生效</p>
+</blockquote>
+</li>
+<li><p>拉取 ROS docker 镜像</p>
+<div class="highlight"><pre><span></span><span class="c1"># 此处以 kinetic-desktop-full 为例</span>
+docker<span class="w"> </span>pull<span class="w"> </span>osrf/ros:kinetic-desktop-full
+</pre></div>
+</li>
+<li><p>配置启动脚本，准备工作目录</p>
+<blockquote><p>以下文件均在 host 机器上创建编辑</p>
+</blockquote>
+<p>递归创建工作目录，此处以 <code>~/project/ros/kinetic/catkin_ws</code> 为例</p>
+<div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/project/ros/kinetic/catkin_ws/src
+</pre></div>
+<p>创建并编辑 <code>~/project/ros/kinetic/.bashrc</code>，此文件是给 docker 中的系统准备的 bash 配置文件</p>
+<div class="highlight"><pre><span></span>ros-env<span class="o">(){</span>
+<span class="w">    </span><span class="nb">source</span><span class="w"> </span>/opt/ros/kinetic/setup.bash
+<span class="w">    </span><span class="nb">source</span><span class="w"> </span>/home/sihuan/catkin_ws/devel/setup.bash
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">ROS_PACKAGE_PATH</span><span class="o">=</span>/home/sihuan/catkin_ws/:/opt/ros/kinetic/share/
+<span class="o">}</span>
+ros-env
+</pre></div>
+<p>编辑 <code>~/.bashrc</code> 在最后添加以下内容，这是用来启动、连接、清理 docker 容器的函数</p>
+<div class="highlight"><pre><span></span><span class="c1"># krstart(kinetic ros start) 会启动一个 ros:kinetic-desktop-full 容器</span>
+krstart<span class="o">(){</span>
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--user<span class="o">=</span><span class="k">$(</span>id<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="k">)</span>:<span class="k">$(</span>id<span class="w"> </span>-g<span class="w"> </span><span class="nv">$USER</span><span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--env<span class="o">=</span><span class="s2">&quot;DISPLAY&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--workdir<span class="o">=</span><span class="s2">&quot;/home/</span><span class="nv">$USER</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--volume<span class="o">=</span><span class="s2">&quot;/home/</span><span class="nv">$USER</span><span class="s2">/project/ros/kinetic:/home/</span><span class="nv">$USER</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--volume<span class="o">=</span><span class="s2">&quot;/etc/group:/etc/group:ro&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--volume<span class="o">=</span><span class="s2">&quot;/etc/passwd:/etc/passwd:ro&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--volume<span class="o">=</span><span class="s2">&quot;/etc/shadow:/etc/shadow:ro&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--volume<span class="o">=</span><span class="s2">&quot;/etc/sudoers.d:/etc/sudoers.d:ro&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--volume<span class="o">=</span><span class="s2">&quot;/tmp/.X11-unix:/tmp/.X11-unix:rw&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>osrf/ros:kinetic-desktop-full<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>bash
+<span class="o">}</span>
+
+<span class="c1"># krconnect 会连接到正在运行的 kinetic docker 容器中</span>
+krconnect<span class="o">(){</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-ti<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>ps<span class="w"> </span>-aq<span class="w"> </span>--filter<span class="w"> </span><span class="nv">ancestor</span><span class="o">=</span>osrf/ros:kinetic-desktop-full<span class="w"> </span>--filter<span class="w"> </span><span class="nv">status</span><span class="o">=</span>running<span class="k">)</span><span class="w"> </span>bash
+<span class="o">}</span>
+
+<span class="c1"># 清理已经停止的 kinetic 容器</span>
+krclean<span class="o">(){</span>
+docker<span class="w"> </span>rm<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>ps<span class="w"> </span>-aq<span class="w"> </span>--filter<span class="w"> </span><span class="nv">ancestor</span><span class="o">=</span>osrf/ros:kinetic-desktop-full<span class="w"> </span>--filter<span class="w"> </span><span class="nv">status</span><span class="o">=</span>exited
+</pre></div>
+<blockquote><p>Tips</p>
+<ul>
+<li>docker 的启动脚本中使用了 <code>--user</code> 参数并以只读方式映射了 host 机器 <code>/etc/group</code> 等用户和组相关文件，目的是为了以当前用户 <code>sihuan</code> 的身份登入到 docker 中，避免在 host 机器编辑源文件时候的权限问题</li>
+<li>host 机器 <code>/home/sihuan/project/ros/kinetic</code> 目录被挂载到 docker 里 <code>/home/sihuan/</code>  位置，也即 docker 里的 ROS 的工作空间 <code>/home/sihuan/catkin_ws</code> 可通过 host 机器 <code>/home/sihuan/project/ros/kinetic/catkin_ws</code> 目录进行访问、编辑。</li>
+<li>启动脚本中还影射了 X11 服务相关文件，使得在 docker 中可以访问 host 机器 X 服务以运行图形界面程序（这要求 host 机器运行 X11 服务）</li>
+<li>启用硬件加速 #TODO</li>
+</ul>
+</blockquote>
+<ol>
+<li><p>启动容器</p>
+<p>在 host 机器上运行 <code>krstart</code> 就可以启动一个装有 kinetic 的 docker 容器，初次启动可能会遇到一下报错，是预期内错误，使用 <code>catkin_make</code> 来初始化工程后，就不再有这个问题。</p>
+<div class="highlight"><pre><span></span><span class="c1"># 在 host 机器执行</span>
+krstart
+<span class="c1"># 出现以下预期内错误</span>
+bash:<span class="w"> </span>/home/sihuan/catkin_ws/devel/setup.bash:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
+<span class="c1"># 在 docker 里进入工作目录并初始化工程</span>
+<span class="nb">cd</span><span class="w"> </span>~/catkin_ws
+catkin_make
+</pre></div>
+<p>此时再运行 <code>roscore</code> 应该看到以下输出</p>
+<p>```
+sihuan@a9d3b860cafe:~/catkin_ws$ roscore
+... logging to /home/sihuan/.ros/log/fbbe12d2-dab9-11ed-a2a2-0242ac110002/roslaunch-a9d3b860cafe-521.log
+Checking log directory for disk usage. This may take awhile.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is &lt;1GB.</p>
+<p>started roslaunch server <a href="http://a9d3b860cafe:35231/">http://a9d3b860cafe:35231/</a>
+ros_comm version 1.12.17</p>
+</li>
+</ol>
+</li>
+</ol>
+
+<pre><code>  SUMMARY
+  ========
+
+  PARAMETERS
+   * /rosdistro: kinetic
+   * /rosversion: 1.12.17
+
+  NODES
+
+  auto-starting new master
+  process[master]: started with pid [531]
+  ROS_MASTER_URI=http://a9d3b860cafe:11311/
+
+  setting /run_id to fbbe12d2-dab9-11ed-a2a2-0242ac110002
+  process[rosout-1]: started with pid [544]
+  started core service [/rosout]
+  ```
+
+  至此安装工作已经完成，可以在 host 机器中使用文本编辑器编辑源码，然后在 docker 中进行编译、运行。
+
+  &gt; Tips：由于 docker 中 `~/catkin_ws/src/CMakeLists.txt` 是指向 `/opt/ros/kinetic/share/catkin/cmake/toplevel.cmake` 的软连接，在 host 机器上编辑此文件会遇到一些问题，如有需要请在 docker 中编辑该文件。</code></pre>
+
+            </div>
+        </article>
+        <div id="ga-tags">
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/tag/ros/">#ros</a>
+    </span>
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/tag/docker/">#docker</a>
+    </span>
+    
+</div>
+    </section>
+
+    
+<section id="ga-content_pager">
+
+    <div class="next">
+        <h3>没有了</h3>
+        <p class="yue">这是最新的文章</p>
+    </div>
+
+
+    <div class="prev">
+        <a class="ga-highlight" href="/archives/linuxorwinjoke/">今日份笑话</a>
+        <p class="yue">今天看到一个（讽刺笑话）</p>
+    </div>
+
+</section>
+
+
+    
+
+</main>
+
+                <footer class="ga-mono" id="ga-footer">
+                    <section>
+                        <span id="ga-uptime"></span>
+                        <span class="brand">SiHuan's Blog</span>
+                    </section>
+                    <section>
+                        <div class="copyright">
+                            <span class="footer-addon">
+                                
+                            </span>
+                            <nav class="social-links">
+                                <ul><li><a class="no-style" title="Telegram" href="https://t.me/Si_Huan" target="_blank"><i class="gi gi-telegram"></i>Telegram</a></li><span class="separator">·</span><li><a class="no-style" title="GitHub" href="https://github.com/Si-Huan" target="_blank"><i class="gi gi-github"></i>GitHub</a></li></ul>
+                            </nav>
+                        </div>
+                    </section>
+                    <script>
+                        var site_build_date = "2020-01-01T00:00+08:00"
+                    </script>
+                    <script src="/assets/galileo-61cf2e8279.js"></script>
+                </footer>
+            </div>
+        </div>
+    </div>
+        
+        
+        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                          <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div> 
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/ExSearch/jquery.min.js"></script>
+    <script src="/assets/ExSearch/ExSearch-493cb9cd89.js"></script>
+    
+    <!--katex-->
+    <link rel="stylesheet" href="/assets/katex.min.css">
+    <script defer src="/assets/katex.min.js"></script>
+    <script>
+    mathOpts = {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\(", right: "\\)", display: false}
+        ]
+    };
+    </script>
+    <script defer src="/assets/auto-render.min.js" onload="renderMathInElement(document.body, mathOpts);"></script>
+
+    
+    </body>
+</html>

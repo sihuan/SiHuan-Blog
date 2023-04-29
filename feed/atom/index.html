@@ -1,99 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><id>/</id><title>SiHuan's Blog</title><updated>2021-06-07T04:07:37.334159+08:06</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email></author><link href="/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator><logo>/logo.png</logo><subtitle>道阻且长，吾意思还。</subtitle><entry><id>/archives/使用pb分享代码/</id><title>使用 pb 分享代码</title><updated>2021-06-07T04:07:37.334710+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;PrivateBin 在线匿名粘贴版？大概吧&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;分享代码给其他人的时候，发送文件太麻烦，直接把代码发过去的话有没有高亮和缩进而且会刷屏！&lt;/p&gt;
-&lt;p&gt;可以使用 pb 服务来解决这一个问题 ´ ▽ ` )ﾉ&lt;/p&gt;
-&lt;p&gt;下面就以 ArchCN 的 &lt;a href="https://fars.ee/"&gt;fc 老师搭建的 pb&lt;/a&gt; 为例，康一下用法 (其实大多都会给出用法,我只是搬运工&lt;/p&gt;
-&lt;p&gt;首先要注意的是 pb 给的说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;fars.ee is a temporary deployment of pb by farseerfc
-
-pb is a lightweight pastebin (and url shortener) built using flask.
-
-All data may be erased without notifications. Please do NOT post large files.&lt;/code&gt;&lt;/pre&gt;
-&lt;h3&gt;使用方式&lt;/h3&gt;
-&lt;h4&gt;1.使用 web 页面上传文本&lt;/h4&gt;
-&lt;blockquote&gt;&lt;p&gt;并不是大家都会提供 web 页面的！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;地址：&lt;a href="https://fars.ee/f"&gt;https://fars.ee/f&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="1431" data-height="803" src="/archives/assets/d6035f9e8690a01f0a9bb9592aaa5f43.png" alt="web 页面长这样" /&gt;&lt;figcaption&gt;web 页面长这样&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h4&gt;2.使用命令行&lt;/h4&gt;
-&lt;blockquote&gt;&lt;p&gt;Create a new paste from the output of &lt;code&gt;cmd&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cmd | curl -F "c=@-" "https://fars.ee/"&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;上传一个命令的输出&lt;/p&gt;
-&lt;p&gt;例如&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls &lt;span class="p"&gt;|&lt;/span&gt; curl -F &lt;span class="s2"&gt;&amp;quot;c=@-&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://fars.ee/&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;就将 &lt;code&gt;ls&lt;/code&gt;命令的输出上传上去了，你会得到&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; date: 2020-03-11T06:03:05.110297+00:00
- digest: 2471f7b7a504e790a013fd092a3109a4c58c96f0
- long: ACRx97elBOeQoBP9CSoxCaTFjJbw
- short: jJbw
- size: 88
- status: created
- url: https://fars.ee/jJbw
- uuid: 409d0a8a-5d4a-4159-bb5e-cbb43934cf57&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;其中的 &lt;code&gt;url: https://fars.ee/jJbw&lt;/code&gt; 就是你的地址啦，打开就可以看到你上传的文本&lt;/p&gt;
-&lt;p&gt;语法高亮！&lt;/p&gt;
-&lt;p&gt;首先让我们来上传一段代码&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl -F &lt;span class="s2"&gt;&amp;quot;c=@-&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://fars.ee/&amp;quot;&lt;/span&gt; &amp;lt; main.c
-&lt;span class="c1"&gt;# 或或者这样&lt;/span&gt;
-&lt;span class="c1"&gt;# cat main.c | curl -F &amp;quot;c=@-&amp;quot; &amp;quot;https://fars.ee/&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;这时候我们直接访问得到的 url ( 这儿是 &lt;a href="https://fars.ee/MXKe"&gt;https://fars.ee/MXKe&lt;/a&gt; )，还是不会高亮的，在结尾加上语言标记就好了&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;https://fars.ee/MXKe/c&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;我把它标记为了 C 语言，访问的时候就会以 C 语言的语法来高亮代码了。其实还可以在末尾追加 &lt;code&gt;#L-n&lt;/code&gt; 来更醒目的提醒代码的第&lt;code&gt;n&lt;/code&gt; 行。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;https://fars.ee/MXKe/c#L-3&lt;/code&gt;&lt;/pre&gt;
-&lt;h4&gt;3.更多的快乐！&lt;/h4&gt;
-&lt;p&gt;其实 pb 服务不只可以分享文本，图片和文件都是可以的哟，但是为了避免给所有者造成负担大家一定要&lt;strong&gt;遵守规则，不要滥用&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;下面就给出另外几个比较好用分享 文本、图片、文件的网站&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href="https://cfp.vim-cn.com/"&gt;https://cfp.vim-cn.com/&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;可以贴文本，支持语法高亮&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href="https://img.vim-cn.com/"&gt;https://img.vim-cn.com/&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;贴图片和文件&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href="https://ttm.sh/"&gt;https://ttm.sh/&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;贴文件，最大可以到 256 M&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href="https://transfer.sh/"&gt;https://transfer.sh/&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;一个接近临时网盘的东西，支持超大文件，可以去看官方说明&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;更便捷一点&lt;/h3&gt;
-&lt;p&gt;如果每次都要输入像 &lt;code&gt;curl -F "c=@-" "https://fars.ee/"&lt;/code&gt; 这么一大串的话，有点不方便我们可以利用一个命令别名或者 shell 函数来简化操作&lt;/p&gt;
-&lt;h4&gt;使用别名&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 添加别名 也可以添加到 ~/.bashrc 中去&lt;/span&gt;
-$ &lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;pb&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;curl -F &amp;quot;c=@-&amp;quot; &amp;quot;https://fars.ee/&amp;quot;&amp;#39;&lt;/span&gt; 
-&lt;span class="c1"&gt;# 愉快的使用&lt;/span&gt;
-$ cat main.py &lt;span class="p"&gt;|&lt;/span&gt; pb
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;使用 shell 函数&lt;/h4&gt;
-&lt;blockquote&gt;&lt;p&gt;使用函数的话，就可以完成更多的操作，比如按文件名上传多个文件，又或者接下来要说的把得到的 url 复制到剪切板&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;因为要复制到剪切板，这儿依赖了 &lt;code&gt;xclip&lt;/code&gt; 这个工具，要提前装好，Archlinux 的话就&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pacman -S xclip
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;然后在 &lt;code&gt;~/.bashrc&lt;/code&gt; 添加&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fs&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
-  curl -s -F &lt;span class="s2"&gt;&amp;quot;c=@&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://fars.ee/?u=1&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; tee /dev/tty &lt;span class="p"&gt;|&lt;/span&gt; perl -p -e &lt;span class="s1"&gt;&amp;#39;chomp if eof&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; xclip -selection clipboard -i
-&lt;span class="o"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;上面的函数抄袭自 &lt;a href="https://github.com/farseerfc/dotfiles/blob/master/zsh/.bashrc"&gt;farseerfc 的 dotfiles&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;这样当你 &lt;code&gt;cmd | fs&lt;/code&gt;  的时候，url 就会自动复制到剪切板啦。&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;吹一下 kdeconnect  , 如果你用了 kdeconnect 的话剪切板就自己同步到手机了！&lt;/p&gt;
-&lt;/blockquote&gt;
-</content><link href="/archives/使用pb分享代码/" rel="alternate"/><published>2020-03-11T11:06:00+08:06</published></entry><entry><id>/archives/vps2arch/</id><title>vps2arch!</title><updated>2021-06-07T04:07:37.334676+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;有些 vps 服务商是不提供 Arch 系统的，但是你仍然可以通过 vps2arch 脚本将你的系统切换到 Archlinux&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><id>/</id><title>SiHuan's Blog</title><updated>2023-04-29T15:21:08.598708+08:06</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email></author><link href="/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator><logo>/logo.png</logo><subtitle>道阻且长，吾意思还。</subtitle><entry><id>/archives/vps2arch/</id><title>vps2arch!</title><updated>2023-04-29T15:21:08.599057+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;有些 vps 服务商是不提供 Arch 系统的，但是你仍然可以通过 vps2arch 脚本将你的系统切换到 Archlinux&lt;/p&gt;
 &lt;p&gt;这个项目托管在 gitlab : &lt;a href="https://gitlab.com/drizzt/vps2arch/"&gt;https://gitlab.com/drizzt/vps2arch/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;准备&lt;/h2&gt;
@@ -110,15 +16,15 @@ $ cat main.py &lt;span class="p"&gt;|&lt;/span&gt; pb
 &lt;p&gt;推荐重置为 &lt;code&gt;CentOS&lt;/code&gt; 或者 &lt;code&gt;Debain&lt;/code&gt; 这个脚本在 &lt;code&gt;Ubuntu 18&lt;/code&gt; 上也许有一些问题。&lt;/p&gt;
 &lt;h2&gt;开干&lt;/h2&gt;
 &lt;p&gt;使用 SSH 链接到你的 VPS，在开始之前你可以修改一下 root 密码，因为 vps2arch 会将新系统的密码设置为你运行脚本之前的 root 密码&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;passwd root
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;passwd&lt;span class="w"&gt; &lt;/span&gt;root
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;你需要输入两次新密码，并且输入密码没有回显&lt;/p&gt;
 &lt;p&gt;接下来就是重点了，以 root 身份执行以下命令&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 下载 vps2arch 脚本&lt;/span&gt;
 &lt;span class="c1"&gt;# wget https://tinyurl.com/vps2arch 也会被重定向到以下 url&lt;/span&gt;
-wget https://gitlab.com/drizzt/vps2arch/-/raw/master/vps2arch
+wget&lt;span class="w"&gt; &lt;/span&gt;https://gitlab.com/drizzt/vps2arch/-/raw/master/vps2arch
 &lt;span class="c1"&gt;# 赋予执行权限&lt;/span&gt;
-chmod +x vps2arch
+chmod&lt;span class="w"&gt; &lt;/span&gt;+x&lt;span class="w"&gt; &lt;/span&gt;vps2arch
 &lt;span class="c1"&gt;# 启动脚本！&lt;/span&gt;
 ./vps2arch
 &lt;span class="c1"&gt;# 当你从脚本默认的源下载速度较慢的时候，可以使用 -m 参数指定源，例如&lt;/span&gt;
@@ -137,10 +43,10 @@ Then you'll be able to connect to your VM using SSH and to login using your old 
 &lt;p&gt;现在你已经得到一个崭新的 ArchLinux 系统了，接下来是在正常使用之前的一些建议，以下建议多来源于 &lt;a href="https://wiki.archlinux.org/index.php/Installation_guide"&gt;ArchWiki&lt;/a&gt; .&lt;/p&gt;
 &lt;h3&gt;时间设置&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 使用 ntp&lt;/span&gt;
-timedatectl set-ntp &lt;span class="nb"&gt;true&lt;/span&gt;
+timedatectl&lt;span class="w"&gt; &lt;/span&gt;set-ntp&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;
 &lt;span class="c1"&gt;# 设置时区&lt;/span&gt;
-ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-hwclock --systohc
+ln&lt;span class="w"&gt; &lt;/span&gt;-sf&lt;span class="w"&gt; &lt;/span&gt;/usr/share/zoneinfo/Asia/Shanghai&lt;span class="w"&gt; &lt;/span&gt;/etc/localtime
+hwclock&lt;span class="w"&gt; &lt;/span&gt;--systohc
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;设置中文&lt;/h3&gt;
 &lt;p&gt;这时候你的系统还是不支持中文的，输入中文将会乱码，我们需要进行一下操作。&lt;/p&gt;
@@ -159,33 +65,33 @@ zh_TW.UTF-8 UTF-8&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;[archlinuxcn]
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;之后执行&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -Syy
-pacman -S archlinuxcn-keyring
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-Syy
+pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;archlinuxcn-keyring
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;添加用户&lt;/h3&gt;
 &lt;blockquote&gt;&lt;p&gt;一直使用 root 用户是不太安全的！我们来添加一个新的用户&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;接下来的命令中，新的用户名以 &lt;em&gt;sihuan&lt;/em&gt; 为例，自行替换&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;useradd -m -G wheel sihuan
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;useradd&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;-G&lt;span class="w"&gt; &lt;/span&gt;wheel&lt;span class="w"&gt; &lt;/span&gt;sihuan
 &lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;&lt;p&gt;useradd 是 archlinux 系统添加用户的命令&lt;/p&gt;
 &lt;p&gt;-m 参数代表自动创建用户的家目录，这个例子里是 &lt;code&gt;/home/sihuan&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;-G 参数意味着用户要加入一些个的附加组，这儿即 &lt;code&gt;wheel&lt;/code&gt; 组&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;设置新用户密码&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;passwd sihuan
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;passwd&lt;span class="w"&gt; &lt;/span&gt;sihuan
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;然后输入两次密码就好了&lt;/p&gt;
 &lt;p&gt;设置 sudo&lt;/p&gt;
 &lt;p&gt;首先安装 sudo&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -S sudo
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;sudo
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;编辑配置文件，我认为你已经安装了 &lt;code&gt;vim&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;EDITOR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;vim
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;EDITOR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;vim
 visudo
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;找到下面一行，取消掉注释&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;%wheel &lt;span class="nv"&gt;ALL&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;ALL&lt;span class="o"&gt;)&lt;/span&gt; ALL
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;%wheel&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;ALL&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;ALL&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ALL
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;配置新用户的 shell&lt;/h3&gt;
 &lt;blockquote&gt;&lt;p&gt;建议大家都自己整一个 &lt;code&gt;dotfiles&lt;/code&gt; ，具体可以看 fc 老师翻译的 &lt;a href="https://farseerfc.me/using-gnu-stow-to-manage-your-dotfiles.html"&gt;这篇文章&lt;/a&gt;&lt;/p&gt;
@@ -198,21 +104,21 @@ cd&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;输入密码&lt;/p&gt;
 &lt;p&gt;接下来的操作就是在 &lt;em&gt;sihuan&lt;/em&gt; 这个用户里进行的啦&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 安装需要的软件包&lt;/span&gt;
-sudo pacman -S git stow zsh zsh-theme-powerlevel10k powerline-fonts awesome-terminal-fonts paru powerline ranger exa zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search
+sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;stow&lt;span class="w"&gt; &lt;/span&gt;zsh&lt;span class="w"&gt; &lt;/span&gt;zsh-theme-powerlevel10k&lt;span class="w"&gt; &lt;/span&gt;powerline-fonts&lt;span class="w"&gt; &lt;/span&gt;awesome-terminal-fonts&lt;span class="w"&gt; &lt;/span&gt;paru&lt;span class="w"&gt; &lt;/span&gt;powerline&lt;span class="w"&gt; &lt;/span&gt;ranger&lt;span class="w"&gt; &lt;/span&gt;exa&lt;span class="w"&gt; &lt;/span&gt;zsh-autosuggestions&lt;span class="w"&gt; &lt;/span&gt;zsh-syntax-highlighting&lt;span class="w"&gt; &lt;/span&gt;zsh-history-substring-search
 &lt;span class="c1"&gt;# 克隆 dotfiles 仓库&lt;/span&gt;
-git clone https://github.com/Si-Huan/dotfiles
+git&lt;span class="w"&gt; &lt;/span&gt;clone&lt;span class="w"&gt; &lt;/span&gt;https://github.com/Si-Huan/dotfiles
 &lt;span class="c1"&gt;# 切换 shell 到 zsh&lt;/span&gt;
-chsh -s /bin/zsh
+chsh&lt;span class="w"&gt; &lt;/span&gt;-s&lt;span class="w"&gt; &lt;/span&gt;/bin/zsh
 &lt;span class="c1"&gt;# 删除已有的 ~/.bashrc&lt;/span&gt;
-rm ~/.bashrc
+rm&lt;span class="w"&gt; &lt;/span&gt;~/.bashrc
 &lt;span class="c1"&gt;# 使 zsh 配置生效&lt;/span&gt;
-&lt;span class="nb"&gt;cd&lt;/span&gt; dotfiles
-stow zsh
+&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;dotfiles
+stow&lt;span class="w"&gt; &lt;/span&gt;zsh
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这时候远程主机上的配置就完成了！再次使用 &lt;em&gt;sihuan&lt;/em&gt; 这个用户登陆，你就会得到一个很 OK 的 shell 体验。&lt;/p&gt;
 &lt;h2&gt;免密登录和 SSH 主机别名&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh-keygen
-ssh-copy-id sihuan@hostip
+ssh-copy-id&lt;span class="w"&gt; &lt;/span&gt;sihuan@hostip
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Edit &lt;code&gt;~/.ssh/config&lt;/code&gt; add:&lt;/p&gt;
 
@@ -224,7 +130,7 @@ ssh-copy-id sihuan@hostip
 &lt;pre&gt;&lt;code&gt;ssh hostname&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;And you will no longer be asked for a password.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;EOF&lt;/strong&gt;&lt;/p&gt;
-</content><link href="/archives/vps2arch/" rel="alternate"/><published>2020-03-13T11:06:00+08:06</published></entry><entry><id>/archives/linuxapp/</id><title>Linux 日常存活方案</title><updated>2021-06-07T04:07:37.334641+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;起因&lt;/h2&gt;
+</content><link href="/archives/vps2arch/" rel="alternate"/><published>2020-03-13T11:06:00+08:06</published></entry><entry><id>/archives/linuxapp/</id><title>Linux 日常存活方案</title><updated>2023-04-29T15:21:08.599033+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;起因&lt;/h2&gt;
 &lt;p&gt;在群聊里看到有一位同学发了一张 Windows 的桌面截图，有很多软件，大致看了一下又觉得貌似在 Linux 下也差不多都有同等或更好的替代方案，加之很多人对 Linux 的偏见认为 Linux &lt;strong&gt;生态不好&lt;/strong&gt;，于是萌发了写这篇文章的想法。&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;2020/12/03 update!&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -522,7 +428,7 @@ aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
 
 使用 'pacman {-h --help}' 及某个操作以查看可用选项&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;这个优点是值得长篇大论的，&lt;strong&gt;&lt;em&gt;这儿写不下&lt;/em&gt;&lt;/strong&gt; ლ(╹◡╹ლ)&lt;/p&gt;
-</content><link href="/archives/linuxapp/" rel="alternate"/><published>2020-03-15T11:06:00+08:06</published></entry><entry><id>/archives/linuxgpu/</id><title>ArchLinux 下双显卡配置</title><updated>2021-06-07T04:07:37.334590+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;Fuck Nvidia&lt;/h2&gt;
+</content><link href="/archives/linuxapp/" rel="alternate"/><published>2020-03-15T11:06:00+08:06</published></entry><entry><id>/archives/linuxgpu/</id><title>ArchLinux 下双显卡配置</title><updated>2023-04-29T15:21:08.599008+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;Fuck Nvidia&lt;/h2&gt;
 &lt;p&gt;如果笔电上有一张 Nivdia 显卡，使用 Linux 的时候也许会因为驱动引起一些令人苦恼的问题。&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;如果熟读并背诵 ArchWiki 的话就不会有这些问题了  (误&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -536,7 +442,7 @@ aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
 &lt;p&gt;有可能是因为你漏装了 nvidia 显卡的驱动程式，可以用一下命令安装&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;进不去系统的话可以尝试 &lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Alt&lt;/code&gt;+&lt;code&gt;F2~6&lt;/code&gt;切换到 &lt;code&gt;tty&lt;/code&gt;，仍然不行的话可能就要搬来 LiveCD 了&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -S nvidia
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;nvidia
 &lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;&lt;p&gt;&lt;strong&gt;注意！&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;我现在执行的命令在我的机器上有效，对于比较新的机器应该都没有问题，但是具体呢还是要参看 &lt;a href="https://wiki.archlinux.org/index.php/NVIDIA#Installation"&gt;ArchWiki NVIDIA&lt;/a&gt;&lt;/p&gt;
@@ -553,7 +459,7 @@ aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
 &lt;blockquote&gt;&lt;p&gt;具体参见 &lt;a href="https://wiki.archlinux.org/index.php/Intel_graphics"&gt;ArchWiki Intel graphics&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;安装 &lt;code&gt;mesa&lt;/code&gt; 包，为了对 32 位程序的支持，安装 &lt;code&gt;lib32-mesa&lt;/code&gt; 包 (位于 &lt;strong&gt;multilib&lt;/strong&gt; 仓库，请提前自行开启此仓库)。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -S mesa lib32-mesa
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;mesa&lt;span class="w"&gt; &lt;/span&gt;lib32-mesa
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;另外需要注意的是，如果之前安装了 &lt;code&gt;xf86-video-intel&lt;/code&gt; 包，最好卸载掉&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;比如这个包会引起我的 OBS 在录制闪屏，而且不使用此包也是官方的建议&lt;/p&gt;
@@ -562,38 +468,38 @@ aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;卸载&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -Rsc xf86-video-intel
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-Rsc&lt;span class="w"&gt; &lt;/span&gt;xf86-video-intel
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h4&gt;NVIDIA 显卡驱动&lt;/h4&gt;
 &lt;blockquote&gt;&lt;p&gt;具体参见 &lt;a href="https://wiki.archlinux.org/index.php/NVIDIA#Installation"&gt;ArchWiki NVIDIA&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;安装 &lt;code&gt;nvidia&lt;/code&gt; 包，为了对 32 位程序的支持，安装 &lt;code&gt;lib32-nvidia-utils&lt;/code&gt; 包 (位于 &lt;strong&gt;multilib&lt;/strong&gt; 仓库，请提前自行开启此仓库)。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -S nvidia lib32-nvidia-utils
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;nvidia&lt;span class="w"&gt; &lt;/span&gt;lib32-nvidia-utils
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;配置 PRIME render offload&lt;/h3&gt;
 &lt;blockquote&gt;&lt;p&gt;具体参见 &lt;a href="https://wiki.archlinux.org/index.php/PRIME#PRIME_render_offload"&gt;ArchWiki PRIME&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;安装 &lt;code&gt;nvidia-prime&lt;/code&gt; 包来使用官方配置 (不起作用的话，你就要去 Wiki 看怎么手动配置了，不过我觉得一般都不需要手动配置啦)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -S nvidia-prime
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;nvidia-prime
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;reboot！&lt;/h3&gt;
 &lt;p&gt;这时候重启系统就应该起作用了，你可以通过 &lt;code&gt;prime-run&lt;/code&gt; 命令使指定程序在 NVIDIA 显卡上渲染。例如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 以 n 卡渲染 vlc&lt;/span&gt;
-prime-run vlc
+prime-run&lt;span class="w"&gt; &lt;/span&gt;vlc
 &lt;span class="c1"&gt;# 以 n 卡渲染 wine 游戏&lt;/span&gt;
-prime-run wine touhou08.exe
+prime-run&lt;span class="w"&gt; &lt;/span&gt;wine&lt;span class="w"&gt; &lt;/span&gt;touhou08.exe
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;在此之前你可能想查看你的配置是否生效，可以使用 &lt;code&gt;glxinfo&lt;/code&gt; 这个工具，它属于 &lt;code&gt;mesa-demos&lt;/code&gt; 包，先安装&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -S mesa-demo
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;mesa-demo
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;来测试一下&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;glxinfo &lt;span class="p"&gt;|&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;quot;OpenGL renderer&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;glxinfo&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;grep&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;OpenGL renderer&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;输出应该类似于下面，这意味着默认情况下你使用的是 Intel 显卡&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;OpenGL renderer string: Mesa DRI Intel(R) UHD Graphics (Whiskey Lake 3x8 GT2)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;然后&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;prime-run glxinfo &lt;span class="p"&gt;|&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;quot;OpenGL renderer&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;prime-run&lt;span class="w"&gt; &lt;/span&gt;glxinfo&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;grep&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;OpenGL renderer&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;你应该看到&lt;/p&gt;
 
@@ -602,7 +508,7 @@ prime-run wine touhou08.exe
 &lt;h2&gt;一点总结&lt;/h2&gt;
 &lt;p&gt;我之前使用的是 &lt;a href="https://wiki.archlinux.org/index.php/Bumblebee"&gt;Bumblebee&lt;/a&gt; 方案，但是感觉不如现在的方案方便也不如这个性能好。&lt;/p&gt;
 &lt;p&gt;另外使用了 NVIDIA 的闭源驱动所以在配置双显卡的时候使用了 &lt;strong&gt;PRIME render offload&lt;/strong&gt; 而不是在 Wiki 里的上一级标题 &lt;strong&gt;PRIME GPU offloading&lt;/strong&gt; ，后者是给 NVIDIA 的开源驱动程式用的。关于具体的不同，自己去翻阅 wiki 吧，不归我管，我只是记录一下我觉得目前最好使的方案。&lt;/p&gt;
-</content><link href="/archives/linuxgpu/" rel="alternate"/><published>2020-03-17T11:06:00+08:06</published></entry><entry><id>/archives/shitama1/</id><title>Shitama 代码分析「概况」</title><updated>2021-06-07T04:07:37.334505+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;别看了全是胡扯，我之前理解错有问题，没认真读代码&lt;/p&gt;
+</content><link href="/archives/linuxgpu/" rel="alternate"/><published>2020-03-17T11:06:00+08:06</published></entry><entry><id>/archives/shitama1/</id><title>Shitama 代码分析「概况」</title><updated>2023-04-29T15:21:08.598984+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;别看了全是胡扯，我之前理解错有问题，没认真读代码&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1&gt;Shitama 的历史&lt;/h1&gt;
 &lt;blockquote&gt;&lt;p&gt;「Shitama」是一个类毛玉服务，可以为「东方非想天则」提供简单的端口转发功能，让身处内网的玩家能够建立主机并进行对战。&lt;/p&gt;
@@ -655,7 +561,7 @@ prime-run wine touhou08.exe
 &lt;p&gt;&lt;figure&gt;&lt;img data-width="1346" data-height="372" src="/archives/assets/a45ce6fb1094844897e18bd373f45524.png" alt="how_shitama_work4" /&gt;&lt;figcaption&gt;how_shitama_work4&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;图中虚线的意味： shard1 中由 HostPort 指向 GuestPort 的虚线意味着 HostPort 并不会向 GuestPort 发送数据，而是每当 HostPort 收到来自 Port1 的数据就会使用 GuestPort 发送出去。也就是说 HostPort 只与 Port1 通信。&lt;/p&gt;
 &lt;p&gt;接下来的几篇博文会比较&lt;del&gt;正经&lt;/del&gt;的分析 shitama 的代码。&lt;/p&gt;
-</content><link href="/archives/shitama1/" rel="alternate"/><published>2020-06-01T11:06:00+08:06</published></entry><entry><id>/archives/shitama2/</id><title>Shitama 代码分析「holder 启动」</title><updated>2021-06-07T04:07:37.334473+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;别看了，全是胡扯，我之前没认真读代码&lt;/p&gt;
+</content><link href="/archives/shitama1/" rel="alternate"/><published>2020-06-01T11:06:00+08:06</published></entry><entry><id>/archives/shitama2/</id><title>Shitama 代码分析「holder 启动」</title><updated>2023-04-29T15:21:08.598959+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;别看了，全是胡扯，我之前没认真读代码&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1&gt;这是开头&lt;/h1&gt;
 &lt;p&gt;因为按逻辑上，shitama 的运行顺序应该是 「holder 启动」、「shard 启动」、「client 启动」和 「链接建立」。我也就先按照这个来分析。&lt;/p&gt;
@@ -672,61 +578,61 @@ prime-run wine touhou08.exe
 └── main.go&lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;结构体结构&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;./lib/holder.go&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="nx"&gt;Holder&lt;/span&gt; &lt;span class="kd"&gt;struct&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;logger&lt;/span&gt;  &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;logrus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Logger&lt;/span&gt;
-    &lt;span class="nx"&gt;Tunnel&lt;/span&gt;  &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;Tunnel&lt;/span&gt;
-    &lt;span class="nx"&gt;Server&lt;/span&gt;  &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;Server&lt;/span&gt;
-    &lt;span class="nx"&gt;shards&lt;/span&gt;  &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;ShardInfo&lt;/span&gt;
-    &lt;span class="nx"&gt;clients&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;ClientInfo&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Holder&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;logger&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;logrus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Logger&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;Tunnel&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;Tunnel&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;Server&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;Server&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;shards&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;ShardInfo&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;clients&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;ClientInfo&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;./lib/tunnel.go&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="nx"&gt;Tunnel&lt;/span&gt; &lt;span class="kd"&gt;struct&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;OnConnected&lt;/span&gt;        &lt;span class="nx"&gt;EventBus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Bus&lt;/span&gt;
-    &lt;span class="nx"&gt;OnDisconnected&lt;/span&gt;     &lt;span class="nx"&gt;EventBus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Bus&lt;/span&gt;
-    &lt;span class="nx"&gt;OnRequestReceived&lt;/span&gt;  &lt;span class="nx"&gt;EventBus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Bus&lt;/span&gt;
-    &lt;span class="nx"&gt;OnPublishReceived&lt;/span&gt;  &lt;span class="nx"&gt;EventBus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Bus&lt;/span&gt;
-    &lt;span class="nx"&gt;OnPeerConnected&lt;/span&gt;    &lt;span class="nx"&gt;EventBus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Bus&lt;/span&gt;
-    &lt;span class="nx"&gt;OnPeerDisconnected&lt;/span&gt; &lt;span class="nx"&gt;EventBus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Bus&lt;/span&gt;
-    &lt;span class="nx"&gt;parent&lt;/span&gt;             &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;Holder&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Tunnel&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;OnConnected&lt;/span&gt;&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;EventBus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Bus&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;OnDisconnected&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="nx"&gt;EventBus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Bus&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;OnRequestReceived&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nx"&gt;EventBus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Bus&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;OnPublishReceived&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nx"&gt;EventBus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Bus&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;OnPeerConnected&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;EventBus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Bus&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;OnPeerDisconnected&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;EventBus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Bus&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;parent&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;Holder&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;./lib/server.go&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="nx"&gt;Server&lt;/span&gt; &lt;span class="kd"&gt;struct&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;parent&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;Holder&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Server&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;parent&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;Holder&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;./lib/shardInfo.go&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="nx"&gt;ShardInfo&lt;/span&gt; &lt;span class="kd"&gt;struct&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;common&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;ShardInfo&lt;/span&gt;
-    &lt;span class="nx"&gt;conn&lt;/span&gt;    &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;kcp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;UDPSession&lt;/span&gt;
-    &lt;span class="nx"&gt;session&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;yamux&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Session&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;ShardInfo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;common&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;ShardInfo&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;conn&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;kcp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;UDPSession&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;session&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;yamux&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Session&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;../common/shardInfo.go&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="nx"&gt;ShardInfo&lt;/span&gt; &lt;span class="kd"&gt;struct&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;Addr&lt;/span&gt;     &lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="s"&gt;`json:&amp;quot;addr&amp;quot;`&lt;/span&gt;
-    &lt;span class="nx"&gt;IP&lt;/span&gt;       &lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="s"&gt;`json:&amp;quot;ip&amp;quot;`&lt;/span&gt;
-    &lt;span class="nx"&gt;EchoPort&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt;    &lt;span class="s"&gt;`json:&amp;quot;echoPort&amp;quot;`&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;ShardInfo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;Addr&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;`json:&amp;quot;addr&amp;quot;`&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;IP&lt;/span&gt;&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;`json:&amp;quot;ip&amp;quot;`&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;EchoPort&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s"&gt;`json:&amp;quot;echoPort&amp;quot;`&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;./lib/clientInfo.go&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="nx"&gt;ClientInfo&lt;/span&gt; &lt;span class="kd"&gt;struct&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;common&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;ClientInfo&lt;/span&gt;
-    &lt;span class="nx"&gt;conn&lt;/span&gt;    &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;kcp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;UDPSession&lt;/span&gt;
-    &lt;span class="nx"&gt;session&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;yamux&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Session&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;ClientInfo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;common&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;ClientInfo&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;conn&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;kcp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;UDPSession&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;session&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;yamux&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Session&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;../common/clientInfo.go&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="nx"&gt;ClientInfo&lt;/span&gt; &lt;span class="kd"&gt;struct&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;Addr&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="s"&gt;`json:&amp;quot;addr&amp;quot;`&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;ClientInfo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;Addr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;`json:&amp;quot;addr&amp;quot;`&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h1&gt;holder 启动时函数调用顺序&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code&gt;
 &lt;/code&gt;&lt;/pre&gt;
-</content><link href="/archives/shitama2/" rel="alternate"/><published>2020-06-07T11:06:00+08:06</published></entry><entry><id>/archives/utsutsu1/</id><title>Utsutsu 用法</title><updated>2021-06-07T04:07:37.334423+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h1&gt;夢と現&lt;/h1&gt;
+</content><link href="/archives/shitama2/" rel="alternate"/><published>2020-06-07T11:06:00+08:06</published></entry><entry><id>/archives/utsutsu1/</id><title>Utsutsu 用法</title><updated>2023-04-29T15:21:08.598932+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h1&gt;夢と現&lt;/h1&gt;
 &lt;blockquote&gt;&lt;p&gt;一个打则工具，与 shitama 原理上略有不同，也许会对某些网络有奇效。&lt;/p&gt;
 &lt;p&gt;现在还是仅仅能用的阶段，没有图形界面，只有一个服务器可以选择（也就是，没得选）&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -764,7 +670,7 @@ prime-run wine touhou08.exe
 &lt;li&gt;等等等 不想写了 太多&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;遇到问题之后现在较好的解决方案是重启 utsutsu （&lt;/p&gt;
-</content><link href="/archives/utsutsu1/" rel="alternate"/><published>2020-07-24T11:06:00+08:06</published></entry><entry><id>/archives/xzz/</id><title>部署一个自己的人工智障机器人</title><updated>2021-06-07T04:07:37.334370+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;2020/08/02 由于一些原因，将我的 QQ 机器人从 &lt;em&gt;酷Q&lt;/em&gt; 迁移到 开源的 &lt;em&gt;MiraiGo&lt;/em&gt;&lt;/p&gt;
+</content><link href="/archives/utsutsu1/" rel="alternate"/><published>2020-07-24T11:06:00+08:06</published></entry><entry><id>/archives/xzz/</id><title>部署一个自己的人工智障机器人</title><updated>2023-04-29T15:21:08.598905+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;2020/08/02 由于一些原因，将我的 QQ 机器人从 &lt;em&gt;酷Q&lt;/em&gt; 迁移到 开源的 &lt;em&gt;MiraiGo&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;顺便写下了此文档&lt;/p&gt;
 &lt;p&gt;此文用到的项目&lt;/p&gt;
 &lt;ul&gt;
@@ -778,18 +684,18 @@ prime-run wine touhou08.exe
 &lt;blockquote&gt;&lt;p&gt;因为机器人的逻辑部分，也就西 XZZ 是 Python 写的，所以需要 Python 环境&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;在 ArchLinux 中，安装 python&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo pacman -S python
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;python
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;克隆 XZZ&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/Si-Huan/XZZ.git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;clone&lt;span class="w"&gt; &lt;/span&gt;https://github.com/Si-Huan/XZZ.git
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;编译或下载 go-cqhttp&lt;/h3&gt;
 &lt;h4&gt;编译&lt;/h4&gt;
 &lt;p&gt;克隆仓库&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/Mrs4s/go-cqhttp.git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;clone&lt;span class="w"&gt; &lt;/span&gt;https://github.com/Mrs4s/go-cqhttp.git
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;编译&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; go-cqhttp &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; go build
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;go-cqhttp&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;go&lt;span class="w"&gt; &lt;/span&gt;build
 &lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;&lt;p&gt;tips: 自备 go 环境&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -799,8 +705,8 @@ prime-run wine touhou08.exe
 &lt;blockquote&gt;&lt;p&gt;可选但推荐，不然可能有一些服务无法使用&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;在 ArchLinux 下&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo pacman -S redis
-sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; redis.service --now
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;redis
+sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;redis.service&lt;span class="w"&gt; &lt;/span&gt;--now
 &lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;&lt;p&gt;tips: 请保持 redis 服务运行在 XZZ 同服务器 6379 端口&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -848,31 +754,31 @@ sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; redis.service --now
     └── zzcore.py&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;我们去编辑 &lt;code&gt;./bot/config.json&lt;/code&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;quot;uin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1010101010&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;mima&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;quot;enable_db&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;quot;access_token&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;token&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;quot;relogin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;quot;relogin_delay&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;quot;http_config&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;host&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;port&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;5700&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;post_urls&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;127.0.0.1:5580&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;XZZ&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;quot;ws_config&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;host&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;0.0.0.0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;port&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;6700&lt;/span&gt;
-    &lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;quot;ws_reverse_servers&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[{&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;reverse_url&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ws://you_websocket_universal.server&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;reverse_api_url&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ws://you_websocket_api.server&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;reverse_event_url&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ws://you_websocket_event.server&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;reverse_reconnect_interval&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;3000&lt;/span&gt;
-    &lt;span class="p"&gt;}],&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;quot;debug&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;uin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1010101010&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mima&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;enable_db&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;access_token&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;token&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;relogin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;relogin_delay&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;http_config&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;host&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;port&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;5700&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;post_urls&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;127.0.0.1:5580&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;XZZ&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;ws_config&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;host&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;0.0.0.0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;port&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;6700&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;ws_reverse_servers&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;reverse_url&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ws://you_websocket_universal.server&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;reverse_api_url&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ws://you_websocket_api.server&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;reverse_event_url&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ws://you_websocket_event.server&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;reverse_reconnect_interval&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;3000&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}],&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;debug&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;需要编辑的字段如下&lt;/p&gt;
@@ -924,13 +830,13 @@ sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; redis.service --now
 &lt;h3&gt;配置 XZZ&lt;/h3&gt;
 &lt;p&gt;移步至 &lt;code&gt;xzz&lt;/code&gt; 文件夹下&lt;/p&gt;
 &lt;p&gt;创建虚拟环境&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python -m venv env
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;venv&lt;span class="w"&gt; &lt;/span&gt;env
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;激活虚拟环境&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt; ./env/bin/activate
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;./env/bin/activate
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;安装依赖&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install -r req.txt
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;req.txt
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;配置 XZZ&lt;/p&gt;
 &lt;p&gt;复制一份 &lt;code&gt;sample_config.py&lt;/code&gt; 到 &lt;code&gt;config.py&lt;/code&gt;，并编辑&lt;/p&gt;
@@ -968,7 +874,7 @@ sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; redis.service --now
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;配置完毕之后，启动 XZZ&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python main.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python&lt;span class="w"&gt; &lt;/span&gt;main.py
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;和上文 对 go-cqhttp 的处理一样，挂在后台就好了&lt;/p&gt;
 &lt;h3&gt;测试！&lt;/h3&gt;
@@ -978,11 +884,11 @@ sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; redis.service --now
 &lt;p&gt;&lt;a href="https://github.com/Si-Huan/XZZ"&gt;https://github.com/Si-Huan/XZZ&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;啊这 终于写完了， 又水了一篇 23333&lt;/p&gt;
 &lt;/blockquote&gt;
-</content><link href="/archives/xzz/" rel="alternate"/><published>2020-08-02T11:06:00+08:06</published></entry><entry><id>/archives/two-drive/</id><title>今天收获了两个网盘诶</title><updated>2021-06-07T04:07:37.334328+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h1&gt;今天又干了不少事情呢&lt;/h1&gt;
+</content><link href="/archives/xzz/" rel="alternate"/><published>2020-08-02T11:06:00+08:06</published></entry><entry><id>/archives/two-drive/</id><title>今天收获了两个网盘诶</title><updated>2023-04-29T15:21:08.598877+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h1&gt;今天又干了不少事情呢&lt;/h1&gt;
 &lt;p&gt;欢迎来看看， &lt;a href="https://storage.sakuya.love"&gt;SiHuan's onedrive index&lt;/a&gt; 🎉&lt;/p&gt;
 &lt;!--stackedit_data:
 eyJoaXN0b3J5IjpbLTg1MDc2NjkyNV19
---&gt;</content><link href="/archives/two-drive/" rel="alternate"/><published>2020-11-26T11:06:00+08:06</published></entry><entry><id>/archives/linuxorwinjoke/</id><title>今日份笑话</title><updated>2021-06-07T04:07:37.334252+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;笑话&lt;/h2&gt;
+--&gt;</content><link href="/archives/two-drive/" rel="alternate"/><published>2020-11-26T11:06:00+08:06</published></entry><entry><id>/archives/linuxorwinjoke/</id><title>今日份笑话</title><updated>2023-04-29T15:21:08.598845+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;笑话&lt;/h2&gt;
 &lt;p&gt;今天在看到一些东西，以下原文&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;《一则讽刺笑话》&lt;/strong&gt;
 &lt;strong&gt;世人说，要有罐头，便有了罐头。&lt;/strong&gt;
@@ -1008,4 +914,115 @@ eyJoaXN0b3J5IjpbLTg1MDc2NjkyNV19
 &lt;h2&gt;尾巴&lt;/h2&gt;
 &lt;p&gt;拐弯抹角真伤脑筋，有啥说啥呗&lt;/p&gt;
 &lt;p&gt;以后不会发这么无聊的东西了🙈&lt;/p&gt;
-</content><link href="/archives/linuxorwinjoke/" rel="alternate"/><published>2021-01-01T11:06:00+08:06</published></entry></feed>
+</content><link href="/archives/linuxorwinjoke/" rel="alternate"/><published>2021-01-01T11:06:00+08:06</published></entry><entry><id>/archives/ros-install-docker/</id><title>使用 Docker 安装 ROS</title><updated>2023-04-29T15:21:08.598785+00:00</updated><author><name>SiHuaN</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;本文使用的操作系统是 &lt;code&gt;ArchLinux&lt;/code&gt;，用户名是 &lt;code&gt;sihuan&lt;/code&gt;，使用的 ROS 版本是 ROS1  &lt;code&gt;kinetic&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;采用 docker 来安装 ROS 配置环境，此方法方便切换 ROS 版本，安装起来也比较方便&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;安装 docker，启动 docker 服务，并把当前用户加入到 &lt;code&gt;docker&lt;/code&gt; 用户组&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;docker
+systemctl&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--now&lt;span class="w"&gt; &lt;/span&gt;docker.service
+gpasswd&lt;span class="w"&gt; &lt;/span&gt;-a&lt;span class="w"&gt; &lt;/span&gt;sihuan&lt;span class="w"&gt; &lt;/span&gt;docker
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;&lt;p&gt;Tips: 需要重新登录以使用户组更改生效&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;拉取 ROS docker 镜像&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 此处以 kinetic-desktop-full 为例&lt;/span&gt;
+docker&lt;span class="w"&gt; &lt;/span&gt;pull&lt;span class="w"&gt; &lt;/span&gt;osrf/ros:kinetic-desktop-full
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置启动脚本，准备工作目录&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;以下文件均在 host 机器上创建编辑&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;递归创建工作目录，此处以 &lt;code&gt;~/project/ros/kinetic/catkin_ws&lt;/code&gt; 为例&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;~/project/ros/kinetic/catkin_ws/src
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;创建并编辑 &lt;code&gt;~/project/ros/kinetic/.bashrc&lt;/code&gt;，此文件是给 docker 中的系统准备的 bash 配置文件&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ros-env&lt;span class="o"&gt;(){&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/opt/ros/kinetic/setup.bash
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/home/sihuan/catkin_ws/devel/setup.bash
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;ROS_PACKAGE_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/sihuan/catkin_ws/:/opt/ros/kinetic/share/
+&lt;span class="o"&gt;}&lt;/span&gt;
+ros-env
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;编辑 &lt;code&gt;~/.bashrc&lt;/code&gt; 在最后添加以下内容，这是用来启动、连接、清理 docker 容器的函数&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# krstart(kinetic ros start) 会启动一个 ros:kinetic-desktop-full 容器&lt;/span&gt;
+krstart&lt;span class="o"&gt;(){&lt;/span&gt;
+docker&lt;span class="w"&gt; &lt;/span&gt;run&lt;span class="w"&gt; &lt;/span&gt;-it&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--user&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;id&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$USER&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;:&lt;span class="k"&gt;$(&lt;/span&gt;id&lt;span class="w"&gt; &lt;/span&gt;-g&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$USER&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--env&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;DISPLAY&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--workdir&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/home/&lt;/span&gt;&lt;span class="nv"&gt;$USER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--volume&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/home/&lt;/span&gt;&lt;span class="nv"&gt;$USER&lt;/span&gt;&lt;span class="s2"&gt;/project/ros/kinetic:/home/&lt;/span&gt;&lt;span class="nv"&gt;$USER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--volume&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/etc/group:/etc/group:ro&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--volume&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/etc/passwd:/etc/passwd:ro&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--volume&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/etc/shadow:/etc/shadow:ro&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--volume&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/etc/sudoers.d:/etc/sudoers.d:ro&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;--volume&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/tmp/.X11-unix:/tmp/.X11-unix:rw&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;osrf/ros:kinetic-desktop-full&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;bash
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# krconnect 会连接到正在运行的 kinetic docker 容器中&lt;/span&gt;
+krconnect&lt;span class="o"&gt;(){&lt;/span&gt;
+docker&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;exec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-ti&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;ps&lt;span class="w"&gt; &lt;/span&gt;-aq&lt;span class="w"&gt; &lt;/span&gt;--filter&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;ancestor&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;osrf/ros:kinetic-desktop-full&lt;span class="w"&gt; &lt;/span&gt;--filter&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;status&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;running&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;bash
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 清理已经停止的 kinetic 容器&lt;/span&gt;
+krclean&lt;span class="o"&gt;(){&lt;/span&gt;
+docker&lt;span class="w"&gt; &lt;/span&gt;rm&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;ps&lt;span class="w"&gt; &lt;/span&gt;-aq&lt;span class="w"&gt; &lt;/span&gt;--filter&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;ancestor&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;osrf/ros:kinetic-desktop-full&lt;span class="w"&gt; &lt;/span&gt;--filter&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;status&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;exited
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;&lt;p&gt;Tips&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;docker 的启动脚本中使用了 &lt;code&gt;--user&lt;/code&gt; 参数并以只读方式映射了 host 机器 &lt;code&gt;/etc/group&lt;/code&gt; 等用户和组相关文件，目的是为了以当前用户 &lt;code&gt;sihuan&lt;/code&gt; 的身份登入到 docker 中，避免在 host 机器编辑源文件时候的权限问题&lt;/li&gt;
+&lt;li&gt;host 机器 &lt;code&gt;/home/sihuan/project/ros/kinetic&lt;/code&gt; 目录被挂载到 docker 里 &lt;code&gt;/home/sihuan/&lt;/code&gt;  位置，也即 docker 里的 ROS 的工作空间 &lt;code&gt;/home/sihuan/catkin_ws&lt;/code&gt; 可通过 host 机器 &lt;code&gt;/home/sihuan/project/ros/kinetic/catkin_ws&lt;/code&gt; 目录进行访问、编辑。&lt;/li&gt;
+&lt;li&gt;启动脚本中还影射了 X11 服务相关文件，使得在 docker 中可以访问 host 机器 X 服务以运行图形界面程序（这要求 host 机器运行 X11 服务）&lt;/li&gt;
+&lt;li&gt;启用硬件加速 #TODO&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;启动容器&lt;/p&gt;
+&lt;p&gt;在 host 机器上运行 &lt;code&gt;krstart&lt;/code&gt; 就可以启动一个装有 kinetic 的 docker 容器，初次启动可能会遇到一下报错，是预期内错误，使用 &lt;code&gt;catkin_make&lt;/code&gt; 来初始化工程后，就不再有这个问题。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 在 host 机器执行&lt;/span&gt;
+krstart
+&lt;span class="c1"&gt;# 出现以下预期内错误&lt;/span&gt;
+bash:&lt;span class="w"&gt; &lt;/span&gt;/home/sihuan/catkin_ws/devel/setup.bash:&lt;span class="w"&gt; &lt;/span&gt;No&lt;span class="w"&gt; &lt;/span&gt;such&lt;span class="w"&gt; &lt;/span&gt;file&lt;span class="w"&gt; &lt;/span&gt;or&lt;span class="w"&gt; &lt;/span&gt;directory
+&lt;span class="c1"&gt;# 在 docker 里进入工作目录并初始化工程&lt;/span&gt;
+&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;~/catkin_ws
+catkin_make
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;此时再运行 &lt;code&gt;roscore&lt;/code&gt; 应该看到以下输出&lt;/p&gt;
+&lt;p&gt;```
+sihuan@a9d3b860cafe:~/catkin_ws$ roscore
+... logging to /home/sihuan/.ros/log/fbbe12d2-dab9-11ed-a2a2-0242ac110002/roslaunch-a9d3b860cafe-521.log
+Checking log directory for disk usage. This may take awhile.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is &amp;lt;1GB.&lt;/p&gt;
+&lt;p&gt;started roslaunch server &lt;a href="http://a9d3b860cafe:35231/"&gt;http://a9d3b860cafe:35231/&lt;/a&gt;
+ros_comm version 1.12.17&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;  SUMMARY
+  ========
+
+  PARAMETERS
+   * /rosdistro: kinetic
+   * /rosversion: 1.12.17
+
+  NODES
+
+  auto-starting new master
+  process[master]: started with pid [531]
+  ROS_MASTER_URI=http://a9d3b860cafe:11311/
+
+  setting /run_id to fbbe12d2-dab9-11ed-a2a2-0242ac110002
+  process[rosout-1]: started with pid [544]
+  started core service [/rosout]
+  ```
+
+  至此安装工作已经完成，可以在 host 机器中使用文本编辑器编辑源码，然后在 docker 中进行编译、运行。
+
+  &amp;gt; Tips：由于 docker 中 `~/catkin_ws/src/CMakeLists.txt` 是指向 `/opt/ros/kinetic/share/catkin/cmake/toplevel.cmake` 的软连接，在 host 机器上编辑此文件会遇到一些问题，如有需要请在 docker 中编辑该文件。&lt;/code&gt;&lt;/pre&gt;
+</content><link href="/archives/ros-install-docker/" rel="alternate"/><published>2023-04-20T11:06:00+08:06</published></entry></feed>

@@ -17,7 +17,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "/5dac3077e1447aca861b775b19db7cac.json"
+            api: "/fb6dddf7e20a3311708f36bbad33c777.json"
         }
     </script>
     
@@ -111,7 +111,7 @@ All data may be erased without notifications. Please do NOT post large files.</c
 </blockquote>
 <p>上传一个命令的输出</p>
 <p>例如</p>
-<div class="highlight"><pre><span></span>$ ls <span class="p">|</span> curl -F <span class="s2">&quot;c=@-&quot;</span> <span class="s2">&quot;https://fars.ee/&quot;</span>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span><span class="p">|</span><span class="w"> </span>curl<span class="w"> </span>-F<span class="w"> </span><span class="s2">&quot;c=@-&quot;</span><span class="w"> </span><span class="s2">&quot;https://fars.ee/&quot;</span>
 </pre></div>
 <p>就将 <code>ls</code>命令的输出上传上去了，你会得到</p>
 
@@ -126,7 +126,7 @@ All data may be erased without notifications. Please do NOT post large files.</c
 <p>其中的 <code>url: https://fars.ee/jJbw</code> 就是你的地址啦，打开就可以看到你上传的文本</p>
 <p>语法高亮！</p>
 <p>首先让我们来上传一段代码</p>
-<div class="highlight"><pre><span></span>$ curl -F <span class="s2">&quot;c=@-&quot;</span> <span class="s2">&quot;https://fars.ee/&quot;</span> &lt; main.c
+<div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-F<span class="w"> </span><span class="s2">&quot;c=@-&quot;</span><span class="w"> </span><span class="s2">&quot;https://fars.ee/&quot;</span><span class="w"> </span>&lt;<span class="w"> </span>main.c
 <span class="c1"># 或或者这样</span>
 <span class="c1"># cat main.c | curl -F &quot;c=@-&quot; &quot;https://fars.ee/&quot;</span>
 </pre></div>
@@ -161,19 +161,19 @@ All data may be erased without notifications. Please do NOT post large files.</c
 <p>如果每次都要输入像 <code>curl -F "c=@-" "https://fars.ee/"</code> 这么一大串的话，有点不方便我们可以利用一个命令别名或者 shell 函数来简化操作</p>
 <h4>使用别名</h4>
 <div class="highlight"><pre><span></span><span class="c1"># 添加别名 也可以添加到 ~/.bashrc 中去</span>
-$ <span class="nb">alias</span> <span class="nv">pb</span><span class="o">=</span><span class="s1">&#39;curl -F &quot;c=@-&quot; &quot;https://fars.ee/&quot;&#39;</span> 
+$<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="nv">pb</span><span class="o">=</span><span class="s1">&#39;curl -F &quot;c=@-&quot; &quot;https://fars.ee/&quot;&#39;</span><span class="w"> </span>
 <span class="c1"># 愉快的使用</span>
-$ cat main.py <span class="p">|</span> pb
+$<span class="w"> </span>cat<span class="w"> </span>main.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>pb
 </pre></div>
 <h4>使用 shell 函数</h4>
 <blockquote><p>使用函数的话，就可以完成更多的操作，比如按文件名上传多个文件，又或者接下来要说的把得到的 url 复制到剪切板</p>
 </blockquote>
 <p>因为要复制到剪切板，这儿依赖了 <code>xclip</code> 这个工具，要提前装好，Archlinux 的话就</p>
-<div class="highlight"><pre><span></span>$ sudo pacman -S xclip
+<div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>xclip
 </pre></div>
 <p>然后在 <code>~/.bashrc</code> 添加</p>
-<div class="highlight"><pre><span></span>fs<span class="o">()</span> <span class="o">{</span>
-  curl -s -F <span class="s2">&quot;c=@</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span> <span class="s2">&quot;https://fars.ee/?u=1&quot;</span> <span class="p">|</span> tee /dev/tty <span class="p">|</span> perl -p -e <span class="s1">&#39;chomp if eof&#39;</span> <span class="p">|</span> xclip -selection clipboard -i
+<div class="highlight"><pre><span></span>fs<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>curl<span class="w"> </span>-s<span class="w"> </span>-F<span class="w"> </span><span class="s2">&quot;c=@</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;https://fars.ee/?u=1&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>/dev/tty<span class="w"> </span><span class="p">|</span><span class="w"> </span>perl<span class="w"> </span>-p<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;chomp if eof&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xclip<span class="w"> </span>-selection<span class="w"> </span>clipboard<span class="w"> </span>-i
 <span class="o">}</span>
 </pre></div>
 <p>上面的函数抄袭自 <a href="https://github.com/farseerfc/dotfiles/blob/master/zsh/.bashrc">farseerfc 的 dotfiles</a></p>

@@ -17,7 +17,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "/5dac3077e1447aca861b775b19db7cac.json"
+            api: "/fb6dddf7e20a3311708f36bbad33c777.json"
         }
     </script>
     
@@ -103,54 +103,54 @@
 └── main.go</code></pre>
 <h2>结构体结构</h2>
 <p><code>./lib/holder.go</code></p>
-<div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">Holder</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">logger</span>  <span class="o">*</span><span class="nx">logrus</span><span class="p">.</span><span class="nx">Logger</span>
-    <span class="nx">Tunnel</span>  <span class="o">*</span><span class="nx">Tunnel</span>
-    <span class="nx">Server</span>  <span class="o">*</span><span class="nx">Server</span>
-    <span class="nx">shards</span>  <span class="p">[]</span><span class="nx">ShardInfo</span>
-    <span class="nx">clients</span> <span class="p">[]</span><span class="nx">ClientInfo</span>
+<div class="highlight"><pre><span></span><span class="kd">type</span><span class="w"> </span><span class="nx">Holder</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">logger</span><span class="w">  </span><span class="o">*</span><span class="nx">logrus</span><span class="p">.</span><span class="nx">Logger</span>
+<span class="w">    </span><span class="nx">Tunnel</span><span class="w">  </span><span class="o">*</span><span class="nx">Tunnel</span>
+<span class="w">    </span><span class="nx">Server</span><span class="w">  </span><span class="o">*</span><span class="nx">Server</span>
+<span class="w">    </span><span class="nx">shards</span><span class="w">  </span><span class="p">[]</span><span class="nx">ShardInfo</span>
+<span class="w">    </span><span class="nx">clients</span><span class="w"> </span><span class="p">[]</span><span class="nx">ClientInfo</span>
 <span class="p">}</span>
 </pre></div>
 <p><code>./lib/tunnel.go</code></p>
-<div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">Tunnel</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">OnConnected</span>        <span class="nx">EventBus</span><span class="p">.</span><span class="nx">Bus</span>
-    <span class="nx">OnDisconnected</span>     <span class="nx">EventBus</span><span class="p">.</span><span class="nx">Bus</span>
-    <span class="nx">OnRequestReceived</span>  <span class="nx">EventBus</span><span class="p">.</span><span class="nx">Bus</span>
-    <span class="nx">OnPublishReceived</span>  <span class="nx">EventBus</span><span class="p">.</span><span class="nx">Bus</span>
-    <span class="nx">OnPeerConnected</span>    <span class="nx">EventBus</span><span class="p">.</span><span class="nx">Bus</span>
-    <span class="nx">OnPeerDisconnected</span> <span class="nx">EventBus</span><span class="p">.</span><span class="nx">Bus</span>
-    <span class="nx">parent</span>             <span class="o">*</span><span class="nx">Holder</span>
+<div class="highlight"><pre><span></span><span class="kd">type</span><span class="w"> </span><span class="nx">Tunnel</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">OnConnected</span><span class="w">        </span><span class="nx">EventBus</span><span class="p">.</span><span class="nx">Bus</span>
+<span class="w">    </span><span class="nx">OnDisconnected</span><span class="w">     </span><span class="nx">EventBus</span><span class="p">.</span><span class="nx">Bus</span>
+<span class="w">    </span><span class="nx">OnRequestReceived</span><span class="w">  </span><span class="nx">EventBus</span><span class="p">.</span><span class="nx">Bus</span>
+<span class="w">    </span><span class="nx">OnPublishReceived</span><span class="w">  </span><span class="nx">EventBus</span><span class="p">.</span><span class="nx">Bus</span>
+<span class="w">    </span><span class="nx">OnPeerConnected</span><span class="w">    </span><span class="nx">EventBus</span><span class="p">.</span><span class="nx">Bus</span>
+<span class="w">    </span><span class="nx">OnPeerDisconnected</span><span class="w"> </span><span class="nx">EventBus</span><span class="p">.</span><span class="nx">Bus</span>
+<span class="w">    </span><span class="nx">parent</span><span class="w">             </span><span class="o">*</span><span class="nx">Holder</span>
 <span class="p">}</span>
 </pre></div>
 <p><code>./lib/server.go</code></p>
-<div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">Server</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">parent</span> <span class="o">*</span><span class="nx">Holder</span>
+<div class="highlight"><pre><span></span><span class="kd">type</span><span class="w"> </span><span class="nx">Server</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">parent</span><span class="w"> </span><span class="o">*</span><span class="nx">Holder</span>
 <span class="p">}</span>
 </pre></div>
 <p><code>./lib/shardInfo.go</code></p>
-<div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">ShardInfo</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">common</span><span class="p">.</span><span class="nx">ShardInfo</span>
-    <span class="nx">conn</span>    <span class="o">*</span><span class="nx">kcp</span><span class="p">.</span><span class="nx">UDPSession</span>
-    <span class="nx">session</span> <span class="o">*</span><span class="nx">yamux</span><span class="p">.</span><span class="nx">Session</span>
+<div class="highlight"><pre><span></span><span class="kd">type</span><span class="w"> </span><span class="nx">ShardInfo</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">common</span><span class="p">.</span><span class="nx">ShardInfo</span>
+<span class="w">    </span><span class="nx">conn</span><span class="w">    </span><span class="o">*</span><span class="nx">kcp</span><span class="p">.</span><span class="nx">UDPSession</span>
+<span class="w">    </span><span class="nx">session</span><span class="w"> </span><span class="o">*</span><span class="nx">yamux</span><span class="p">.</span><span class="nx">Session</span>
 <span class="p">}</span>
 </pre></div>
 <p><code>../common/shardInfo.go</code></p>
-<div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">ShardInfo</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">Addr</span>     <span class="kt">string</span> <span class="s">`json:&quot;addr&quot;`</span>
-    <span class="nx">IP</span>       <span class="kt">string</span> <span class="s">`json:&quot;ip&quot;`</span>
-    <span class="nx">EchoPort</span> <span class="kt">int</span>    <span class="s">`json:&quot;echoPort&quot;`</span>
+<div class="highlight"><pre><span></span><span class="kd">type</span><span class="w"> </span><span class="nx">ShardInfo</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Addr</span><span class="w">     </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;addr&quot;`</span>
+<span class="w">    </span><span class="nx">IP</span><span class="w">       </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;ip&quot;`</span>
+<span class="w">    </span><span class="nx">EchoPort</span><span class="w"> </span><span class="kt">int</span><span class="w">    </span><span class="s">`json:&quot;echoPort&quot;`</span>
 <span class="p">}</span>
 </pre></div>
 <p><code>./lib/clientInfo.go</code></p>
-<div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">ClientInfo</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">common</span><span class="p">.</span><span class="nx">ClientInfo</span>
-    <span class="nx">conn</span>    <span class="o">*</span><span class="nx">kcp</span><span class="p">.</span><span class="nx">UDPSession</span>
-    <span class="nx">session</span> <span class="o">*</span><span class="nx">yamux</span><span class="p">.</span><span class="nx">Session</span>
+<div class="highlight"><pre><span></span><span class="kd">type</span><span class="w"> </span><span class="nx">ClientInfo</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">common</span><span class="p">.</span><span class="nx">ClientInfo</span>
+<span class="w">    </span><span class="nx">conn</span><span class="w">    </span><span class="o">*</span><span class="nx">kcp</span><span class="p">.</span><span class="nx">UDPSession</span>
+<span class="w">    </span><span class="nx">session</span><span class="w"> </span><span class="o">*</span><span class="nx">yamux</span><span class="p">.</span><span class="nx">Session</span>
 <span class="p">}</span>
 </pre></div>
 <p><code>../common/clientInfo.go</code></p>
-<div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">ClientInfo</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">Addr</span> <span class="kt">string</span> <span class="s">`json:&quot;addr&quot;`</span>
+<div class="highlight"><pre><span></span><span class="kd">type</span><span class="w"> </span><span class="nx">ClientInfo</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Addr</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;addr&quot;`</span>
 <span class="p">}</span>
 </pre></div>
 <h1>holder 启动时函数调用顺序</h1>
