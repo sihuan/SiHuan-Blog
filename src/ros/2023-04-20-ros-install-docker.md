@@ -1,0 +1,141 @@
+---
+layout: post
+title: 使用 Docker 安装 ROS
+slug: ros-install-docker
+date: 2023-04-20 11:06
+status: publish
+author: SiHuaN
+categories: 
+  - ros
+tags: 
+  - ros
+  - docker
+excerpt: 在 ArchLinux 上使用 docker 安装 ROS
+---
+
+> 本文使用的操作系统是 `ArchLinux`，用户名是 `sihuan`，使用的 ROS 版本是 ROS1  `kinetic`.
+
+> 采用 docker 来安装 ROS 配置环境，此方法方便切换 ROS 版本，安装起来也比较方便
+
+1. 安装 docker，启动 docker 服务，并把当前用户加入到 `docker` 用户组
+
+   ```shell
+   pacman -S docker
+   systemctl enable --now docker.service
+   gpasswd -a sihuan docker
+   ```
+
+   > Tips: 需要重新登录以使用户组更改生效
+
+2.  拉取 ROS docker 镜像
+
+   ```shell
+   # 此处以 kinetic-desktop-full 为例
+   docker pull osrf/ros:kinetic-desktop-full
+   ```
+
+3. 配置启动脚本，准备工作目录
+
+   > 以下文件均在 host 机器上创建编辑
+
+   递归创建工作目录，此处以 `~/project/ros/kinetic/catkin_ws` 为例
+
+   ```shell
+   mkdir -p ~/project/ros/kinetic/catkin_ws/src
+   ```
+
+   创建并编辑 `~/project/ros/kinetic/.bashrc`，此文件是给 docker 中的系统准备的 bash 配置文件
+
+   ```shell
+   ros-env(){
+       source /opt/ros/kinetic/setup.bash
+       source /home/sihuan/catkin_ws/devel/setup.bash
+       export ROS_PACKAGE_PATH=/home/sihuan/catkin_ws/:/opt/ros/kinetic/share/
+   }
+   ros-env
+   ```
+
+   编辑 `~/.bashrc` 在最后添加以下内容，这是用来启动、连接、清理 docker 容器的函数
+
+   ```shell
+   # krstart(kinetic ros start) 会启动一个 ros:kinetic-desktop-full 容器
+   krstart(){
+   docker run -it \
+       --user=$(id -u $USER):$(id -g $USER) \
+       --env="DISPLAY" \
+       --workdir="/home/$USER" \
+       --volume="/home/$USER/project/ros/kinetic:/home/$USER" \
+       --volume="/etc/group:/etc/group:ro" \
+       --volume="/etc/passwd:/etc/passwd:ro" \
+       --volume="/etc/shadow:/etc/shadow:ro" \
+       --volume="/etc/sudoers.d:/etc/sudoers.d:ro" \
+       --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+       osrf/ros:kinetic-desktop-full \
+       bash
+   }
+   
+   # krconnect 会连接到正在运行的 kinetic docker 容器中
+   krconnect(){
+   docker exec -ti $(docker ps -aq --filter ancestor=osrf/ros:kinetic-desktop-full --filter status=running) bash
+   }
+   
+   # 清理已经停止的 kinetic 容器
+   krclean(){
+   docker rm $(docker ps -aq --filter ancestor=osrf/ros:kinetic-desktop-full --filter status=exited
+   ```
+
+   > Tips
+   >
+   > - docker 的启动脚本中使用了 `--user` 参数并以只读方式映射了 host 机器 `/etc/group` 等用户和组相关文件，目的是为了以当前用户 `sihuan` 的身份登入到 docker 中，避免在 host 机器编辑源文件时候的权限问题
+   > - host 机器 `/home/sihuan/project/ros/kinetic` 目录被挂载到 docker 里 `/home/sihuan/`  位置，也即 docker 里的 ROS 的工作空间 `/home/sihuan/catkin_ws` 可通过 host 机器 `/home/sihuan/project/ros/kinetic/catkin_ws` 目录进行访问、编辑。
+   > - 启动脚本中还影射了 X11 服务相关文件，使得在 docker 中可以访问 host 机器 X 服务以运行图形界面程序（这要求 host 机器运行 X11 服务）
+   > - 启用硬件加速 #TODO
+   
+   4. 启动容器
+   
+      在 host 机器上运行 `krstart` 就可以启动一个装有 kinetic 的 docker 容器，初次启动可能会遇到一下报错，是预期内错误，使用 `catkin_make` 来初始化工程后，就不再有这个问题。
+   
+      ```bash
+      # 在 host 机器执行
+      krstart
+      # 出现以下预期内错误
+      bash: /home/sihuan/catkin_ws/devel/setup.bash: No such file or directory
+      # 在 docker 里进入工作目录并初始化工程
+      cd ~/catkin_ws
+      catkin_make
+      ```
+   
+      此时再运行 `roscore` 应该看到以下输出
+   
+      ```
+      sihuan@a9d3b860cafe:~/catkin_ws$ roscore
+      ... logging to /home/sihuan/.ros/log/fbbe12d2-dab9-11ed-a2a2-0242ac110002/roslaunch-a9d3b860cafe-521.log
+      Checking log directory for disk usage. This may take awhile.
+      Press Ctrl-C to interrupt
+      Done checking log file disk usage. Usage is <1GB.
+      
+      started roslaunch server http://a9d3b860cafe:35231/
+      ros_comm version 1.12.17
+      
+      
+      SUMMARY
+      ========
+      
+      PARAMETERS
+       * /rosdistro: kinetic
+       * /rosversion: 1.12.17
+      
+      NODES
+      
+      auto-starting new master
+      process[master]: started with pid [531]
+      ROS_MASTER_URI=http://a9d3b860cafe:11311/
+      
+      setting /run_id to fbbe12d2-dab9-11ed-a2a2-0242ac110002
+      process[rosout-1]: started with pid [544]
+      started core service [/rosout]
+      ```
+   
+      至此安装工作已经完成，可以在 host 机器中使用文本编辑器编辑源码，然后在 docker 中进行编译、运行。
+   
+      > Tips：由于 docker 中 `~/catkin_ws/src/CMakeLists.txt` 是指向 `/opt/ros/kinetic/share/catkin/cmake/toplevel.cmake` 的软连接，在 host 机器上编辑此文件会遇到一些问题，如有需要请在 docker 中编辑该文件。
