@@ -19,6 +19,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+    <loc>/archives/oe2203sp2-install-ros/</loc>
+    <lastmod>2023-06-29</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+</url>
+
+<url>
     <loc>/archives/ros-install-docker/</loc>
     <lastmod>2023-04-20</lastmod>
     <changefreq>always</changefreq>

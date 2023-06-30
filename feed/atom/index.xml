@@ -1,136 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><id>/</id><title>SiHuan's Blog</title><updated>2023-04-29T15:29:42.999624+08:06</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email></author><link href="/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator><logo>/logo.png</logo><subtitle>道阻且长，吾意思还。</subtitle><entry><id>/archives/vps2arch/</id><title>vps2arch!</title><updated>2023-04-29T15:29:43.000132+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;有些 vps 服务商是不提供 Arch 系统的，但是你仍然可以通过 vps2arch 脚本将你的系统切换到 Archlinux&lt;/p&gt;
-&lt;p&gt;这个项目托管在 gitlab : &lt;a href="https://gitlab.com/drizzt/vps2arch/"&gt;https://gitlab.com/drizzt/vps2arch/&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2&gt;准备&lt;/h2&gt;
-&lt;h3&gt;读项目介绍&lt;/h3&gt;
-&lt;blockquote&gt;&lt;p&gt;This script is used to convert a &lt;em&gt;VPS&lt;/em&gt;, running another linux distro, to &lt;em&gt;Arch Linux&lt;/em&gt;.
- It should be &lt;strong&gt;only&lt;/strong&gt; used if your &lt;em&gt;VPS&lt;/em&gt; provider doesn't provide you an &lt;em&gt;Arch Linux&lt;/em&gt; image.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;读项目免责&lt;/h3&gt;
-&lt;blockquote&gt;&lt;p&gt;I'm not responsible for any damage in your system and/or any violation of the agreement between you and your vps provider.
- &lt;strong&gt;Use at your own risk!&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;准备系统&lt;/h3&gt;
-&lt;p&gt;你需要有一个干净的系统，既然都要把系统重新安装成 Arch 了，提前重置一下系统不为过吧。&lt;/p&gt;
-&lt;p&gt;推荐重置为 &lt;code&gt;CentOS&lt;/code&gt; 或者 &lt;code&gt;Debain&lt;/code&gt; 这个脚本在 &lt;code&gt;Ubuntu 18&lt;/code&gt; 上也许有一些问题。&lt;/p&gt;
-&lt;h2&gt;开干&lt;/h2&gt;
-&lt;p&gt;使用 SSH 链接到你的 VPS，在开始之前你可以修改一下 root 密码，因为 vps2arch 会将新系统的密码设置为你运行脚本之前的 root 密码&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;passwd&lt;span class="w"&gt; &lt;/span&gt;root
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;你需要输入两次新密码，并且输入密码没有回显&lt;/p&gt;
-&lt;p&gt;接下来就是重点了，以 root 身份执行以下命令&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 下载 vps2arch 脚本&lt;/span&gt;
-&lt;span class="c1"&gt;# wget https://tinyurl.com/vps2arch 也会被重定向到以下 url&lt;/span&gt;
-wget&lt;span class="w"&gt; &lt;/span&gt;https://gitlab.com/drizzt/vps2arch/-/raw/master/vps2arch
-&lt;span class="c1"&gt;# 赋予执行权限&lt;/span&gt;
-chmod&lt;span class="w"&gt; &lt;/span&gt;+x&lt;span class="w"&gt; &lt;/span&gt;vps2arch
-&lt;span class="c1"&gt;# 启动脚本！&lt;/span&gt;
-./vps2arch
-&lt;span class="c1"&gt;# 当你从脚本默认的源下载速度较慢的时候，可以使用 -m 参数指定源，例如&lt;/span&gt;
-&lt;span class="c1"&gt;# ./vps2arch -m https://mirrors.neusoft.edu.cn/archlinux/&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;深呼吸，不出意外的话，等待几分钟你会得到这样的提示&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;When you are finished with your post-installation, you'll need to reboot the VM the rough way:
-        # sync ; reboot -f
-
-Then you'll be able to connect to your VM using SSH and to login using your old root password (or "vps2arch" if you didn't have a root password).&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;按照提示执行 &lt;code&gt;sync ; reoot -f&lt;/code&gt; 重启你的 VPS。&lt;/p&gt;
-&lt;p&gt;这时候你的 SSH 链接会断掉，在 VPS 重启的这几分钟里，你需要去 &lt;code&gt;~/.ssh/konwn_host&lt;/code&gt; 里删除掉刚刚运行 vps2arch 脚本的主机所在的行，因为换了新系统了你的电脑已经不再认识远程主机了，不这么做的话你在下次链接的时候会得到一个错误。稍等一会 &lt;code&gt;ssh root@yourip&lt;/code&gt; 输入之前的 root 密码&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Welcome to ArchLinux!&lt;/strong&gt;&lt;/p&gt;
-&lt;h2&gt;之后的配置&lt;/h2&gt;
-&lt;p&gt;现在你已经得到一个崭新的 ArchLinux 系统了，接下来是在正常使用之前的一些建议，以下建议多来源于 &lt;a href="https://wiki.archlinux.org/index.php/Installation_guide"&gt;ArchWiki&lt;/a&gt; .&lt;/p&gt;
-&lt;h3&gt;时间设置&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 使用 ntp&lt;/span&gt;
-timedatectl&lt;span class="w"&gt; &lt;/span&gt;set-ntp&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;
-&lt;span class="c1"&gt;# 设置时区&lt;/span&gt;
-ln&lt;span class="w"&gt; &lt;/span&gt;-sf&lt;span class="w"&gt; &lt;/span&gt;/usr/share/zoneinfo/Asia/Shanghai&lt;span class="w"&gt; &lt;/span&gt;/etc/localtime
-hwclock&lt;span class="w"&gt; &lt;/span&gt;--systohc
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;设置中文&lt;/h3&gt;
-&lt;p&gt;这时候你的系统还是不支持中文的，输入中文将会乱码，我们需要进行一下操作。&lt;/p&gt;
-&lt;p&gt;编辑 &lt;code&gt;/etc/locale.gen&lt;/code&gt; 取消一下行的注释（你可能需要一个编辑器，如 &lt;code&gt;vim&lt;/code&gt;，请自行安装）&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;en_GB.UTF-8 UTF-8
-zh_CN.UTF-8 UTF-8
-zh_TW.UTF-8 UTF-8&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;执行 &lt;code&gt;locale-gen&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;创建 &lt;code&gt;/etc/locale.conf&lt;/code&gt; 并编辑 &lt;code&gt;LANG&lt;/code&gt; 这一 &lt;a href="https://wiki.archlinux.org/index.php/Variable"&gt;变量&lt;/a&gt;，比如：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;LANG=en_GB.UTF-8&lt;/code&gt;&lt;/pre&gt;
-&lt;h3&gt;添加 ArchLinuxCN 源&lt;/h3&gt;
-&lt;p&gt;编辑 &lt;code&gt;/etc/pacman.conf&lt;/code&gt; ，在文件末尾添加&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[archlinuxcn]
-Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;之后执行&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-Syy
-pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;archlinuxcn-keyring
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;添加用户&lt;/h3&gt;
-&lt;blockquote&gt;&lt;p&gt;一直使用 root 用户是不太安全的！我们来添加一个新的用户&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;接下来的命令中，新的用户名以 &lt;em&gt;sihuan&lt;/em&gt; 为例，自行替换&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;useradd&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;-G&lt;span class="w"&gt; &lt;/span&gt;wheel&lt;span class="w"&gt; &lt;/span&gt;sihuan
-&lt;/pre&gt;&lt;/div&gt;
-&lt;blockquote&gt;&lt;p&gt;useradd 是 archlinux 系统添加用户的命令&lt;/p&gt;
-&lt;p&gt;-m 参数代表自动创建用户的家目录，这个例子里是 &lt;code&gt;/home/sihuan&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;-G 参数意味着用户要加入一些个的附加组，这儿即 &lt;code&gt;wheel&lt;/code&gt; 组&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;设置新用户密码&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;passwd&lt;span class="w"&gt; &lt;/span&gt;sihuan
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;然后输入两次密码就好了&lt;/p&gt;
-&lt;p&gt;设置 sudo&lt;/p&gt;
-&lt;p&gt;首先安装 sudo&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;sudo
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;编辑配置文件，我认为你已经安装了 &lt;code&gt;vim&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;EDITOR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;vim
-visudo
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;找到下面一行，取消掉注释&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;%wheel&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;ALL&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;ALL&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ALL
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;配置新用户的 shell&lt;/h3&gt;
-&lt;blockquote&gt;&lt;p&gt;建议大家都自己整一个 &lt;code&gt;dotfiles&lt;/code&gt; ，具体可以看 fc 老师翻译的 &lt;a href="https://farseerfc.me/using-gnu-stow-to-manage-your-dotfiles.html"&gt;这篇文章&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;以下就以我自己的为例，如果有时间我会详细的解释以下我的 &lt;code&gt;dotfiles&lt;/code&gt; 包含了什么&lt;/p&gt;
-&lt;p&gt;切换到新的用户，并来到自己的家目录&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;su sihuan
-cd&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;输入密码&lt;/p&gt;
-&lt;p&gt;接下来的操作就是在 &lt;em&gt;sihuan&lt;/em&gt; 这个用户里进行的啦&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 安装需要的软件包&lt;/span&gt;
-sudo&lt;span class="w"&gt; &lt;/span&gt;pacman&lt;span class="w"&gt; &lt;/span&gt;-S&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;stow&lt;span class="w"&gt; &lt;/span&gt;zsh&lt;span class="w"&gt; &lt;/span&gt;zsh-theme-powerlevel10k&lt;span class="w"&gt; &lt;/span&gt;powerline-fonts&lt;span class="w"&gt; &lt;/span&gt;awesome-terminal-fonts&lt;span class="w"&gt; &lt;/span&gt;paru&lt;span class="w"&gt; &lt;/span&gt;powerline&lt;span class="w"&gt; &lt;/span&gt;ranger&lt;span class="w"&gt; &lt;/span&gt;exa&lt;span class="w"&gt; &lt;/span&gt;zsh-autosuggestions&lt;span class="w"&gt; &lt;/span&gt;zsh-syntax-highlighting&lt;span class="w"&gt; &lt;/span&gt;zsh-history-substring-search
-&lt;span class="c1"&gt;# 克隆 dotfiles 仓库&lt;/span&gt;
-git&lt;span class="w"&gt; &lt;/span&gt;clone&lt;span class="w"&gt; &lt;/span&gt;https://github.com/Si-Huan/dotfiles
-&lt;span class="c1"&gt;# 切换 shell 到 zsh&lt;/span&gt;
-chsh&lt;span class="w"&gt; &lt;/span&gt;-s&lt;span class="w"&gt; &lt;/span&gt;/bin/zsh
-&lt;span class="c1"&gt;# 删除已有的 ~/.bashrc&lt;/span&gt;
-rm&lt;span class="w"&gt; &lt;/span&gt;~/.bashrc
-&lt;span class="c1"&gt;# 使 zsh 配置生效&lt;/span&gt;
-&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;dotfiles
-stow&lt;span class="w"&gt; &lt;/span&gt;zsh
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;这时候远程主机上的配置就完成了！再次使用 &lt;em&gt;sihuan&lt;/em&gt; 这个用户登陆，你就会得到一个很 OK 的 shell 体验。&lt;/p&gt;
-&lt;h2&gt;免密登录和 SSH 主机别名&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh-keygen
-ssh-copy-id&lt;span class="w"&gt; &lt;/span&gt;sihuan@hostip
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Edit &lt;code&gt;~/.ssh/config&lt;/code&gt; add:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Host hostname
-    HostName hostip
-    User sihuan&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Then you can login your host with:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ssh hostname&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And you will no longer be asked for a password.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;EOF&lt;/strong&gt;&lt;/p&gt;
-</content><link href="/archives/vps2arch/" rel="alternate"/><published>2020-03-13T11:06:00+08:06</published></entry><entry><id>/archives/linuxapp/</id><title>Linux 日常存活方案</title><updated>2023-04-29T15:29:42.999942+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;起因&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><id>/</id><title>SiHuan's Blog</title><updated>2023-06-30T12:58:48.886040+08:06</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email></author><link href="/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator><logo>/logo.png</logo><subtitle>道阻且长，吾意思还。</subtitle><entry><id>/archives/linuxapp/</id><title>Linux 日常存活方案</title><updated>2023-06-30T12:58:48.886568+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;起因&lt;/h2&gt;
 &lt;p&gt;在群聊里看到有一位同学发了一张 Windows 的桌面截图，有很多软件，大致看了一下又觉得貌似在 Linux 下也差不多都有同等或更好的替代方案，加之很多人对 Linux 的偏见认为 Linux &lt;strong&gt;生态不好&lt;/strong&gt;，于是萌发了写这篇文章的想法。&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;2020/12/03 update!&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -428,7 +297,7 @@ aur/listen1-desktop-appimage 2.5.1-1 (0, 0.00)
 
 使用 'pacman {-h --help}' 及某个操作以查看可用选项&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;这个优点是值得长篇大论的，&lt;strong&gt;&lt;em&gt;这儿写不下&lt;/em&gt;&lt;/strong&gt; ლ(╹◡╹ლ)&lt;/p&gt;
-</content><link href="/archives/linuxapp/" rel="alternate"/><published>2020-03-15T11:06:00+08:06</published></entry><entry><id>/archives/linuxgpu/</id><title>ArchLinux 下双显卡配置</title><updated>2023-04-29T15:29:42.999917+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;Fuck Nvidia&lt;/h2&gt;
+</content><link href="/archives/linuxapp/" rel="alternate"/><published>2020-03-15T11:06:00+08:06</published></entry><entry><id>/archives/linuxgpu/</id><title>ArchLinux 下双显卡配置</title><updated>2023-06-30T12:58:48.886539+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;Fuck Nvidia&lt;/h2&gt;
 &lt;p&gt;如果笔电上有一张 Nivdia 显卡，使用 Linux 的时候也许会因为驱动引起一些令人苦恼的问题。&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;如果熟读并背诵 ArchWiki 的话就不会有这些问题了  (误&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -508,7 +377,7 @@ prime-run&lt;span class="w"&gt; &lt;/span&gt;wine&lt;span class="w"&gt; &lt;/spa
 &lt;h2&gt;一点总结&lt;/h2&gt;
 &lt;p&gt;我之前使用的是 &lt;a href="https://wiki.archlinux.org/index.php/Bumblebee"&gt;Bumblebee&lt;/a&gt; 方案，但是感觉不如现在的方案方便也不如这个性能好。&lt;/p&gt;
 &lt;p&gt;另外使用了 NVIDIA 的闭源驱动所以在配置双显卡的时候使用了 &lt;strong&gt;PRIME render offload&lt;/strong&gt; 而不是在 Wiki 里的上一级标题 &lt;strong&gt;PRIME GPU offloading&lt;/strong&gt; ，后者是给 NVIDIA 的开源驱动程式用的。关于具体的不同，自己去翻阅 wiki 吧，不归我管，我只是记录一下我觉得目前最好使的方案。&lt;/p&gt;
-</content><link href="/archives/linuxgpu/" rel="alternate"/><published>2020-03-17T11:06:00+08:06</published></entry><entry><id>/archives/shitama1/</id><title>Shitama 代码分析「概况」</title><updated>2023-04-29T15:29:42.999894+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;别看了全是胡扯，我之前理解错有问题，没认真读代码&lt;/p&gt;
+</content><link href="/archives/linuxgpu/" rel="alternate"/><published>2020-03-17T11:06:00+08:06</published></entry><entry><id>/archives/shitama1/</id><title>Shitama 代码分析「概况」</title><updated>2023-06-30T12:58:48.886325+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;别看了全是胡扯，我之前理解错有问题，没认真读代码&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1&gt;Shitama 的历史&lt;/h1&gt;
 &lt;blockquote&gt;&lt;p&gt;「Shitama」是一个类毛玉服务，可以为「东方非想天则」提供简单的端口转发功能，让身处内网的玩家能够建立主机并进行对战。&lt;/p&gt;
@@ -561,7 +430,7 @@ prime-run&lt;span class="w"&gt; &lt;/span&gt;wine&lt;span class="w"&gt; &lt;/spa
 &lt;p&gt;&lt;figure&gt;&lt;img data-width="1346" data-height="372" src="/archives/assets/a45ce6fb1094844897e18bd373f45524.png" alt="how_shitama_work4" /&gt;&lt;figcaption&gt;how_shitama_work4&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;图中虚线的意味： shard1 中由 HostPort 指向 GuestPort 的虚线意味着 HostPort 并不会向 GuestPort 发送数据，而是每当 HostPort 收到来自 Port1 的数据就会使用 GuestPort 发送出去。也就是说 HostPort 只与 Port1 通信。&lt;/p&gt;
 &lt;p&gt;接下来的几篇博文会比较&lt;del&gt;正经&lt;/del&gt;的分析 shitama 的代码。&lt;/p&gt;
-</content><link href="/archives/shitama1/" rel="alternate"/><published>2020-06-01T11:06:00+08:06</published></entry><entry><id>/archives/shitama2/</id><title>Shitama 代码分析「holder 启动」</title><updated>2023-04-29T15:29:42.999869+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;别看了，全是胡扯，我之前没认真读代码&lt;/p&gt;
+</content><link href="/archives/shitama1/" rel="alternate"/><published>2020-06-01T11:06:00+08:06</published></entry><entry><id>/archives/shitama2/</id><title>Shitama 代码分析「holder 启动」</title><updated>2023-06-30T12:58:48.886302+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;别看了，全是胡扯，我之前没认真读代码&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1&gt;这是开头&lt;/h1&gt;
 &lt;p&gt;因为按逻辑上，shitama 的运行顺序应该是 「holder 启动」、「shard 启动」、「client 启动」和 「链接建立」。我也就先按照这个来分析。&lt;/p&gt;
@@ -632,7 +501,7 @@ prime-run&lt;span class="w"&gt; &lt;/span&gt;wine&lt;span class="w"&gt; &lt;/spa
 
 &lt;pre&gt;&lt;code&gt;
 &lt;/code&gt;&lt;/pre&gt;
-</content><link href="/archives/shitama2/" rel="alternate"/><published>2020-06-07T11:06:00+08:06</published></entry><entry><id>/archives/utsutsu1/</id><title>Utsutsu 用法</title><updated>2023-04-29T15:29:42.999844+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h1&gt;夢と現&lt;/h1&gt;
+</content><link href="/archives/shitama2/" rel="alternate"/><published>2020-06-07T11:06:00+08:06</published></entry><entry><id>/archives/utsutsu1/</id><title>Utsutsu 用法</title><updated>2023-06-30T12:58:48.886277+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h1&gt;夢と現&lt;/h1&gt;
 &lt;blockquote&gt;&lt;p&gt;一个打则工具，与 shitama 原理上略有不同，也许会对某些网络有奇效。&lt;/p&gt;
 &lt;p&gt;现在还是仅仅能用的阶段，没有图形界面，只有一个服务器可以选择（也就是，没得选）&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -670,7 +539,7 @@ prime-run&lt;span class="w"&gt; &lt;/span&gt;wine&lt;span class="w"&gt; &lt;/spa
 &lt;li&gt;等等等 不想写了 太多&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;遇到问题之后现在较好的解决方案是重启 utsutsu （&lt;/p&gt;
-</content><link href="/archives/utsutsu1/" rel="alternate"/><published>2020-07-24T11:06:00+08:06</published></entry><entry><id>/archives/xzz/</id><title>部署一个自己的人工智障机器人</title><updated>2023-04-29T15:29:42.999817+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;2020/08/02 由于一些原因，将我的 QQ 机器人从 &lt;em&gt;酷Q&lt;/em&gt; 迁移到 开源的 &lt;em&gt;MiraiGo&lt;/em&gt;&lt;/p&gt;
+</content><link href="/archives/utsutsu1/" rel="alternate"/><published>2020-07-24T11:06:00+08:06</published></entry><entry><id>/archives/xzz/</id><title>部署一个自己的人工智障机器人</title><updated>2023-06-30T12:58:48.886250+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;2020/08/02 由于一些原因，将我的 QQ 机器人从 &lt;em&gt;酷Q&lt;/em&gt; 迁移到 开源的 &lt;em&gt;MiraiGo&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;顺便写下了此文档&lt;/p&gt;
 &lt;p&gt;此文用到的项目&lt;/p&gt;
 &lt;ul&gt;
@@ -884,11 +753,11 @@ sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/spa
 &lt;p&gt;&lt;a href="https://github.com/Si-Huan/XZZ"&gt;https://github.com/Si-Huan/XZZ&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;啊这 终于写完了， 又水了一篇 23333&lt;/p&gt;
 &lt;/blockquote&gt;
-</content><link href="/archives/xzz/" rel="alternate"/><published>2020-08-02T11:06:00+08:06</published></entry><entry><id>/archives/two-drive/</id><title>今天收获了两个网盘诶</title><updated>2023-04-29T15:29:42.999789+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h1&gt;今天又干了不少事情呢&lt;/h1&gt;
+</content><link href="/archives/xzz/" rel="alternate"/><published>2020-08-02T11:06:00+08:06</published></entry><entry><id>/archives/two-drive/</id><title>今天收获了两个网盘诶</title><updated>2023-06-30T12:58:48.886223+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h1&gt;今天又干了不少事情呢&lt;/h1&gt;
 &lt;p&gt;欢迎来看看， &lt;a href="https://storage.sakuya.love"&gt;SiHuan's onedrive index&lt;/a&gt; 🎉&lt;/p&gt;
 &lt;!--stackedit_data:
 eyJoaXN0b3J5IjpbLTg1MDc2NjkyNV19
---&gt;</content><link href="/archives/two-drive/" rel="alternate"/><published>2020-11-26T11:06:00+08:06</published></entry><entry><id>/archives/linuxorwinjoke/</id><title>今日份笑话</title><updated>2023-04-29T15:29:42.999759+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;笑话&lt;/h2&gt;
+--&gt;</content><link href="/archives/two-drive/" rel="alternate"/><published>2020-11-26T11:06:00+08:06</published></entry><entry><id>/archives/linuxorwinjoke/</id><title>今日份笑话</title><updated>2023-06-30T12:58:48.886196+00:00</updated><author><name>SiHuan</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;h2&gt;笑话&lt;/h2&gt;
 &lt;p&gt;今天在看到一些东西，以下原文&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;《一则讽刺笑话》&lt;/strong&gt;
 &lt;strong&gt;世人说，要有罐头，便有了罐头。&lt;/strong&gt;
@@ -914,7 +783,7 @@ eyJoaXN0b3J5IjpbLTg1MDc2NjkyNV19
 &lt;h2&gt;尾巴&lt;/h2&gt;
 &lt;p&gt;拐弯抹角真伤脑筋，有啥说啥呗&lt;/p&gt;
 &lt;p&gt;以后不会发这么无聊的东西了🙈&lt;/p&gt;
-</content><link href="/archives/linuxorwinjoke/" rel="alternate"/><published>2021-01-01T11:06:00+08:06</published></entry><entry><id>/archives/ros-install-docker/</id><title>使用 Docker 安装 ROS</title><updated>2023-04-29T15:29:42.999703+00:00</updated><author><name>SiHuaN</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;本文使用的操作系统是 &lt;code&gt;ArchLinux&lt;/code&gt;，用户名是 &lt;code&gt;sihuan&lt;/code&gt;，使用的 ROS 版本是 ROS1  &lt;code&gt;kinetic&lt;/code&gt;.&lt;/p&gt;
+</content><link href="/archives/linuxorwinjoke/" rel="alternate"/><published>2021-01-01T11:06:00+08:06</published></entry><entry><id>/archives/ros-install-docker/</id><title>使用 Docker 安装 ROS</title><updated>2023-06-30T12:58:48.886166+00:00</updated><author><name>SiHuaN</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;blockquote&gt;&lt;p&gt;本文使用的操作系统是 &lt;code&gt;ArchLinux&lt;/code&gt;，用户名是 &lt;code&gt;sihuan&lt;/code&gt;，使用的 ROS 版本是 ROS1  &lt;code&gt;kinetic&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;采用 docker 来安装 ROS 配置环境，此方法方便切换 ROS 版本，安装起来也比较方便&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ol&gt;
@@ -1025,4 +894,170 @@ ros_comm version 1.12.17&lt;/p&gt;
   至此安装工作已经完成，可以在 host 机器中使用文本编辑器编辑源码，然后在 docker 中进行编译、运行。
 
   &amp;gt; Tips：由于 docker 中 `~/catkin_ws/src/CMakeLists.txt` 是指向 `/opt/ros/kinetic/share/catkin/cmake/toplevel.cmake` 的软连接，在 host 机器上编辑此文件会遇到一些问题，如有需要请在 docker 中编辑该文件。&lt;/code&gt;&lt;/pre&gt;
-</content><link href="/archives/ros-install-docker/" rel="alternate"/><published>2023-04-20T11:06:00+08:06</published></entry></feed>
+</content><link href="/archives/ros-install-docker/" rel="alternate"/><published>2023-04-20T11:06:00+08:06</published></entry><entry><id>/archives/oe2203sp2-install-ros/</id><title>在 openEuler 22.03 SP2 上安装 ROS humble</title><updated>2023-06-30T12:58:48.886111+00:00</updated><author><name>SiHuaN</name><email>sihuan@sakuya.love</email><uri>https://www.sakuya.love</uri></author><content>&lt;p&gt;openEuler 22.03 SP2 即将发布，SP2 版本引入了 ROS humble 的支持，可以方便的使用 &lt;code&gt;dnf install ros-humble-xxx&lt;/code&gt; 来安装 ros 包。下面是在 QEMU 虚拟机上进行的步骤演示~&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;以下使用 rc6 版本进行演示，正式版发布后，可省略更换软件源的步骤&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;下载 openEuler  虚拟机镜像，可前往&lt;a href="http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/"&gt;此处&lt;/a&gt;查看&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;axel&lt;span class="w"&gt; &lt;/span&gt;-n&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;64&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc6_openeuler-2023-06-29-20-25-36/virtual_machine_img/x86_64/openEuler-22.03-LTS-SP2-x86_64.qcow2.xz
+&lt;span class="c1"&gt;# 解压&lt;/span&gt;
+unxz&lt;span class="w"&gt; &lt;/span&gt;openEuler-22.03-LTS-SP2-x86_64.qcow2.xz
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;&lt;p&gt;Tips: 使用 &lt;code&gt;axel&lt;/code&gt; 等多线程下载工具可以显著提升下载速度&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;启动 openEuler 虚拟机&lt;/p&gt;
+&lt;p&gt;以下脚本可以方便的使用 &lt;code&gt;qemu-system-x86&lt;/code&gt; 启动虚拟机并配置好端口映射，方便 使用 ssh 连入。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env bash&lt;/span&gt;
+
+&lt;span class="c1"&gt;# The script is created for starting a riscv64 qemu virtual machine with specific parameters.&lt;/span&gt;
+
+&lt;span class="nv"&gt;RESTORE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-en&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\001\033[0m\002&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="nv"&gt;YELLOW&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-en&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\001\033[00;33m\002&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;## Configuration&lt;/span&gt;
+&lt;span class="nv"&gt;vcpu&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;8&lt;/span&gt;
+&lt;span class="nv"&gt;memory&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;16&lt;/span&gt;
+&lt;span class="nv"&gt;memory_append&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;expr&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$memory&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1024&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;span class="nv"&gt;drive&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;ls&lt;span class="w"&gt; &lt;/span&gt;*.qcow2&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;ssh_port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;12055&lt;/span&gt;
+
+&lt;span class="nv"&gt;cmd&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;qemu-system-x86_64 \&lt;/span&gt;
+&lt;span class="s2"&gt;  -smp &amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$vcpu&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot; -m &amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$memory&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;G \&lt;/span&gt;
+&lt;span class="s2"&gt;  -drive file=&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$drive&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;,format=qcow2,id=hd0 \&lt;/span&gt;
+&lt;span class="s2"&gt;  -nic user,model=virtio,hostfwd=tcp::&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$ssh_port&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-:22&amp;quot;&lt;/span&gt;
+
+&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;YELLOW&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;::&lt;span class="w"&gt; &lt;/span&gt;Starting&lt;span class="w"&gt; &lt;/span&gt;VM...&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RESTORE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;YELLOW&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;::&lt;span class="w"&gt; &lt;/span&gt;Using&lt;span class="w"&gt; &lt;/span&gt;following&lt;span class="w"&gt; &lt;/span&gt;configuration&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RESTORE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;YELLOW&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;vCPU&lt;span class="w"&gt; &lt;/span&gt;Cores:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$vcpu&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RESTORE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;YELLOW&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;Memory:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$memory&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;G&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RESTORE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;YELLOW&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;Disk:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$drive&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RESTORE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;YELLOW&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;SSH&lt;span class="w"&gt; &lt;/span&gt;Port:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$ssh_port&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RESTORE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;YELLOW&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;::&lt;span class="w"&gt; &lt;/span&gt;NOTE:&lt;span class="w"&gt; &lt;/span&gt;Make&lt;span class="w"&gt; &lt;/span&gt;sure&lt;span class="w"&gt; &lt;/span&gt;ONLY&lt;span class="w"&gt; &lt;/span&gt;ONE&lt;span class="w"&gt; &lt;/span&gt;.qcow2&lt;span class="w"&gt; &lt;/span&gt;file&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RESTORE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;YELLOW&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;current&lt;span class="w"&gt; &lt;/span&gt;directory&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RESTORE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;YELLOW&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;::&lt;span class="w"&gt; &lt;/span&gt;Tip:&lt;span class="w"&gt; &lt;/span&gt;Try&lt;span class="w"&gt; &lt;/span&gt;setting&lt;span class="w"&gt; &lt;/span&gt;DNS&lt;span class="w"&gt; &lt;/span&gt;manually&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;QEMU&lt;span class="w"&gt; &lt;/span&gt;user&lt;span class="w"&gt; &lt;/span&gt;network&lt;span class="w"&gt; &lt;/span&gt;doesn&lt;span class="se"&gt;\&amp;#39;&lt;/span&gt;t&lt;span class="w"&gt; &lt;/span&gt;work&lt;span class="w"&gt; &lt;/span&gt;well.&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RESTORE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;YELLOW&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;::&lt;span class="w"&gt; &lt;/span&gt;HOWTO&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="se"&gt;\&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;https://serverfault.com/a/810639&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RESTORE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+
+sleep&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;
+
+&lt;span class="nb"&gt;eval&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$cmd&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;将上诉脚本保存至镜像文件同目录，并添加可执行权限，然后执行此脚本就可以启动 openEuler 虚拟机，虚拟机的 &lt;code&gt;22&lt;/code&gt; 号端口被映射到本机的 &lt;code&gt;12055&lt;/code&gt;号端口。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置软件源&lt;/p&gt;
+&lt;p&gt;使用 ssh 登入虚拟机 &lt;code&gt;root&lt;/code&gt; 账户，其密码是 &lt;code&gt;openEuler12#$&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;配置软件源，编辑 &lt;code&gt;/etc/yum.repos.d/openEuler.repo&lt;/code&gt; 文件，更换为以下内容：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#generic-repos is licensed under the Mulan PSL v2.&lt;/span&gt;
+&lt;span class="c1"&gt;#You can use this software according to the terms and conditions of the Mulan PSL v2.&lt;/span&gt;
+&lt;span class="c1"&gt;#You may obtain a copy of Mulan PSL v2 at:&lt;/span&gt;
+&lt;span class="c1"&gt;#    http://license.coscl.org.cn/MulanPSL2&lt;/span&gt;
+&lt;span class="c1"&gt;#THIS SOFTWARE IS PROVIDED ON AN &amp;quot;AS IS&amp;quot; BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR&lt;/span&gt;
+&lt;span class="c1"&gt;#IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY OR FIT FOR A PARTICULAR&lt;/span&gt;
+&lt;span class="c1"&gt;#PURPOSE.&lt;/span&gt;
+&lt;span class="c1"&gt;#See the Mulan PSL v2 for more details.&lt;/span&gt;
+
+&lt;span class="k"&gt;[OS]&lt;/span&gt;
+&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;OS&lt;/span&gt;
+&lt;span class="n"&gt;baseurl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;121.36.84.172&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dailybuild&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EBS-openEuler-22&lt;/span&gt;&lt;span class="mf"&gt;.03&lt;/span&gt;&lt;span class="err"&gt;-&lt;/span&gt;&lt;span class="n"&gt;LTS-SP2&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rc6_openeuler-2023-06-29-20-25-36&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;OS&lt;/span&gt;&lt;span class="err"&gt;/$&lt;/span&gt;&lt;span class="n"&gt;basearch&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;
+&lt;span class="n"&gt;enabled&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;gpgcheck&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;gpgkey&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;121.36.84.172&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dailybuild&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EBS-openEuler-22&lt;/span&gt;&lt;span class="mf"&gt;.03&lt;/span&gt;&lt;span class="err"&gt;-&lt;/span&gt;&lt;span class="n"&gt;LTS-SP2&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rc6_openeuler-2023-06-29-20-25-36&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;OS&lt;/span&gt;&lt;span class="err"&gt;/$&lt;/span&gt;&lt;span class="n"&gt;basearch&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;RPM-GPG-KEY-openEuler&lt;/span&gt;
+
+&lt;span class="k"&gt;[everything]&lt;/span&gt;
+&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;everything&lt;/span&gt;
+&lt;span class="n"&gt;baseurl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;121.36.84.172&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dailybuild&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EBS-openEuler-22&lt;/span&gt;&lt;span class="mf"&gt;.03&lt;/span&gt;&lt;span class="err"&gt;-&lt;/span&gt;&lt;span class="n"&gt;LTS-SP2&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rc6_openeuler-2023-06-29-20-25-36&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;everything&lt;/span&gt;&lt;span class="err"&gt;/$&lt;/span&gt;&lt;span class="n"&gt;basearch&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;
+&lt;span class="n"&gt;enabled&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;gpgcheck&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;gpgkey&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;121.36.84.172&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dailybuild&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EBS-openEuler-22&lt;/span&gt;&lt;span class="mf"&gt;.03&lt;/span&gt;&lt;span class="err"&gt;-&lt;/span&gt;&lt;span class="n"&gt;LTS-SP2&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rc6_openeuler-2023-06-29-20-25-36&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;everything&lt;/span&gt;&lt;span class="err"&gt;/$&lt;/span&gt;&lt;span class="n"&gt;basearch&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;RPM-GPG-KEY-openEuler&lt;/span&gt;
+
+&lt;span class="k"&gt;[EPOL]&lt;/span&gt;
+&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;EPOL&lt;/span&gt;
+&lt;span class="n"&gt;baseurl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;121.36.84.172&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dailybuild&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EBS-openEuler-22&lt;/span&gt;&lt;span class="mf"&gt;.03&lt;/span&gt;&lt;span class="err"&gt;-&lt;/span&gt;&lt;span class="n"&gt;LTS-SP2&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rc6_openeuler-2023-06-29-20-25-36&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EPOL&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="err"&gt;/$&lt;/span&gt;&lt;span class="n"&gt;basearch&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;
+&lt;span class="n"&gt;metalink&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="n"&gt;mirrors&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openeuler&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;metalink&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;releasever&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EPOL&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;arch&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;basearch&lt;/span&gt;
+&lt;span class="n"&gt;metadata_expire&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;
+&lt;span class="n"&gt;enabled&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;gpgcheck&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;gpgkey&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;121.36.84.172&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dailybuild&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EBS-openEuler-22&lt;/span&gt;&lt;span class="mf"&gt;.03&lt;/span&gt;&lt;span class="err"&gt;-&lt;/span&gt;&lt;span class="n"&gt;LTS-SP2&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rc6_openeuler-2023-06-29-20-25-36&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;OS&lt;/span&gt;&lt;span class="err"&gt;/$&lt;/span&gt;&lt;span class="n"&gt;basearch&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;RPM-GPG-KEY-openEuler&lt;/span&gt;
+
+&lt;span class="k"&gt;[debuginfo]&lt;/span&gt;
+&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;debuginfo&lt;/span&gt;
+&lt;span class="n"&gt;baseurl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;121.36.84.172&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dailybuild&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EBS-openEuler-22&lt;/span&gt;&lt;span class="mf"&gt;.03&lt;/span&gt;&lt;span class="err"&gt;-&lt;/span&gt;&lt;span class="n"&gt;LTS-SP2&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rc6_openeuler-2023-06-29-20-25-36&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;debuginfo&lt;/span&gt;&lt;span class="err"&gt;/$&lt;/span&gt;&lt;span class="n"&gt;basearch&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;
+&lt;span class="n"&gt;metalink&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="n"&gt;mirrors&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openeuler&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;metalink&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;releasever&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;debuginfo&lt;/span&gt;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;arch&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;basearch&lt;/span&gt;
+&lt;span class="n"&gt;metadata_expire&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;
+&lt;span class="n"&gt;enabled&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;gpgcheck&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;gpgkey&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;121.36.84.172&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dailybuild&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EBS-openEuler-22&lt;/span&gt;&lt;span class="mf"&gt;.03&lt;/span&gt;&lt;span class="err"&gt;-&lt;/span&gt;&lt;span class="n"&gt;LTS-SP2&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rc6_openeuler-2023-06-29-20-25-36&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;debuginfo&lt;/span&gt;&lt;span class="err"&gt;/$&lt;/span&gt;&lt;span class="n"&gt;basearch&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;RPM-GPG-KEY-openEuler&lt;/span&gt;
+
+&lt;span class="k"&gt;[source]&lt;/span&gt;
+&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt;
+&lt;span class="n"&gt;baseurl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;121.36.84.172&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dailybuild&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EBS-openEuler-22&lt;/span&gt;&lt;span class="mf"&gt;.03&lt;/span&gt;&lt;span class="err"&gt;-&lt;/span&gt;&lt;span class="n"&gt;LTS-SP2&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rc6_openeuler-2023-06-29-20-25-36&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;
+&lt;span class="n"&gt;metalink&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="n"&gt;mirrors&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openeuler&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;metalink&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;releasever&lt;/span&gt;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;arch&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt;
+&lt;span class="n"&gt;metadata_expire&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;
+&lt;span class="n"&gt;enabled&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;gpgcheck&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;gpgkey&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;121.36.84.172&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dailybuild&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EBS-openEuler-22&lt;/span&gt;&lt;span class="mf"&gt;.03&lt;/span&gt;&lt;span class="err"&gt;-&lt;/span&gt;&lt;span class="n"&gt;LTS-SP2&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rc6_openeuler-2023-06-29-20-25-36&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;RPM-GPG-KEY-openEuler&lt;/span&gt;
+
+&lt;span class="k"&gt;[update]&lt;/span&gt;
+&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;update&lt;/span&gt;
+&lt;span class="n"&gt;baseurl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;121.36.84.172&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dailybuild&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EBS-openEuler-22&lt;/span&gt;&lt;span class="mf"&gt;.03&lt;/span&gt;&lt;span class="err"&gt;-&lt;/span&gt;&lt;span class="n"&gt;LTS-SP2&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rc6_openeuler-2023-06-29-20-25-36&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="err"&gt;/$&lt;/span&gt;&lt;span class="n"&gt;basearch&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;
+&lt;span class="n"&gt;metalink&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="n"&gt;mirrors&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openeuler&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;metalink&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;releasever&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;arch&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;basearch&lt;/span&gt;
+&lt;span class="n"&gt;metadata_expire&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;
+&lt;span class="n"&gt;enabled&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;gpgcheck&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;gpgkey&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;121.36.84.172&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dailybuild&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EBS-openEuler-22&lt;/span&gt;&lt;span class="mf"&gt;.03&lt;/span&gt;&lt;span class="err"&gt;-&lt;/span&gt;&lt;span class="n"&gt;LTS-SP2&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rc6_openeuler-2023-06-29-20-25-36&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;OS&lt;/span&gt;&lt;span class="err"&gt;/$&lt;/span&gt;&lt;span class="n"&gt;basearch&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;RPM-GPG-KEY-openEuler&lt;/span&gt;
+
+&lt;span class="k"&gt;[update-source]&lt;/span&gt;
+&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;update-source&lt;/span&gt;
+&lt;span class="n"&gt;baseurl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;121.36.84.172&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dailybuild&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EBS-openEuler-22&lt;/span&gt;&lt;span class="mf"&gt;.03&lt;/span&gt;&lt;span class="err"&gt;-&lt;/span&gt;&lt;span class="n"&gt;LTS-SP2&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rc6_openeuler-2023-06-29-20-25-36&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;
+&lt;span class="n"&gt;metalink&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="n"&gt;mirrors&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;openeuler&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;metalink&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;releasever&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;arch&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt;
+&lt;span class="n"&gt;metadata_expire&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;
+&lt;span class="n"&gt;enabled&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;gpgcheck&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;gpgkey&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;121.36.84.172&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dailybuild&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EBS-openEuler-22&lt;/span&gt;&lt;span class="mf"&gt;.03&lt;/span&gt;&lt;span class="err"&gt;-&lt;/span&gt;&lt;span class="n"&gt;LTS-SP2&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rc6_openeuler-2023-06-29-20-25-36&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;RPM-GPG-KEY-openEuler&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;&lt;p&gt;Tips: 正式版发布后可以跳过上述修改步骤&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;安装 &lt;code&gt;openeuler-ros&lt;/code&gt; 包，这个包的作用是帮助配置 ROS humble 的软件源&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dnf&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;openeuler-ros
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;安装完成后需要修改 &lt;code&gt;/etc/yum.repos.d/openEulerROS.repo&lt;/code&gt; 文件，改为一下内容&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[openEulerROS-humble]&lt;/span&gt;
+&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;openEulerROS-humble&lt;/span&gt;
+&lt;span class="n"&gt;baseurl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;121.36.84.172&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dailybuild&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EBS-openEuler-22&lt;/span&gt;&lt;span class="mf"&gt;.03&lt;/span&gt;&lt;span class="err"&gt;-&lt;/span&gt;&lt;span class="n"&gt;LTS-SP2&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;openeuler-2023-06-29-20-25-36&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EPOL&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;multi_version&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ROS&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;humble&lt;/span&gt;&lt;span class="err"&gt;/$&lt;/span&gt;&lt;span class="n"&gt;basearch&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;
+&lt;span class="n"&gt;enabled&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;gpgcheck&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+
+&lt;span class="k"&gt;[openEulerROS-humble-source]&lt;/span&gt;
+&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;openEulerROS-humble-source&lt;/span&gt;
+&lt;span class="n"&gt;baseurl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;121.36.84.172&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dailybuild&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EBS-openEuler-22&lt;/span&gt;&lt;span class="mf"&gt;.03&lt;/span&gt;&lt;span class="err"&gt;-&lt;/span&gt;&lt;span class="n"&gt;LTS-SP2&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;openeuler-2023-06-29-20-25-36&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;EPOL&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;multi_version&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ROS&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;humble&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt;
+&lt;span class="n"&gt;enabled&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;gpgcheck&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;&lt;p&gt;Tips: 正式版发布后可以跳过上述修改步骤&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;现在就可以安装需要的 ros 包啦！&lt;/p&gt;
+&lt;p&gt;使用 &lt;code&gt;dnf install ros-humble-xxx&lt;/code&gt; 就可安装指定的 ros 软件包&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 以小乌龟（ros-humble-turtlesim）为例&lt;/span&gt;
+dnf&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;ros-humble-turtlesim
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="1264" data-height="986" src="/archives/assets/6b70264addbdfc3ae382102c2e52aad7.png" alt="image-20230630191602955" /&gt;&lt;figcaption&gt;image-20230630191602955&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果不介意安装全家桶的话，可以使用 &lt;code&gt;dnf install ros-humble-*&lt;/code&gt; 来安装目前源里的所有 ros humble 软件包。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;跑个 demo 康康？&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#安装 `ros-humble-demo-nodes-cpp` 包&lt;/span&gt;
+dnf&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;ros-humble-demo-nodes-cpp
+&lt;span class="c1"&gt;# 配置环境&lt;/span&gt;
+&lt;span class="nb"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/opt/ros/humble/setup.sh
+&lt;span class="c1"&gt;# 分别执行以下两条命令&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img data-width="1264" data-height="986" src="/archives/assets/92e21f75c1906b01ceb4130b0a4e56b1.png" alt="image-20230630192153082" /&gt;&lt;figcaption&gt;image-20230630192153082&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content><link href="/archives/oe2203sp2-install-ros/" rel="alternate"/><published>2023-06-29T11:06:00+08:06</published></entry></feed>

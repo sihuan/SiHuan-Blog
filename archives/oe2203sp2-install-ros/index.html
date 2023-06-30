@@ -1,0 +1,374 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="SiHuan,思还,Blog,博客,GitBlog" />
+    <meta name="generator" content="Maverick 1.1" />
+    <meta name="template" content="Galileo" />
+    <link rel="alternate" type="application/rss+xml" title="SiHuan's Blog &raquo; RSS 2.0" href="/feed/index.xml" />
+    <link rel="alternate" type="application/atom+xml" title="SiHuan's Blog &raquo; ATOM 1.0" href="/feed/atom/index.xml" />
+    <link rel="stylesheet" href="/assets/galileo-3f2347c2c0.css">
+    <link rel="stylesheet" href="/assets/ExSearch/ExSearch-182e5a8868.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
+    <script>
+        var ExSearchConfig = {
+            root: "",
+            api: "/eaa0120e38b5e357a9bfda648cdc084a.json"
+        }
+    </script>
+    
+<title>在 openEuler 22.03 SP2 上安装 ROS humble - SiHuan's Blog</title>
+<meta name="author" content="SiHuaN" />
+<meta name="description" content="openEuler 22.03 SP2 支持 ROS humble 啦！快来试一试）" />
+<meta property="og:title" content="在 openEuler 22.03 SP2 上安装 ROS humble - SiHuan's Blog" />
+<meta property="og:description" content="openEuler 22.03 SP2 支持 ROS humble 啦！快来试一试）" />
+<meta property="og:site_name" content="SiHuan's Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/archives/oe2203sp2-install-ros/" />
+<meta property="og:image" content="" />
+<meta property="article:published_time" content="2023-06-29T11:06:00-00.00" />
+<meta name="twitter:title" content="在 openEuler 22.03 SP2 上安装 ROS humble - SiHuan's Blog" />
+<meta name="twitter:description" content="openEuler 22.03 SP2 支持 ROS humble 啦！快来试一试）" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="" />
+
+
+    
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+
+    </head>
+    
+    <body>
+        
+        <div class="container">
+            <header id="ga-header">
+                <div first>
+                    <aside id="ga-logo">
+                        <a href="/" target="_self">
+                            <img src="/logo.png" alt="SiHuan's Blog">
+                        </a>
+                    </aside>
+                    <aside id="ga-brand">
+                        <h1 class="brand"><a class="no-style" href="/">SiHuan's Blog</a></h1>
+                        <p>道阻且长，吾意思还。</p>
+                    </aside>
+                </div>
+                <div second id="ga-nav">
+                    <nav class="navs">
+                        <ul><li><a class="ga-highlight" href="/" target="_self">首页</a></li><span class="separator">·</span><li><a class="ga-highlight" href="/archives/" target="_self">归档</a></li><span class="separator">·</span><li><a class="ga-highlight" href="/enngi/" target="_self">縁起</a></li><span class="separator">·</span><li><a class="ga-highlight" href="/publickey/" target="_self">公钥</a></li><span class="separator">·</span><li><a href="#" target="_self" class="search-form-input ga-highlight">搜索</a></li></ul>
+                    </nav>
+                    <nav class="social-links">
+                        <ul><li><a class="no-style" title="Telegram" href="https://t.me/Si_Huan" target="_blank"><i class="gi gi-telegram"></i>Telegram</a></li><span class="separator">·</span><li><a class="no-style" title="GitHub" href="https://github.com/Si-Huan" target="_blank"><i class="gi gi-github"></i>GitHub</a></li></ul>
+                    </nav>
+                </div>
+            </header>
+            <div class="wrapper">
+                
+<main>    
+    <section class="ga-section ga-content">
+        <article class="yue">
+            <h1 class="ga-post_title">在 openEuler 22.03 SP2 上安装 ROS humble</h1>
+            <span class="ga-post_meta ga-mono">
+                <span>SiHuaN</span>
+                <time>
+                    2023-06-29
+                </time>
+                
+                in <a no-style class="category" href="/category/ros/">
+                    ros
+                </a>
+                
+                
+            </span>
+            <div class="ga-content_body">
+                <p>openEuler 22.03 SP2 即将发布，SP2 版本引入了 ROS humble 的支持，可以方便的使用 <code>dnf install ros-humble-xxx</code> 来安装 ros 包。下面是在 QEMU 虚拟机上进行的步骤演示~</p>
+<blockquote><p>以下使用 rc6 版本进行演示，正式版发布后，可省略更换软件源的步骤</p>
+</blockquote>
+<ol>
+<li><p>下载 openEuler  虚拟机镜像，可前往<a href="http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/">此处</a>查看</p>
+<div class="highlight"><pre><span></span>axel<span class="w"> </span>-n<span class="w"> </span><span class="m">64</span><span class="w"> </span>http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc6_openeuler-2023-06-29-20-25-36/virtual_machine_img/x86_64/openEuler-22.03-LTS-SP2-x86_64.qcow2.xz
+<span class="c1"># 解压</span>
+unxz<span class="w"> </span>openEuler-22.03-LTS-SP2-x86_64.qcow2.xz
+</pre></div>
+<blockquote><p>Tips: 使用 <code>axel</code> 等多线程下载工具可以显著提升下载速度</p>
+</blockquote>
+</li>
+<li><p>启动 openEuler 虚拟机</p>
+<p>以下脚本可以方便的使用 <code>qemu-system-x86</code> 启动虚拟机并配置好端口映射，方便 使用 ssh 连入。</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+
+<span class="c1"># The script is created for starting a riscv64 qemu virtual machine with specific parameters.</span>
+
+<span class="nv">RESTORE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s1">&#39;\001\033[0m\002&#39;</span><span class="k">)</span>
+<span class="nv">YELLOW</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s1">&#39;\001\033[00;33m\002&#39;</span><span class="k">)</span>
+
+<span class="c1">## Configuration</span>
+<span class="nv">vcpu</span><span class="o">=</span><span class="m">8</span>
+<span class="nv">memory</span><span class="o">=</span><span class="m">16</span>
+<span class="nv">memory_append</span><span class="o">=</span><span class="sb">`</span>expr<span class="w"> </span><span class="nv">$memory</span><span class="w"> </span><span class="se">\*</span><span class="w"> </span><span class="m">1024</span><span class="sb">`</span>
+<span class="nv">drive</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>ls<span class="w"> </span>*.qcow2<span class="k">)</span><span class="s2">&quot;</span>
+<span class="nv">ssh_port</span><span class="o">=</span><span class="m">12055</span>
+
+<span class="nv">cmd</span><span class="o">=</span><span class="s2">&quot;qemu-system-x86_64 \</span>
+<span class="s2">  -smp &quot;</span><span class="nv">$vcpu</span><span class="s2">&quot; -m &quot;</span><span class="nv">$memory</span><span class="s2">&quot;G \</span>
+<span class="s2">  -drive file=&quot;</span><span class="nv">$drive</span><span class="s2">&quot;,format=qcow2,id=hd0 \</span>
+<span class="s2">  -nic user,model=virtio,hostfwd=tcp::&quot;</span><span class="nv">$ssh_port</span><span class="s2">&quot;-:22&quot;</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">YELLOW</span><span class="si">}</span>::<span class="w"> </span>Starting<span class="w"> </span>VM...<span class="si">${</span><span class="nv">RESTORE</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">YELLOW</span><span class="si">}</span>::<span class="w"> </span>Using<span class="w"> </span>following<span class="w"> </span>configuration<span class="si">${</span><span class="nv">RESTORE</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">YELLOW</span><span class="si">}</span>vCPU<span class="w"> </span>Cores:<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$vcpu</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RESTORE</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">YELLOW</span><span class="si">}</span>Memory:<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$memory</span><span class="s2">&quot;</span>G<span class="si">${</span><span class="nv">RESTORE</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">YELLOW</span><span class="si">}</span>Disk:<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$drive</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RESTORE</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">YELLOW</span><span class="si">}</span>SSH<span class="w"> </span>Port:<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ssh_port</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RESTORE</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">YELLOW</span><span class="si">}</span>::<span class="w"> </span>NOTE:<span class="w"> </span>Make<span class="w"> </span>sure<span class="w"> </span>ONLY<span class="w"> </span>ONE<span class="w"> </span>.qcow2<span class="w"> </span>file<span class="w"> </span>is<span class="si">${</span><span class="nv">RESTORE</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">YELLOW</span><span class="si">}</span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>directory<span class="si">${</span><span class="nv">RESTORE</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">YELLOW</span><span class="si">}</span>::<span class="w"> </span>Tip:<span class="w"> </span>Try<span class="w"> </span>setting<span class="w"> </span>DNS<span class="w"> </span>manually<span class="w"> </span><span class="k">if</span><span class="w"> </span>QEMU<span class="w"> </span>user<span class="w"> </span>network<span class="w"> </span>doesn<span class="se">\&#39;</span>t<span class="w"> </span>work<span class="w"> </span>well.<span class="w"> </span><span class="si">${</span><span class="nv">RESTORE</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">YELLOW</span><span class="si">}</span>::<span class="w"> </span>HOWTO<span class="w"> </span>-<span class="se">\&gt;</span><span class="w"> </span>https://serverfault.com/a/810639<span class="w"> </span><span class="si">${</span><span class="nv">RESTORE</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+
+sleep<span class="w"> </span><span class="m">2</span>
+
+<span class="nb">eval</span><span class="w"> </span><span class="nv">$cmd</span>
+</pre></div>
+<p>将上诉脚本保存至镜像文件同目录，并添加可执行权限，然后执行此脚本就可以启动 openEuler 虚拟机，虚拟机的 <code>22</code> 号端口被映射到本机的 <code>12055</code>号端口。</p>
+</li>
+<li><p>配置软件源</p>
+<p>使用 ssh 登入虚拟机 <code>root</code> 账户，其密码是 <code>openEuler12#$</code></p>
+<p>配置软件源，编辑 <code>/etc/yum.repos.d/openEuler.repo</code> 文件，更换为以下内容：</p>
+<div class="highlight"><pre><span></span><span class="c1">#generic-repos is licensed under the Mulan PSL v2.</span>
+<span class="c1">#You can use this software according to the terms and conditions of the Mulan PSL v2.</span>
+<span class="c1">#You may obtain a copy of Mulan PSL v2 at:</span>
+<span class="c1">#    http://license.coscl.org.cn/MulanPSL2</span>
+<span class="c1">#THIS SOFTWARE IS PROVIDED ON AN &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR</span>
+<span class="c1">#IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY OR FIT FOR A PARTICULAR</span>
+<span class="c1">#PURPOSE.</span>
+<span class="c1">#See the Mulan PSL v2 for more details.</span>
+
+<span class="k">[OS]</span>
+<span class="n">name</span><span class="o">=</span><span class="n">OS</span>
+<span class="n">baseurl</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="err">//</span><span class="mf">121.36.84.172</span><span class="err">/</span><span class="n">dailybuild</span><span class="err">/</span><span class="n">EBS-openEuler-22</span><span class="mf">.03</span><span class="err">-</span><span class="n">LTS-SP2</span><span class="err">/</span><span class="n">rc6_openeuler-2023-06-29-20-25-36</span><span class="err">/</span><span class="n">OS</span><span class="err">/$</span><span class="n">basearch</span><span class="err">/</span>
+<span class="n">enabled</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgcheck</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgkey</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="err">//</span><span class="mf">121.36.84.172</span><span class="err">/</span><span class="n">dailybuild</span><span class="err">/</span><span class="n">EBS-openEuler-22</span><span class="mf">.03</span><span class="err">-</span><span class="n">LTS-SP2</span><span class="err">/</span><span class="n">rc6_openeuler-2023-06-29-20-25-36</span><span class="err">/</span><span class="n">OS</span><span class="err">/$</span><span class="n">basearch</span><span class="err">/</span><span class="n">RPM-GPG-KEY-openEuler</span>
+
+<span class="k">[everything]</span>
+<span class="n">name</span><span class="o">=</span><span class="n">everything</span>
+<span class="n">baseurl</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="err">//</span><span class="mf">121.36.84.172</span><span class="err">/</span><span class="n">dailybuild</span><span class="err">/</span><span class="n">EBS-openEuler-22</span><span class="mf">.03</span><span class="err">-</span><span class="n">LTS-SP2</span><span class="err">/</span><span class="n">rc6_openeuler-2023-06-29-20-25-36</span><span class="err">/</span><span class="n">everything</span><span class="err">/$</span><span class="n">basearch</span><span class="err">/</span>
+<span class="n">enabled</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgcheck</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgkey</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="err">//</span><span class="mf">121.36.84.172</span><span class="err">/</span><span class="n">dailybuild</span><span class="err">/</span><span class="n">EBS-openEuler-22</span><span class="mf">.03</span><span class="err">-</span><span class="n">LTS-SP2</span><span class="err">/</span><span class="n">rc6_openeuler-2023-06-29-20-25-36</span><span class="err">/</span><span class="n">everything</span><span class="err">/$</span><span class="n">basearch</span><span class="err">/</span><span class="n">RPM-GPG-KEY-openEuler</span>
+
+<span class="k">[EPOL]</span>
+<span class="n">name</span><span class="o">=</span><span class="n">EPOL</span>
+<span class="n">baseurl</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="err">//</span><span class="mf">121.36.84.172</span><span class="err">/</span><span class="n">dailybuild</span><span class="err">/</span><span class="n">EBS-openEuler-22</span><span class="mf">.03</span><span class="err">-</span><span class="n">LTS-SP2</span><span class="err">/</span><span class="n">rc6_openeuler-2023-06-29-20-25-36</span><span class="err">/</span><span class="n">EPOL</span><span class="err">/</span><span class="n">main</span><span class="err">/$</span><span class="n">basearch</span><span class="err">/</span>
+<span class="n">metalink</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="err">//</span><span class="n">mirrors</span><span class="p">.</span><span class="n">openeuler</span><span class="p">.</span><span class="n">org</span><span class="err">/</span><span class="n">metalink</span><span class="err">?</span><span class="n">repo</span><span class="o">=</span><span class="err">$</span><span class="n">releasever</span><span class="err">/</span><span class="n">EPOL</span><span class="err">/</span><span class="n">main</span><span class="err">&amp;</span><span class="n">arch</span><span class="o">=</span><span class="err">$</span><span class="n">basearch</span>
+<span class="n">metadata_expire</span><span class="o">=</span><span class="mi">1</span><span class="n">h</span>
+<span class="n">enabled</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgcheck</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgkey</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="err">//</span><span class="mf">121.36.84.172</span><span class="err">/</span><span class="n">dailybuild</span><span class="err">/</span><span class="n">EBS-openEuler-22</span><span class="mf">.03</span><span class="err">-</span><span class="n">LTS-SP2</span><span class="err">/</span><span class="n">rc6_openeuler-2023-06-29-20-25-36</span><span class="err">/</span><span class="n">OS</span><span class="err">/$</span><span class="n">basearch</span><span class="err">/</span><span class="n">RPM-GPG-KEY-openEuler</span>
+
+<span class="k">[debuginfo]</span>
+<span class="n">name</span><span class="o">=</span><span class="n">debuginfo</span>
+<span class="n">baseurl</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="err">//</span><span class="mf">121.36.84.172</span><span class="err">/</span><span class="n">dailybuild</span><span class="err">/</span><span class="n">EBS-openEuler-22</span><span class="mf">.03</span><span class="err">-</span><span class="n">LTS-SP2</span><span class="err">/</span><span class="n">rc6_openeuler-2023-06-29-20-25-36</span><span class="err">/</span><span class="n">debuginfo</span><span class="err">/$</span><span class="n">basearch</span><span class="err">/</span>
+<span class="n">metalink</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="err">//</span><span class="n">mirrors</span><span class="p">.</span><span class="n">openeuler</span><span class="p">.</span><span class="n">org</span><span class="err">/</span><span class="n">metalink</span><span class="err">?</span><span class="n">repo</span><span class="o">=</span><span class="err">$</span><span class="n">releasever</span><span class="err">/</span><span class="n">debuginfo</span><span class="err">&amp;</span><span class="n">arch</span><span class="o">=</span><span class="err">$</span><span class="n">basearch</span>
+<span class="n">metadata_expire</span><span class="o">=</span><span class="mi">1</span><span class="n">h</span>
+<span class="n">enabled</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgcheck</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgkey</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="err">//</span><span class="mf">121.36.84.172</span><span class="err">/</span><span class="n">dailybuild</span><span class="err">/</span><span class="n">EBS-openEuler-22</span><span class="mf">.03</span><span class="err">-</span><span class="n">LTS-SP2</span><span class="err">/</span><span class="n">rc6_openeuler-2023-06-29-20-25-36</span><span class="err">/</span><span class="n">debuginfo</span><span class="err">/$</span><span class="n">basearch</span><span class="err">/</span><span class="n">RPM-GPG-KEY-openEuler</span>
+
+<span class="k">[source]</span>
+<span class="n">name</span><span class="o">=</span><span class="n">source</span>
+<span class="n">baseurl</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="err">//</span><span class="mf">121.36.84.172</span><span class="err">/</span><span class="n">dailybuild</span><span class="err">/</span><span class="n">EBS-openEuler-22</span><span class="mf">.03</span><span class="err">-</span><span class="n">LTS-SP2</span><span class="err">/</span><span class="n">rc6_openeuler-2023-06-29-20-25-36</span><span class="err">/</span><span class="n">source</span><span class="err">/</span>
+<span class="n">metalink</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="err">//</span><span class="n">mirrors</span><span class="p">.</span><span class="n">openeuler</span><span class="p">.</span><span class="n">org</span><span class="err">/</span><span class="n">metalink</span><span class="err">?</span><span class="n">repo</span><span class="o">=</span><span class="err">$</span><span class="n">releasever</span><span class="err">&amp;</span><span class="n">arch</span><span class="o">=</span><span class="n">source</span>
+<span class="n">metadata_expire</span><span class="o">=</span><span class="mi">1</span><span class="n">h</span>
+<span class="n">enabled</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgcheck</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgkey</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="err">//</span><span class="mf">121.36.84.172</span><span class="err">/</span><span class="n">dailybuild</span><span class="err">/</span><span class="n">EBS-openEuler-22</span><span class="mf">.03</span><span class="err">-</span><span class="n">LTS-SP2</span><span class="err">/</span><span class="n">rc6_openeuler-2023-06-29-20-25-36</span><span class="err">/</span><span class="n">source</span><span class="err">/</span><span class="n">RPM-GPG-KEY-openEuler</span>
+
+<span class="k">[update]</span>
+<span class="n">name</span><span class="o">=</span><span class="n">update</span>
+<span class="n">baseurl</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="err">//</span><span class="mf">121.36.84.172</span><span class="err">/</span><span class="n">dailybuild</span><span class="err">/</span><span class="n">EBS-openEuler-22</span><span class="mf">.03</span><span class="err">-</span><span class="n">LTS-SP2</span><span class="err">/</span><span class="n">rc6_openeuler-2023-06-29-20-25-36</span><span class="err">/</span><span class="n">update</span><span class="err">/$</span><span class="n">basearch</span><span class="err">/</span>
+<span class="n">metalink</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="err">//</span><span class="n">mirrors</span><span class="p">.</span><span class="n">openeuler</span><span class="p">.</span><span class="n">org</span><span class="err">/</span><span class="n">metalink</span><span class="err">?</span><span class="n">repo</span><span class="o">=</span><span class="err">$</span><span class="n">releasever</span><span class="err">/</span><span class="n">update</span><span class="err">&amp;</span><span class="n">arch</span><span class="o">=</span><span class="err">$</span><span class="n">basearch</span>
+<span class="n">metadata_expire</span><span class="o">=</span><span class="mi">1</span><span class="n">h</span>
+<span class="n">enabled</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgcheck</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgkey</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="err">//</span><span class="mf">121.36.84.172</span><span class="err">/</span><span class="n">dailybuild</span><span class="err">/</span><span class="n">EBS-openEuler-22</span><span class="mf">.03</span><span class="err">-</span><span class="n">LTS-SP2</span><span class="err">/</span><span class="n">rc6_openeuler-2023-06-29-20-25-36</span><span class="err">/</span><span class="n">OS</span><span class="err">/$</span><span class="n">basearch</span><span class="err">/</span><span class="n">RPM-GPG-KEY-openEuler</span>
+
+<span class="k">[update-source]</span>
+<span class="n">name</span><span class="o">=</span><span class="n">update-source</span>
+<span class="n">baseurl</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="err">//</span><span class="mf">121.36.84.172</span><span class="err">/</span><span class="n">dailybuild</span><span class="err">/</span><span class="n">EBS-openEuler-22</span><span class="mf">.03</span><span class="err">-</span><span class="n">LTS-SP2</span><span class="err">/</span><span class="n">rc6_openeuler-2023-06-29-20-25-36</span><span class="err">/</span><span class="n">update</span><span class="err">/</span><span class="n">source</span><span class="err">/</span>
+<span class="n">metalink</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="err">//</span><span class="n">mirrors</span><span class="p">.</span><span class="n">openeuler</span><span class="p">.</span><span class="n">org</span><span class="err">/</span><span class="n">metalink</span><span class="err">?</span><span class="n">repo</span><span class="o">=</span><span class="err">$</span><span class="n">releasever</span><span class="err">/</span><span class="n">update</span><span class="err">&amp;</span><span class="n">arch</span><span class="o">=</span><span class="n">source</span>
+<span class="n">metadata_expire</span><span class="o">=</span><span class="mi">1</span><span class="n">h</span>
+<span class="n">enabled</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgcheck</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgkey</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="err">//</span><span class="mf">121.36.84.172</span><span class="err">/</span><span class="n">dailybuild</span><span class="err">/</span><span class="n">EBS-openEuler-22</span><span class="mf">.03</span><span class="err">-</span><span class="n">LTS-SP2</span><span class="err">/</span><span class="n">rc6_openeuler-2023-06-29-20-25-36</span><span class="err">/</span><span class="n">source</span><span class="err">/</span><span class="n">RPM-GPG-KEY-openEuler</span>
+</pre></div>
+<blockquote><p>Tips: 正式版发布后可以跳过上述修改步骤</p>
+</blockquote>
+<p>安装 <code>openeuler-ros</code> 包，这个包的作用是帮助配置 ROS humble 的软件源</p>
+<div class="highlight"><pre><span></span>dnf<span class="w"> </span>install<span class="w"> </span>openeuler-ros
+</pre></div>
+<p>安装完成后需要修改 <code>/etc/yum.repos.d/openEulerROS.repo</code> 文件，改为一下内容</p>
+<div class="highlight"><pre><span></span><span class="k">[openEulerROS-humble]</span>
+<span class="n">name</span><span class="o">=</span><span class="n">openEulerROS-humble</span>
+<span class="n">baseurl</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="err">//</span><span class="mf">121.36.84.172</span><span class="err">/</span><span class="n">dailybuild</span><span class="err">/</span><span class="n">EBS-openEuler-22</span><span class="mf">.03</span><span class="err">-</span><span class="n">LTS-SP2</span><span class="err">/</span><span class="n">openeuler-2023-06-29-20-25-36</span><span class="err">/</span><span class="n">EPOL</span><span class="err">/</span><span class="n">multi_version</span><span class="err">/</span><span class="n">ROS</span><span class="err">/</span><span class="n">humble</span><span class="err">/$</span><span class="n">basearch</span><span class="err">/</span>
+<span class="n">enabled</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgcheck</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="k">[openEulerROS-humble-source]</span>
+<span class="n">name</span><span class="o">=</span><span class="n">openEulerROS-humble-source</span>
+<span class="n">baseurl</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="err">//</span><span class="mf">121.36.84.172</span><span class="err">/</span><span class="n">dailybuild</span><span class="err">/</span><span class="n">EBS-openEuler-22</span><span class="mf">.03</span><span class="err">-</span><span class="n">LTS-SP2</span><span class="err">/</span><span class="n">openeuler-2023-06-29-20-25-36</span><span class="err">/</span><span class="n">EPOL</span><span class="err">/</span><span class="n">multi_version</span><span class="err">/</span><span class="n">ROS</span><span class="err">/</span><span class="n">humble</span><span class="err">/</span><span class="n">source</span>
+<span class="n">enabled</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgcheck</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+<blockquote><p>Tips: 正式版发布后可以跳过上述修改步骤</p>
+</blockquote>
+</li>
+<li><p>现在就可以安装需要的 ros 包啦！</p>
+<p>使用 <code>dnf install ros-humble-xxx</code> 就可安装指定的 ros 软件包</p>
+<div class="highlight"><pre><span></span><span class="c1"># 以小乌龟（ros-humble-turtlesim）为例</span>
+dnf<span class="w"> </span>install<span class="w"> </span>ros-humble-turtlesim
+</pre></div>
+<p><figure><img data-width="1264" data-height="986" src="/archives/assets/6b70264addbdfc3ae382102c2e52aad7.png" alt="image-20230630191602955" /><figcaption>image-20230630191602955</figcaption></figure></p>
+</li>
+</ol>
+<p>如果不介意安装全家桶的话，可以使用 <code>dnf install ros-humble-*</code> 来安装目前源里的所有 ros humble 软件包。</p>
+<ol>
+<li><p>跑个 demo 康康？</p>
+<div class="highlight"><pre><span></span><span class="c1">#安装 `ros-humble-demo-nodes-cpp` 包</span>
+dnf<span class="w"> </span>install<span class="w"> </span>ros-humble-demo-nodes-cpp
+<span class="c1"># 配置环境</span>
+<span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.sh
+<span class="c1"># 分别执行以下两条命令</span>
+</pre></div>
+<p><figure><img data-width="1264" data-height="986" src="/archives/assets/92e21f75c1906b01ceb4130b0a4e56b1.png" alt="image-20230630192153082" /><figcaption>image-20230630192153082</figcaption></figure></p>
+</li>
+</ol>
+
+            </div>
+        </article>
+        <div id="ga-tags">
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/tag/ros/">#ros</a>
+    </span>
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/tag/openeuler/">#openeuler</a>
+    </span>
+    
+</div>
+    </section>
+
+    
+<section id="ga-content_pager">
+
+    <div class="next">
+        <h3>没有了</h3>
+        <p class="yue">这是最新的文章</p>
+    </div>
+
+
+    <div class="prev">
+        <a class="ga-highlight" href="/archives/ros-install-docker/">使用 Docker 安装 ROS</a>
+        <p class="yue">在 ArchLinux 上使用 docker 安装 ROS</p>
+    </div>
+
+</section>
+
+
+    
+
+</main>
+
+                <footer class="ga-mono" id="ga-footer">
+                    <section>
+                        <span id="ga-uptime"></span>
+                        <span class="brand">SiHuan's Blog</span>
+                    </section>
+                    <section>
+                        <div class="copyright">
+                            <span class="footer-addon">
+                                
+                            </span>
+                            <nav class="social-links">
+                                <ul><li><a class="no-style" title="Telegram" href="https://t.me/Si_Huan" target="_blank"><i class="gi gi-telegram"></i>Telegram</a></li><span class="separator">·</span><li><a class="no-style" title="GitHub" href="https://github.com/Si-Huan" target="_blank"><i class="gi gi-github"></i>GitHub</a></li></ul>
+                            </nav>
+                        </div>
+                    </section>
+                    <script>
+                        var site_build_date = "2020-01-01T00:00+08:00"
+                    </script>
+                    <script src="/assets/galileo-61cf2e8279.js"></script>
+                </footer>
+            </div>
+        </div>
+    </div>
+        
+        
+        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                          <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div> 
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/ExSearch/jquery.min.js"></script>
+    <script src="/assets/ExSearch/ExSearch-493cb9cd89.js"></script>
+    
+    <!--katex-->
+    <link rel="stylesheet" href="/assets/katex.min.css">
+    <script defer src="/assets/katex.min.js"></script>
+    <script>
+    mathOpts = {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\(", right: "\\)", display: false}
+        ]
+    };
+    </script>
+    <script defer src="/assets/auto-render.min.js" onload="renderMathInElement(document.body, mathOpts);"></script>
+
+    
+    </body>
+</html>
