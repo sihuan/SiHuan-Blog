@@ -21,18 +21,18 @@
         }
     </script>
     
-<title>使用 Docker 安装 ROS - SiHuan's Blog</title>
+<title>记一次简单的 openEuler 修包经历 - SiHuan's Blog</title>
 <meta name="author" content="SiHuaN" />
-<meta name="description" content="在 ArchLinux 上使用 docker 安装 ROS" />
-<meta property="og:title" content="使用 Docker 安装 ROS - SiHuan's Blog" />
-<meta property="og:description" content="在 ArchLinux 上使用 docker 安装 ROS" />
+<meta name="description" content="快来给 openEuler 社区做贡献吧!" />
+<meta property="og:title" content="记一次简单的 openEuler 修包经历 - SiHuan's Blog" />
+<meta property="og:description" content="快来给 openEuler 社区做贡献吧!" />
 <meta property="og:site_name" content="SiHuan's Blog" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/archives/ros-install-docker/" />
+<meta property="og:url" content="/archives/openeuler-fix-build/" />
 <meta property="og:image" content="" />
-<meta property="article:published_time" content="2023-04-20T11:06:00-00.00" />
-<meta name="twitter:title" content="使用 Docker 安装 ROS - SiHuan's Blog" />
-<meta name="twitter:description" content="在 ArchLinux 上使用 docker 安装 ROS" />
+<meta property="article:published_time" content="2023-06-20T11:06:00-00.00" />
+<meta name="twitter:title" content="记一次简单的 openEuler 修包经历 - SiHuan's Blog" />
+<meta name="twitter:description" content="快来给 openEuler 社区做贡献吧!" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:image" content="" />
 
@@ -72,11 +72,11 @@
 <main>    
     <section class="ga-section ga-content">
         <article class="yue">
-            <h1 class="ga-post_title">使用 Docker 安装 ROS</h1>
+            <h1 class="ga-post_title">记一次简单的 openEuler 修包经历</h1>
             <span class="ga-post_meta ga-mono">
                 <span>SiHuaN</span>
                 <time>
-                    2023-04-20
+                    2023-06-20
                 </time>
                 
                 in <a no-style class="category" href="/category/ros/">
@@ -86,8 +86,21 @@
                 
             </span>
             <div class="ga-content_body">
-                <blockquote><p>本文使用的操作系统是 <code>ArchLinux</code>，用户名是 <code>sihuan</code>，使用的 ROS 版本是 ROS1  <code>kinetic</code>.</p>
-<p>采用 docker 来安装 ROS 配置环境，此方法方便切换 ROS 版本，安装起来也比较方便</p>
+                <h2>给 openEuler 修个包吧!</h2>
+<blockquote><p>这篇咕咕咕了，没写完，以下原文（的一部分）</p>
+<p>记录一下修复一个包的完整流程</p>
+</blockquote>
+<p>一些小前提:</p>
+<ul>
+<li><p>需要一个 <a href="https://gitee.com/">gitee</a> 账户, 因为要给 <a href="https://gitee.com/src-openeuler">src-openeuler</a> 提交 pr</p>
+</li>
+<li><p>注册一个 openEuler 的 <a href="https://build.openeuler.openatom.cn/">obs</a> 账户并在本地配置好 osc</p>
+<blockquote><p>Tips:  配置 osc 可能遇到的坑</p>
+<p>​   新版本的 osc 配置文件位于 <code>~/.config/osc/oscrc</code> 而不是 <code>~/.oscrc</code> 或 <code>~/.config/oscrc</code></p>
+</blockquote>
+</li>
+</ul>
+<blockquote><p>采用 docker 来安装 ROS 配置环境，此方法方便切换 ROS 版本安装起来也比较方便</p>
 </blockquote>
 <ol>
 <li><p>安装 docker，启动 docker 服务，并把当前用户加入到 <code>docker</code> 用户组</p>
@@ -207,7 +220,7 @@ ros_comm version 1.12.17</p>
     </span>
     
     <span class="ga-tag">
-        <a class="ga-highlight" href="/tag/docker/">#docker</a>
+        <a class="ga-highlight" href="/tag/openeuler/">#openeuler</a>
     </span>
     
 </div>
@@ -217,14 +230,14 @@ ros_comm version 1.12.17</p>
 <section id="ga-content_pager">
 
     <div class="next">
-        <a class="ga-highlight" href="/archives/openeuler-fix-build/">记一次简单的 openEuler 修包经历</a>
-        <p class="yue">快来给 openEuler 社区做贡献吧!</p>
+        <a class="ga-highlight" href="/archives/oe2203sp2-install-ros/">在 openEuler 22.03 SP2 上安装 ROS humble</a>
+        <p class="yue">openEuler 22.03 SP2 支持 ROS humble 啦！快来试一试）</p>
     </div>
 
 
     <div class="prev">
-        <a class="ga-highlight" href="/archives/linuxorwinjoke/">今日份笑话</a>
-        <p class="yue">今天看到一个（讽刺笑话）</p>
+        <a class="ga-highlight" href="/archives/ros-install-docker/">使用 Docker 安装 ROS</a>
+        <p class="yue">在 ArchLinux 上使用 docker 安装 ROS</p>
     </div>
 
 </section>
